@@ -1,6 +1,6 @@
-# Utvedabygg Documentation
+# Documentation
 
-This directory contains project documentation for the Utvedabygg website.
+This directory contains comprehensive project documentation for the company website boilerplate.
 
 ## Contents
 

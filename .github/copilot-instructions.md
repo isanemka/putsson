@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a company website for "Utvedabygg", a construction and civil engineering services company. The website showcases their services, projects, and company information.
+This is a boilerplate for creating professional company websites. It provides a production-ready foundation with best practices for SEO, accessibility, testing, and deployment.
 
 Built with:
 
@@ -14,10 +14,10 @@ Built with:
 ### Purpose
 
 - Present company services and expertise
-- Showcase completed projects and portfolio
+- Showcase projects and portfolio
 - Provide contact information and inquiry forms
 - Build trust with potential clients
-- **Rank well in search engines for local construction services**
+- **Rank well in search engines for relevant industry keywords**
 
 ## Code Style & Conventions
 

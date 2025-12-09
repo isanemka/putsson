@@ -1,37 +1,38 @@
 # Content Structure
 
-## Planned Pages
+This document provides guidance for organizing content on a company website.
+
+## Suggested Pages
 
 ### Homepage (/)
 
 - Hero section with company introduction
-- Overview of main services
-- Featured projects
+- Overview of main services/products
+- Featured projects or testimonials
 - Call-to-action
 
 ### About (/om-oss)
 
 - Company history and values
 - Team presentation
-- Certifications and qualifications
+- Certifications and qualifications (if applicable)
 
 ### Services (/tjanster)
 
-- Detailed service offerings
-- Construction services
-- Civil engineering services
-- Specialty services
+- Detailed service/product offerings
+- Service categories and descriptions
+- Benefits and process
 
-### Projects (/projekt)
+### Projects or Portfolio (/projekt)
 
-- Portfolio of completed projects
+- Portfolio of completed work
 - Project categories/filters
-- Individual project case studies
+- Individual case studies
 
 ### Contact (/kontakt)
 
 - Contact form
-- Company information
+- Company information (address, phone, email)
 - Location/map
 - Social media links
 
@@ -40,7 +41,7 @@
 - GDPR-compliant privacy policy
 - How personal data is collected and used
 - Contact form data handling
-- Cookie usage
+- Cookie usage (if applicable)
 - User rights (access, deletion, etc.)
 
 ### Cookie Policy (if using analytics)
@@ -51,16 +52,16 @@
 
 ## Content Guidelines
 
-- All user-facing text in Swedish
+- All user-facing text in Swedish (or target language)
 - Clear, professional tone
 - Focus on trust and expertise
 - Mobile-friendly formatting
 
 ### SEO Focus
 
-- **Target keywords:** "bygg och anläggning", "byggföretag", local area keywords
-- Include location-based keywords (city/region names)
-- Use natural Swedish language, avoid keyword stuffing
+- **Target keywords:** Industry-specific and location-based keywords
+- Include relevant keywords for your business sector
+- Use natural language, avoid keyword stuffing
 - Write descriptive meta descriptions (150-160 characters)
 - Use heading hierarchy properly (one h1 per page)
 - Internal linking between related pages
@@ -69,9 +70,9 @@
 ## Assets
 
 - Company logo
-- Project photos
-- Team photos
+- Project/product photos
+- Team photos (if applicable)
 - Service icons
 - Background images
 
-_Note: This is an initial structure and may be updated as requirements evolve._
+_Note: Customize this structure based on your specific business needs._

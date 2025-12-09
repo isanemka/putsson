@@ -19,7 +19,7 @@ Vercel is the recommended and chosen platform for this project, created by the N
 1. Go to [vercel.com](https://vercel.com)
 2. Sign in with GitHub
 3. Click "Add New Project"
-4. Import the `utvedabygg` repository
+4. Import your repository
 5. Vercel auto-detects Next.js settings ✅
 6. Configure environment variables (see below)
 7. Click "Deploy"
@@ -33,7 +33,7 @@ Vercel is the recommended and chosen platform for this project, created by the N
 AWS_REGION=eu-north-1  # or your preferred region
 AWS_ACCESS_KEY_ID=your_access_key_id
 AWS_SECRET_ACCESS_KEY=your_secret_access_key
-AWS_SES_FROM_EMAIL=info@utvedabygg.se  # verified sender email
+AWS_SES_FROM_EMAIL=info@yourcompany.com  # verified sender email
 CONTACT_FORM_TO_EMAIL=recipient@example.com  # where to receive form submissions
 ```
 

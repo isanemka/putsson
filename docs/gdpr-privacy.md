@@ -86,7 +86,7 @@ interface ContactFormData {
 Add checkbox to contact form:
 
 ```
-☐ Jag samtycker till att Utvedabygg behandlar mina personuppgifter
+☐ Jag samtycker till att [Företagsnamn] behandlar mina personuppgifter
   för att hantera min förfrågan enligt integritetspolicyn.
 ```
 
@@ -138,11 +138,11 @@ Must implement cookie consent:
 
 ## 1. Introduktion
 
-Utvedabygg värnar om din integritet...
+[Företagsnamn] värnar om din integritet...
 
 ## 2. Personuppgiftsansvarig
 
-Företagsnamn: Utvedabygg
+Företagsnamn: [Företagsnamn]
 Kontakt: [email/phone]
 
 ## 3. Vilka personuppgifter samlar vi in?
@@ -185,7 +185,7 @@ Vi använder HTTPS, krypterad e-post...
 
 ## 10. Kontakta oss
 
-E-post: info@utvedabygg.se
+E-post: info@yourcompany.com
 ```
 
 ## Implementation Plan

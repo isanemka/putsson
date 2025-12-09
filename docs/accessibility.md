@@ -88,7 +88,7 @@ Content works with assistive technologies
 </main>
 
 <footer>
-  <p>© 2025 Utvedabygg</p>
+  <p>© 2025 Your Company Name</p>
 </footer>
 
 // Bad ❌
@@ -170,13 +170,13 @@ color: #767676; /* on white background ✅ */
 // Informative images
 <Image
   src="/project.jpg"
-  alt="Betonggjutning för villa i Göteborg, färdigt projekt 2024"
+  alt="Descriptive text about the project, location, and completion date"
 />
 
 // Logos
 <Image
   src="/logo.svg"
-  alt="Utvedabygg logotyp"
+  alt="Company name logo"
 />
 ```
 
@@ -184,10 +184,10 @@ color: #767676; /* on white background ✅ */
 
 ```tsx
 // Proper hierarchy ✅
-<h1>Utvedabygg - Bygg och Anläggning</h1>
+<h1>Company Name - Main Service/Product</h1>
   <h2>Våra Tjänster</h2>
-    <h3>Byggentreprenad</h3>
-    <h3>Anläggningsarbeten</h3>
+    <h3>Service Category 1</h3>
+    <h3>Service Category 2</h3>
   <h2>Om Oss</h2>
 
 // Bad hierarchy ❌

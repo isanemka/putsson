@@ -98,8 +98,9 @@
 ## Future Considerations
 
 - Google Search Console integration
-- Local SEO optimization (Google Business Profile)
+- SEO optimization based on industry
 - Analytics integration (Google Analytics, Plausible, etc.)
 - Performance monitoring and optimization
 - Schema.org structured data for better search results
 - Blog/news section for content marketing (if needed)
+- CMS integration for non-technical content updates (optional)

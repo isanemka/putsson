@@ -2,25 +2,25 @@
 
 ## Overview
 
-SEO is critical for attracting potential clients searching for construction and civil engineering services. This document outlines the SEO strategy for Utvedabygg.
+SEO is critical for attracting potential clients through search engines. This document outlines the SEO strategy and best practices for company websites.
 
 ## Target Keywords
 
-### Primary Keywords (Swedish)
+### Keyword Research
 
-- bygg och anläggning
-- byggföretag [city/region]
-- byggentreprenör
-- anläggningsarbeten
-- betongarbeten
-- markarbeten
+Research and identify keywords relevant to your industry:
 
-### Long-tail Keywords
+- **Primary keywords:** Main services/products your company offers
+- **Location-based keywords:** "[service] in [city/region]"
+- **Long-tail keywords:** More specific phrases potential clients search for
+- **Industry-specific terms:** Technical terms relevant to your sector
 
-- "byggföretag i [city]"
-- "anläggningstjänster [region]"
-- "renovering och ombyggnad"
-- "betonggjutning [area]"
+### Example Keywords (customize for your business)
+
+- [your service] [city/region]
+- [your industry] företag
+- [specific service offering]
+- [product/service category]
 
 ## Technical SEO
 
@@ -31,10 +31,10 @@ Use Next.js 13+ metadata API for all pages:
 ```typescript
 // app/page.tsx
 export const metadata: Metadata = {
-  title: 'Utvedabygg - Bygg och Anläggning i [Region]',
-  description: 'Professionella bygg- och anläggningstjänster. Vi utför...',
+  title: 'Your Company Name - [Your Main Service/Product]',
+  description: 'Professional [your services]. We provide...',
   openGraph: {
-    title: 'Utvedabygg - Bygg och Anläggning',
+    title: 'Your Company Name - [Your Main Service]',
     description: '...',
     images: ['/og-image.jpg'],
   },
@@ -49,13 +49,13 @@ export const metadata: Metadata = {
 export default function sitemap() {
   return [
     {
-      url: 'https://utvedabygg.se',
+      url: 'https://yourcompany.com',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: 'https://utvedabygg.se/tjanster',
+      url: 'https://yourcompany.com/tjanster',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -74,7 +74,7 @@ export default function robots() {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://utvedabygg.se/sitemap.xml',
+    sitemap: 'https://yourcompany.com/sitemap.xml',
   }
 }
 ```
@@ -86,9 +86,9 @@ Implement LocalBusiness schema on homepage:
 ```typescript
 {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  "name": "Utvedabygg",
-  "description": "Bygg och anläggningstjänster",
+  "@type": "LocalBusiness", // or specific type like "ProfessionalService", "Store", etc.
+  "name": "Your Company Name",
+  "description": "Your business description",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "[City]",
@@ -96,8 +96,9 @@ Implement LocalBusiness schema on homepage:
     "addressCountry": "SE"
   },
   "telephone": "+46-XXX-XXX-XX",
-  "email": "info@utvedabygg.se",
-  "url": "https://utvedabygg.se"
+  "email": "info@yourcompany.com",
+  "url": "https://yourcompany.com"
+}
 }
 ```
 
@@ -135,8 +136,8 @@ Implement LocalBusiness schema on homepage:
 ### Image Optimization
 
 - Use next/image for automatic optimization
-- Descriptive file names: `betonggjutning-villa.jpg`
-- Alt text: "Betonggjutning för villa i [City]"
+- Descriptive file names: `product-name-feature.jpg`
+- Alt text: "[Descriptive text about image content and context]"
 - WebP format with fallbacks
 - Lazy loading for below-the-fold images
 
