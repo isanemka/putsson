@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { siteName, siteUrl, siteUrlObj } from '@/lib/site'
 import './globals.css'
 
 const geistSans = Geist({
@@ -12,14 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
-// TODO: Replace with your real company name.
-const siteName = 'Företagsnamn'
-// TODO: Set NEXT_PUBLIC_SITE_URL for production, or replace the fallback URL.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.se'
-
 // TODO: Update metadata text to match your brand and offerings.
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: siteUrlObj,
   title: {
     default: `${siteName} | Beskrivning kommer här`,
     template: `%s | ${siteName}`,

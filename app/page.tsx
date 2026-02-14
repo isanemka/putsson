@@ -1,9 +1,5 @@
 import type { Metadata } from 'next'
-
-// TODO: Replace with your real company name.
-const siteName = 'Företagsnamn'
-// TODO: Set NEXT_PUBLIC_SITE_URL for production, or replace the fallback URL.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.se'
+import { siteName, siteUrl } from '@/lib/site'
 
 // TODO: Update page metadata to your real value proposition.
 export const metadata: Metadata = {
@@ -50,20 +46,20 @@ export default function Home() {
               TODO: Huvudrubrik som beskriver ert erbjudande
             </h1>
             <p className="max-w-xl text-lg text-slate-200">
-              TODO: Kort introduktion av vad ni gor och vart ni skapar vard
+              TODO: Kort introduktion av vad ni gör och var ni skapar värde
             </p>
             <div className="flex flex-wrap gap-4">
               <a
                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-slate-200"
                 href="#tjanster"
               >
-                TODO: Primar knapp
+                TODO: Primär knapp
               </a>
               <a
                 className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-white"
                 href="#kontakt"
               >
-                TODO: Sekundar knapp
+                TODO: Sekundär knapp
               </a>
             </div>
           </div>
@@ -73,7 +69,7 @@ export default function Home() {
               <div className="space-y-2">
                 <p className="text-sm text-slate-300">TODO: KPI-rubrik</p>
                 <p className="text-3xl font-semibold text-white">
-                  TODO: Primart KPI-varde
+                  TODO: Primärt KPI-värde
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -91,7 +87,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-sm text-slate-300">
-                TODO: Kort forklaring av resultaten eller metod.
+                TODO: Kort förklaring av resultaten eller metod.
               </p>
             </div>
           </div>
@@ -110,16 +106,16 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-3">
             {[
               {
-                title: 'TODO: Tjanst 1',
-                text: 'TODO: Kort beskrivning av tjanst 1.',
+                title: 'TODO: Tjänst 1',
+                text: 'TODO: Kort beskrivning av tjänst 1.',
               },
               {
-                title: 'TODO: Tjanst 2',
-                text: 'TODO: Kort beskrivning av tjanst 2.',
+                title: 'TODO: Tjänst 2',
+                text: 'TODO: Kort beskrivning av tjänst 2.',
               },
               {
-                title: 'TODO: Tjanst 3',
-                text: 'TODO: Kort beskrivning av tjanst 3.',
+                title: 'TODO: Tjänst 3',
+                text: 'TODO: Kort beskrivning av tjänst 3.',
               },
             ].map((item) => (
               <div
@@ -170,7 +166,7 @@ export default function Home() {
             TODO: Kontaktsektionens rubrik
           </h2>
           <p className="max-w-2xl text-sm text-slate-200">
-            TODO: Kort text som beskriver nasta steg eller kontakt.
+            TODO: Kort text som beskriver nästa steg eller kontakt.
           </p>
           <div className="flex flex-wrap gap-4 text-sm text-slate-200">
             <a

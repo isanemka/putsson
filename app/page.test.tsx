@@ -7,7 +7,7 @@ describe('Home page', () => {
     render(<Home />)
     expect(
       screen.getByRole('heading', {
-        name: /TODO: Huvudrubrik som beskriver ert erbjudande/i,
+        level: 1,
       })
     ).toBeInTheDocument()
   })

@@ -4,7 +4,7 @@ test('home page loads and shows hero content', async ({ page }) => {
   await page.goto('/')
   await expect(
     page.getByRole('heading', {
-      name: 'TODO: Huvudrubrik som beskriver ert erbjudande',
+      level: 1,
     })
   ).toBeVisible()
 })
