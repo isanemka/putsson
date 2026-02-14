@@ -9,6 +9,10 @@
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -21,22 +25,28 @@
     ]
   },
   "dependencies": {
-    "next": "16.0.8",
-    "react": "19.2.1",
-    "react-dom": "19.2.1"
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
+    "@playwright/test": "^1.52.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^20.19.33",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.8",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.6",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.7.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "prettier": "^3.8.1",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5",
+    "vitest": "^3.2.4"
   }
 }

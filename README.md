@@ -71,7 +71,7 @@ npm start
 
 ## Project Structure
 
-```
+```text
 app/          # Next.js App Router pages and layouts
 components/   # Reusable React components
 lib/          # Utility functions and helpers
@@ -97,7 +97,14 @@ See the `/docs` folder for detailed documentation:
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm test` - Run unit tests with Vitest
+- `npm run test:coverage` - Run unit tests with coverage
+- `npm run test:e2e` - Run Playwright end-to-end tests
+- `npm run test:e2e:ui` - Run Playwright in UI mode
 - `npm run format` - Format code with Prettier
+
+Note: Before running E2E tests on a fresh clone, install browsers with
+`npx playwright install`.
 
 ## License
 
