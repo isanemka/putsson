@@ -22,6 +22,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
     {
+      name: 'Edge',
+      use: { ...devices['Desktop Edge'] },
+    },
+    {
       name: 'WebKit',
       use: { ...devices['Desktop Safari'] },
     },

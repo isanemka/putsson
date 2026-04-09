@@ -93,7 +93,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="tjanster" className="space-y-8">
+        <section id="tjanster" className="scroll-mt-20 space-y-8">
           {/* TODO: Replace service cards with your real offerings. */}
           <div className="flex flex-col gap-3">
             <p className="text-sm uppercase tracking-[0.3em] text-slate-300">
@@ -159,7 +159,7 @@ export default function Home() {
 
         <section
           id="kontakt"
-          className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8"
+          className="scroll-mt-20 space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8"
         >
           {/* TODO: Replace email/phone with real contact details. */}
           <h2 className="text-2xl font-semibold text-white">
