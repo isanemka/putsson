@@ -1,14 +1,93 @@
-import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import Home from './page'
 
+// Mock client components that use browser APIs/animations to avoid test noise
+vi.mock('@/components/Hero', () => ({
+  default: () => (
+    <section>
+      <h1>Glasklart putsat i Göteborg.</h1>
+      <a href="#kontakt">Få fast pris</a>
+      <a href="#tjanster">Våra tjänster</a>
+    </section>
+  ),
+}))
+vi.mock('@/components/Marquee', () => ({ default: () => <div /> }))
+vi.mock('@/components/Stats', () => ({
+  default: () => (
+    <section aria-label="Putsson i siffror">
+      <span>Putsade fönster</span>
+      <span>Glada kunder</span>
+      <span>Svarstid</span>
+    </section>
+  ),
+}))
+vi.mock('@/components/Faq', () => ({
+  default: () => <section aria-label="Vanliga frågor" />,
+}))
+vi.mock('@/components/Reveal', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+}))
+
 describe('Home page', () => {
+  afterEach(cleanup)
   it('renders the main headline', () => {
     render(<Home />)
+    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+  })
+
+  it('renders the tjänster section heading', () => {
+    render(<Home />)
     expect(
-      screen.getByRole('heading', {
-        level: 1,
-      })
+      screen.getByRole('heading', { name: /allt som har/i })
+    ).toBeInTheDocument()
+  })
+
+  it('renders all four service cards', () => {
+    render(<Home />)
+    expect(
+      screen.getByRole('heading', { name: 'Hem & villa' })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'Företag & butik' })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'Bostadsrättsförening' })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'Flyttputs' })
+    ).toBeInTheDocument()
+  })
+
+  it('renders the om oss section heading', () => {
+    render(<Home />)
+    expect(
+      screen.getByRole('heading', { name: /vi gillar fönster/i })
+    ).toBeInTheDocument()
+  })
+
+  it('renders the kontakt section heading', () => {
+    render(<Home />)
+    expect(
+      screen.getByRole('heading', { name: /få ett fast pris idag/i })
+    ).toBeInTheDocument()
+  })
+
+  it('renders phone and email contact links', () => {
+    render(<Home />)
+    const phoneLink = screen.getByRole('link', { name: /ring oss/i })
+    const emailLink = screen.getByRole('link', { name: /mejla oss/i })
+    expect(phoneLink).toBeInTheDocument()
+    expect(emailLink).toBeInTheDocument()
+  })
+
+  it('renders CTA links in hero', () => {
+    render(<Home />)
+    expect(
+      screen.getByRole('link', { name: /få fast pris/i })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('link', { name: /våra tjänster/i })
     ).toBeInTheDocument()
   })
 })

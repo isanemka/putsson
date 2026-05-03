@@ -1,8 +1,11 @@
-// TODO: Replace with your real company name.
-export const siteName = 'Företagsnamn'
+export const siteName = 'PUTSSON'
+export const siteTagline = 'Fönsterputs i Göteborg'
+export const siteEmail = 'hej@putsson.se'
+export const sitePhone = '+46 70 123 45 67'
+export const sitePhoneHref = 'tel:+46701234567'
+export const siteCity = 'Göteborg'
 
-// TODO: Set NEXT_PUBLIC_SITE_URL for production, or replace the fallback URL.
-const fallbackSiteUrl = 'https://example.se'
+const fallbackSiteUrl = 'https://putsson.se'
 
 const resolveSiteUrl = (value?: string) => {
   if (!value) {
