@@ -1,193 +1,291 @@
 import type { Metadata } from 'next'
-import { siteName, siteUrl } from '@/lib/site'
+import Image from 'next/image'
+import {
+  siteCity,
+  siteEmail,
+  siteName,
+  sitePhone,
+  sitePhoneHref,
+  siteUrl,
+} from '@/lib/site'
+import Hero from '@/components/Hero'
+import Marquee from '@/components/Marquee'
+import Reveal from '@/components/Reveal'
 
-// TODO: Update page metadata to your real value proposition.
 export const metadata: Metadata = {
-  title: 'Startsida',
-  description: 'TODO: Kort beskrivning av startsidans erbjudande.',
+  title: 'Fönsterputs i Göteborg',
+  description:
+    'PUTSSON putsar fönster åt villor, lägenheter och företag i Göteborg. Boka enstaka tillfälle eller löpande avtal — vi sköter resten.',
   openGraph: {
-    title: `${siteName} | Startsida`,
-    description: 'TODO: Kort beskrivning för Open Graph.',
+    title: `${siteName} | Fönsterputs i Göteborg`,
+    description:
+      'Pålitlig fönsterputs i Göteborg. Boka enstaka tillfälle eller löpande avtal.',
     url: siteUrl,
   },
 }
 
-// TODO: Replace schema fields with real company details.
+const services = [
+  {
+    title: 'Hem & villa',
+    text: 'Återkommande fönsterputs som passar din takt — varannan månad, fyra gånger om året eller bara inför kalaset.',
+    color: 'mint' as const,
+  },
+  {
+    title: 'Företag & butik',
+    text: 'Skyltfönster och kontor som ser inbjudande ut. Vi kommer när det passar er — gärna före öppning.',
+    color: 'coral' as const,
+  },
+  {
+    title: 'Bostadsrättsförening',
+    text: 'Trapphus, entréer och gemensamma fönster. Avtal med fast pris och pålitliga rutiner.',
+    color: 'blue' as const,
+  },
+  {
+    title: 'Flyttputs',
+    text: 'In- eller utflytt? Vi gör fönstren skinande rena så besiktningen blir det minsta du behöver oroa dig för.',
+    color: 'navy' as const,
+  },
+]
+
+const colorMap = {
+  mint: 'bg-mint text-navy',
+  coral: 'bg-coral text-navy',
+  blue: 'bg-blue text-cream',
+  navy: 'bg-navy text-cream',
+}
+
+const steps = [
+  {
+    n: '01',
+    title: 'Hör av dig',
+    text: 'Berätta om dina fönster — antal, typ och hur ofta du vill ha besök.',
+  },
+  {
+    n: '02',
+    title: 'Få fast pris',
+    text: 'Vi återkommer inom 24 timmar med ett tydligt och fast pris.',
+  },
+  {
+    n: '03',
+    title: 'Vi putsar',
+    text: 'Du behöver inte vara hemma. När vi gått är rutorna blanka och ramarna torra.',
+  },
+]
+
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: siteName,
   url: siteUrl,
-  email: 'info@foretagsnamn.se',
-  telephone: '+46-70-1234567',
+  email: siteEmail,
+  telephone: sitePhone,
+  description:
+    'Fönsterputsare i Göteborg som tar hand om villor, lägenheter, företag och bostadsrättsföreningar.',
+  areaServed: {
+    '@type': 'City',
+    name: siteCity,
+  },
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Stockholm',
-    addressRegion: 'Stockholms län',
+    addressLocality: siteCity,
+    addressRegion: 'Västra Götaland',
     addressCountry: 'SE',
   },
 }
 
 export default function Home() {
   return (
-    <div className="relative overflow-hidden bg-slate-950 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1000px_circle_at_12%_12%,#0ea5e9,transparent_55%),radial-gradient(900px_circle_at_85%_-10%,#f59e0b,transparent_45%)] opacity-35" />
-      <main
-        id="main-content"
-        className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-16 px-6 pb-24 pt-20 sm:px-10"
-      >
-        <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="space-y-6">
-            {/* TODO: Replace hero label, headline, and intro with your real copy. */}
-            <p className="text-sm uppercase tracking-[0.3em] text-slate-300">
-              TODO: Kort etikett
-            </p>
-            <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl">
-              TODO: Huvudrubrik som beskriver ert erbjudande
-            </h1>
-            <p className="max-w-xl text-lg text-slate-200">
-              TODO: Kort introduktion av vad ni gör och var ni skapar värde
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-slate-200"
-                href="#tjanster"
-              >
-                TODO: Primär knapp
-              </a>
-              <a
-                className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-white"
-                href="#kontakt"
-              >
-                TODO: Sekundär knapp
-              </a>
-            </div>
-          </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl shadow-slate-950/40">
-            {/* TODO: Replace these example KPIs with real metrics or remove the card. */}
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <p className="text-sm text-slate-300">TODO: KPI-rubrik</p>
-                <p className="text-3xl font-semibold text-white">
-                  TODO: Primärt KPI-värde
-                </p>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl bg-slate-900/70 p-4">
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
-                    TODO: KPI etikett
-                  </p>
-                  <p className="text-2xl font-semibold text-white">TODO</p>
-                </div>
-                <div className="rounded-2xl bg-slate-900/70 p-4">
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
-                    TODO: KPI etikett
-                  </p>
-                  <p className="text-2xl font-semibold text-white">TODO</p>
-                </div>
-              </div>
-              <p className="text-sm text-slate-300">
-                TODO: Kort förklaring av resultaten eller metod.
+    <main id="main-content" className="bg-cream text-navy">
+      <Hero />
+
+      <Marquee />
+
+      <section id="tjanster" className="scroll-mt-24 bg-cream py-24 sm:py-32">
+        <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-blue">
+                Tjänster
+              </p>
+              <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
+                Allt som har <span className="squeegee">glas</span>, putsar vi.
+              </h2>
+              <p className="mt-5 text-lg text-navy/75">
+                Vi anpassar oss efter dig. Engångsuppdrag eller löpande avtal —
+                det viktiga är att fönstren blir rätt putsade och att du kan
+                tänka på något annat.
               </p>
             </div>
-          </div>
-        </section>
+          </Reveal>
 
-        <section id="tjanster" className="scroll-mt-20 space-y-8">
-          {/* TODO: Replace service cards with your real offerings. */}
-          <div className="flex flex-col gap-3">
-            <p className="text-sm uppercase tracking-[0.3em] text-slate-300">
-              TODO: Sektionstext
-            </p>
-            <h2 className="text-3xl font-semibold text-white">
-              TODO: Sektionens huvudrubrik
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: 'TODO: Tjänst 1',
-                text: 'TODO: Kort beskrivning av tjänst 1.',
-              },
-              {
-                title: 'TODO: Tjänst 2',
-                text: 'TODO: Kort beskrivning av tjänst 2.',
-              },
-              {
-                title: 'TODO: Tjänst 3',
-                text: 'TODO: Kort beskrivning av tjänst 3.',
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6"
-              >
-                <h3 className="text-lg font-semibold text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm text-slate-200">{item.text}</p>
-              </div>
+          <div className="mt-14 grid gap-5 md:grid-cols-2">
+            {services.map((s, i) => (
+              <Reveal key={s.title} delay={i * 90}>
+                <article
+                  className={`group relative h-full overflow-hidden rounded-[28px] p-8 transition hover:-translate-y-1 ${colorMap[s.color]}`}
+                >
+                  <div
+                    aria-hidden
+                    className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/15 transition-transform duration-500 group-hover:scale-125"
+                  />
+                  <h3 className="relative text-2xl font-bold">{s.title}</h3>
+                  <p className="relative mt-3 max-w-md text-sm opacity-90">
+                    {s.text}
+                  </p>
+                  <p className="relative mt-8 text-xs font-bold uppercase tracking-[0.25em] opacity-80">
+                    Läs mer →
+                  </p>
+                </article>
+              </Reveal>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="grid gap-8 rounded-3xl border border-white/10 bg-linear-to-br from-white/10 to-white/5 p-8 md:grid-cols-[1.2fr_0.8fr]">
-          {/* TODO: Update platform bullets to reflect your stack and timeline. */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold text-white">
-              TODO: Plattformens rubrik
-            </h2>
-            <p className="text-sm text-slate-200">
-              TODO: Kort text om teknik, kvalitet eller leverans.
-            </p>
-          </div>
-          <div className="space-y-3 text-sm text-slate-200">
-            <div className="flex items-center justify-between border-b border-white/10 pb-2">
-              <span>TODO: Punkt 1</span>
-              <span>TODO</span>
+      <section
+        id="omoss"
+        className="scroll-mt-24 bg-navy py-24 text-cream sm:py-32"
+      >
+        <div className="mx-auto grid w-full max-w-7xl gap-14 px-6 sm:px-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <Reveal>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-mint">
+                Om PUTSSON
+              </p>
+              <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
+                Vi gillar fönster lika mycket som du gillar utsikten.
+              </h2>
+              <p className="mt-5 text-base text-cream/80">
+                PUTSSON startades i Göteborg av människor som tröttnat på
+                ojämna rutor och blöta fönsterbleck. Vi är ett litet team som
+                kan vårt hantverk: rena verktyg, kontrollerat vatten, ordning
+                och reda. Inga genvägar, inga halvmesyrer.
+              </p>
+              <p className="mt-4 text-base text-cream/80">
+                Vi är försäkrade, har F-skatt och pratar gärna med dig
+                personligen. Du når oss på telefon — oftast direkt.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {['RUT-avdrag', 'F-skatt', 'Försäkrat', 'Miljövänligt'].map(
+                  (t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-cream/20 px-4 py-2 text-xs font-medium uppercase tracking-[0.25em]"
+                    >
+                      {t}
+                    </span>
+                  )
+                )}
+              </div>
             </div>
-            <div className="flex items-center justify-between border-b border-white/10 pb-2">
-              <span>TODO: Punkt 2</span>
-              <span>TODO</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span>TODO: Punkt 3</span>
-              <span>TODO</span>
-            </div>
-          </div>
-        </section>
+          </Reveal>
 
-        <section
-          id="kontakt"
-          className="scroll-mt-20 space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8"
-        >
-          {/* TODO: Replace email/phone with real contact details. */}
-          <h2 className="text-2xl font-semibold text-white">
-            TODO: Kontaktsektionens rubrik
-          </h2>
-          <p className="max-w-2xl text-sm text-slate-200">
-            TODO: Kort text som beskriver nästa steg eller kontakt.
-          </p>
-          <div className="flex flex-wrap gap-4 text-sm text-slate-200">
-            <a
-              className="font-semibold text-white"
-              href="mailto:info@foretagsnamn.se"
-            >
-              info@foretagsnamn.se
-            </a>
-            <span className="text-slate-400">|</span>
-            <a className="font-semibold text-white" href="tel:+46701234567">
-              +46 70 123 45 67
-            </a>
-          </div>
-        </section>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
-      </main>
-    </div>
+          <Reveal delay={120}>
+            <div className="grid gap-4">
+              {steps.map((s) => (
+                <div
+                  key={s.n}
+                  className="flex items-start gap-5 rounded-3xl border border-cream/10 bg-cream/5 p-6 backdrop-blur-sm"
+                >
+                  <span className="text-3xl font-bold text-mint">{s.n}</span>
+                  <div>
+                    <h3 className="text-lg font-bold text-cream">{s.title}</h3>
+                    <p className="mt-1 text-sm text-cream/75">{s.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="kontakt" className="scroll-mt-24 bg-cream py-24 sm:py-32">
+        <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-[36px] bg-mint p-10 sm:p-16">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-coral/60 blur-3xl"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-blue/40 blur-3xl"
+              />
+              <div className="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.3em] text-navy/70">
+                    Kontakt
+                  </p>
+                  <h2 className="mt-4 text-4xl font-bold text-navy sm:text-6xl">
+                    Få ett fast pris idag.
+                  </h2>
+                  <p className="mt-5 max-w-xl text-base text-navy/80">
+                    Skriv eller ring så återkommer vi snabbt med ett fast pris
+                    och förslag på tid. Inga konstigheter.
+                  </p>
+                </div>
+                <div className="space-y-3">
+                  <a
+                    href={sitePhoneHref}
+                    className="group flex items-center justify-between rounded-2xl bg-navy px-6 py-5 text-cream transition hover:bg-blue"
+                  >
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.25em] text-mint">
+                        Ring oss
+                      </p>
+                      <p className="mt-1 text-lg font-bold">{sitePhone}</p>
+                    </div>
+                    <span
+                      aria-hidden
+                      className="text-xl transition-transform group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </a>
+                  <a
+                    href={`mailto:${siteEmail}`}
+                    className="group flex items-center justify-between rounded-2xl border border-navy/20 bg-cream px-6 py-5 text-navy transition hover:border-navy/50"
+                  >
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.25em] text-blue">
+                        Mejla oss
+                      </p>
+                      <p className="mt-1 text-lg font-bold">{siteEmail}</p>
+                    </div>
+                    <span
+                      aria-hidden
+                      className="text-xl transition-transform group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="relative mt-12 flex items-center gap-4 border-t border-navy/15 pt-8">
+                <Image
+                  src="/logo_round_white.png"
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="h-14 w-14 rounded-full"
+                />
+                <p className="text-sm text-navy/80">
+                  Vi putsar i hela {siteCity} med omnejd. Berätta var du bor —
+                  vi anpassar oss.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+    </main>
   )
 }

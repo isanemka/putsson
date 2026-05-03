@@ -1,0 +1,199 @@
+'use client'
+
+import Image from 'next/image'
+import { useEffect, useRef } from 'react'
+import { siteCity } from '@/lib/site'
+
+export default function Hero() {
+  const headlineRef = useRef<HTMLHeadingElement | null>(null)
+  const subRef = useRef<HTMLParagraphElement | null>(null)
+  const ctaRef = useRef<HTMLDivElement | null>(null)
+  const orbRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    let cancelled = false
+    import('animejs').then(({ animate }) => {
+      if (cancelled) return
+
+      if (!reduced && headlineRef.current) {
+        const words = headlineRef.current.querySelectorAll<HTMLElement>(
+          '[data-word]'
+        )
+        words.forEach((w) => {
+          w.style.opacity = '0'
+          w.style.transform = 'translateY(120%) rotate(2deg)'
+          w.style.display = 'inline-block'
+        })
+        animate(words, {
+          opacity: [0, 1],
+          translateY: ['120%', '0%'],
+          rotate: [2, 0],
+          duration: 1100,
+          delay: (_: unknown, i: number) => 80 + i * 90,
+          ease: 'outExpo',
+        })
+      }
+
+      if (!reduced && subRef.current) {
+        animate(subRef.current, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          duration: 900,
+          delay: 600,
+          ease: 'outQuart',
+        })
+      }
+      if (!reduced && ctaRef.current) {
+        animate(ctaRef.current, {
+          opacity: [0, 1],
+          translateY: [16, 0],
+          duration: 900,
+          delay: 800,
+          ease: 'outQuart',
+        })
+      }
+
+      if (!reduced && orbRef.current) {
+        animate(orbRef.current, {
+          translateY: [0, -16],
+          duration: 4200,
+          alternate: true,
+          loop: true,
+          ease: 'inOutSine',
+        })
+      }
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const headline = ['Glasklart', 'putsat', 'i', siteCity + '.']
+
+  return (
+    <section className="relative isolate overflow-hidden bg-cream pt-10 pb-24 sm:pt-16 sm:pb-32">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 -right-32 h-[520px] w-[520px] rounded-full bg-mint/40 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-40 -left-40 h-[420px] w-[420px] rounded-full bg-coral/30 blur-3xl"
+      />
+
+      <div className="relative mx-auto grid w-full max-w-7xl gap-14 px-6 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <div>
+          <p
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-navy/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.25em] text-navy/70"
+            style={{ opacity: 0, animation: 'none' }}
+            ref={(el) => {
+              if (el) el.style.opacity = '1'
+            }}
+          >
+            <span className="h-2 w-2 rounded-full bg-mint" aria-hidden />
+            Fönsterputs i Göteborg
+          </p>
+          <h1
+            ref={headlineRef}
+            className="text-[clamp(2.5rem,7vw,6rem)] font-bold leading-[0.95] text-navy"
+          >
+            {headline.map((word, i) => (
+              <span key={`${word}-${i}`} className="mr-3 overflow-hidden align-bottom inline-block">
+                <span data-word className="inline-block">
+                  {i === 0 ? (
+                    <span className="text-mint">{word}</span>
+                  ) : (
+                    word
+                  )}
+                </span>
+              </span>
+            ))}
+          </h1>
+          <p
+            ref={subRef}
+            className="mt-8 max-w-xl text-lg text-navy/75"
+            style={{ opacity: 0 }}
+          >
+            PUTSSON är fönsterputsaren som gör vardagen ljusare. Vi tar hand om
+            villor, lägenheter och företag — alltid med torra ramar, blanka
+            rutor och ett leende på köpet.
+          </p>
+          <div
+            ref={ctaRef}
+            className="mt-10 flex flex-wrap gap-4"
+            style={{ opacity: 0 }}
+          >
+            <a
+              href="#kontakt"
+              className="group inline-flex items-center gap-2 rounded-full bg-navy px-7 py-4 text-sm font-medium text-cream shadow-[0_18px_40px_-20px_rgba(24,23,76,0.6)] transition hover:-translate-y-0.5 hover:bg-blue"
+            >
+              Boka fönsterputs
+              <span
+                aria-hidden
+                className="transition-transform group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+            <a
+              href="#tjanster"
+              className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-cream px-7 py-4 text-sm font-medium text-navy transition hover:-translate-y-0.5 hover:border-navy/35"
+            >
+              Se våra tjänster
+            </a>
+          </div>
+
+          <dl className="mt-14 grid max-w-lg grid-cols-3 gap-6 text-navy">
+            <div>
+              <dt className="text-xs uppercase tracking-[0.2em] text-navy/60">
+                Nöjda kunder
+              </dt>
+              <dd className="mt-1 text-3xl font-bold">500+</dd>
+            </div>
+            <div>
+              <dt className="text-xs uppercase tracking-[0.2em] text-navy/60">
+                I branschen
+              </dt>
+              <dd className="mt-1 text-3xl font-bold">10 år</dd>
+            </div>
+            <div>
+              <dt className="text-xs uppercase tracking-[0.2em] text-navy/60">
+                Försäkrat
+              </dt>
+              <dd className="mt-1 text-3xl font-bold">100%</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div className="relative">
+          <div
+            ref={orbRef}
+            className="relative mx-auto aspect-square w-full max-w-md"
+          >
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-mint to-blue" />
+            <div className="absolute inset-6 rounded-full bg-cream/15 backdrop-blur-sm" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Image
+                src="/logo_man_blue.png"
+                alt="PUTSSON-figuren med skrapa och hink"
+                width={420}
+                height={420}
+                priority
+                className="h-[88%] w-[88%] object-contain drop-shadow-[0_20px_30px_rgba(24,23,76,0.25)]"
+              />
+            </div>
+            <div className="absolute -right-4 top-10 rounded-full bg-coral px-4 py-2 text-xs font-bold uppercase tracking-widest text-cream shadow-lg">
+              Streck-fritt
+            </div>
+            <div className="absolute -left-2 bottom-12 rounded-full bg-navy px-4 py-2 text-xs font-bold uppercase tracking-widest text-cream shadow-lg">
+              Försäkrat
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

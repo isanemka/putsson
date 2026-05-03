@@ -14,32 +14,32 @@ export default function PrivacyPolicyPage() {
     >
       <header className="space-y-3">
         {/* TODO: Update headings and intro text to match the customer's policy. */}
-        <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
+        <p className="text-sm uppercase tracking-[0.3em] text-blue font-bold">
           Integritet
         </p>
-        <h1 className="text-3xl font-semibold text-slate-900">
+        <h1 className="text-3xl font-semibold text-navy">
           Integritetspolicy
         </h1>
-        <p className="text-base text-slate-600">
+        <p className="text-base text-navy/75">
           Här beskriver vi hur vi samlar in, använder och skyddar dina
           personuppgifter.
         </p>
       </header>
 
-      <section className="mt-10 space-y-6 text-sm text-slate-600">
+      <section className="mt-10 space-y-6 text-sm text-navy/75">
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-navy">
             Personuppgiftsansvarig
           </h2>
           {/* TODO: Replace company name and contact email. */}
           <p>
-            Företagsnamn ansvarar för behandlingen av personuppgifter. Kontakta
-            oss på info@foretagsnamn.se om du har frågor.
+            PUTSSON ansvarar för behandlingen av personuppgifter. Kontakta
+            oss på hej@putsson.se om du har frågor.
           </p>
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-navy">
             Vilka uppgifter samlar vi in?
           </h2>
           {/* TODO: Confirm which data fields you actually collect. */}
@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-navy">
             Varför behandlar vi uppgifterna?
           </h2>
           <p>
@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-navy">
             Rättslig grund
           </h2>
           {/* TODO: Confirm legal basis per customer (e.g. consent vs legitimate interest). */}
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-navy">
             Hur länge sparas uppgifterna?
           </h2>
           {/* TODO: Update retention periods to match your policy. */}
@@ -85,7 +85,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-navy">
             Dina rättigheter
           </h2>
           {/* TODO: Verify rights text against the customer's data handling process. */}
@@ -97,9 +97,9 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-slate-900">Kontakt</h2>
+          <h2 className="text-lg font-semibold text-navy">Kontakt</h2>
           {/* TODO: Replace with your official contact address. */}
-          <p>Vid frågor om personuppgifter, skriv till info@foretagsnamn.se.</p>
+          <p>Vid frågor om personuppgifter, skriv till hej@putsson.se.</p>
         </div>
       </section>
     </main>
