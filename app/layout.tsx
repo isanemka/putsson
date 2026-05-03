@@ -45,14 +45,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv">
-      <head>
-        {/* Set data-js before first paint so CSS can target JS-enabled state */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: 'document.documentElement.dataset.js="true"',
-          }}
-        />
-      </head>
       <body
         className={`${montserrat.variable} flex min-h-screen flex-col bg-cream text-navy antialiased`}
       >
