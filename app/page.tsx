@@ -11,6 +11,7 @@ import {
 import Hero from '@/components/Hero'
 import Marquee from '@/components/Marquee'
 import Reveal from '@/components/Reveal'
+import SqueegeePath from '@/components/SqueegeePath'
 
 export const metadata: Metadata = {
   title: 'Fönsterputs i Göteborg',
@@ -97,6 +98,10 @@ export default function Home() {
   return (
     <main id="main-content" className="bg-cream text-navy">
       <Hero />
+
+      <div className="bg-cream py-6 sm:py-10">
+        <SqueegeePath />
+      </div>
 
       <Marquee />
 
