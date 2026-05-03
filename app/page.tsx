@@ -11,7 +11,9 @@ import {
 import Hero from '@/components/Hero'
 import Marquee from '@/components/Marquee'
 import Reveal from '@/components/Reveal'
-import SqueegeePath from '@/components/SqueegeePath'
+import Stats from '@/components/Stats'
+import Testimonials from '@/components/Testimonials'
+import Faq from '@/components/Faq'
 
 export const metadata: Metadata = {
   title: 'Fönsterputs i Göteborg',
@@ -99,11 +101,9 @@ export default function Home() {
     <main id="main-content" className="bg-cream text-navy">
       <Hero />
 
-      <div className="bg-cream py-6 sm:py-10">
-        <SqueegeePath />
-      </div>
-
       <Marquee />
+
+      <Stats />
 
       <section id="tjanster" className="scroll-mt-24 bg-cream py-24 sm:py-32">
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
@@ -203,6 +203,10 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      <Testimonials />
+
+      <Faq />
 
       <section id="kontakt" className="scroll-mt-24 bg-cream py-24 sm:py-32">
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
