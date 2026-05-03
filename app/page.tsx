@@ -12,13 +12,12 @@ import Hero from '@/components/Hero'
 import Marquee from '@/components/Marquee'
 import Reveal from '@/components/Reveal'
 import Stats from '@/components/Stats'
-import Testimonials from '@/components/Testimonials'
 import Faq from '@/components/Faq'
 
 export const metadata: Metadata = {
   title: 'Fönsterputs i Göteborg',
   description:
-    'PUTSSON putsar fönster åt villor, lägenheter och företag i Göteborg. Boka enstaka tillfälle eller löpande avtal — vi sköter resten.',
+    'PUTSSON putsar fönster åt villor, lägenheter och företag i Göteborg. Boka enstaka tillfälle eller löpande avtal - vi sköter resten.',
   openGraph: {
     title: `${siteName} | Fönsterputs i Göteborg`,
     description:
@@ -116,7 +115,7 @@ export default function Home() {
                 Allt som har <span className="squeegee">glas</span>, putsar vi.
               </h2>
               <p className="mt-5 text-lg text-navy/75">
-                Vi anpassar oss efter dig. Engångsuppdrag eller löpande avtal —
+                Vi anpassar oss efter dig. Engångsuppdrag eller löpande avtal,
                 det viktiga är att fönstren blir rätt putsade och att du kan
                 tänka på något annat.
               </p>
@@ -161,10 +160,10 @@ export default function Home() {
                 Vi gillar fönster lika mycket som du gillar utsikten.
               </h2>
               <p className="mt-5 text-base text-cream/80">
-                PUTSSON startades i Göteborg av människor som tröttnat på
-                ojämna rutor och blöta fönsterbleck. Vi är ett litet team som
-                kan vårt hantverk: rena verktyg, kontrollerat vatten, ordning
-                och reda. Inga genvägar, inga halvmesyrer.
+                PUTSSON startades i Göteborg av människor som tröttnat på ojämna
+                rutor och blöta fönsterbleck. Vi är ett litet team som kan vårt
+                hantverk: rena verktyg, kontrollerat vatten, ordning och reda.
+                Inga genvägar, inga halvmesyrer.
               </p>
               <p className="mt-4 text-base text-cream/80">
                 Vi är försäkrade, har F-skatt och pratar gärna med dig
@@ -203,8 +202,6 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
-
-      <Testimonials />
 
       <Faq />
 

@@ -14,7 +14,9 @@ export default function Hero() {
   const scrollRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const reduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
 
     let cancelled = false
     import('animejs').then(({ animate }) => {
@@ -53,9 +55,8 @@ export default function Hero() {
       }
 
       if (headlineRef.current) {
-        const words = headlineRef.current.querySelectorAll<HTMLElement>(
-          '[data-word]'
-        )
+        const words =
+          headlineRef.current.querySelectorAll<HTMLElement>('[data-word]')
         words.forEach((w) => {
           w.style.opacity = '0'
           w.style.transform = 'translateY(120%) rotate(2deg)'
@@ -173,7 +174,7 @@ export default function Hero() {
             style={{ opacity: 0 }}
           >
             PUTSSON är fönsterputsaren som gör vardagen ljusare. Villor,
-            lägenheter och företag — torra ramar, blanka rutor och ett leende
+            lägenheter och företag med torra ramar, blanka rutor och ett leende
             på köpet.
           </p>
 
@@ -233,11 +234,8 @@ export default function Hero() {
         style={{ opacity: 0 }}
         aria-hidden
       >
-        <span className="hidden sm:inline">Försäkrat · F-skatt · RUT</span>
-        <span className="flex items-center gap-3">
-          Scrolla
-          <span className="inline-block h-px w-10 bg-navy/30" />
-          <span className="text-base">↓</span>
+        <span className="hidden sm:inline">
+          Försäkrat · F-skatt · RUT-avdrag
         </span>
       </div>
     </section>

@@ -35,7 +35,9 @@ export default function Marquee() {
     const track = trackRef.current
     if (!track) return
 
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const reduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
     if (reduced) return
 
     let raf = 0
@@ -79,15 +81,6 @@ export default function Marquee() {
             key={`${t.label}-${i}`}
             className={`flex h-56 w-72 flex-col justify-between rounded-3xl px-7 py-6 shadow-[0_18px_40px_-30px_rgba(24,23,76,0.6)] sm:h-64 sm:w-80 ${bgClass[t.bg]}`}
           >
-            <div className="flex items-center justify-between">
-              <span
-                className="text-xs font-bold uppercase tracking-[0.25em] opacity-80"
-                aria-hidden
-              >
-                0{(i % tiles.length) + 1}
-              </span>
-              <SqueegeeIcon />
-            </div>
             <div>
               <h3 className="text-2xl font-bold leading-tight">{t.label}</h3>
               {t.caption ? (
