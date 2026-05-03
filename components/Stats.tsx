@@ -37,36 +37,43 @@ export default function Stats() {
     let cancelled = false
     let observer: IntersectionObserver | null = null
 
-    import('animejs').then(({ animate }) => {
-      if (cancelled) return
-      observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (!entry.isIntersecting) continue
-            stats.forEach((s, i) => {
-              const el = valueRefs.current[i]
-              if (!el) return
-              const target = { v: 0 }
-              animate(target, {
-                v: s.value,
-                duration: 1800,
-                ease: 'outExpo',
-                onUpdate: () => {
-                  el.textContent = formatValue(
-                    Number.isInteger(s.value)
-                      ? Math.round(target.v)
-                      : Math.round(target.v * 10) / 10
-                  )
-                },
+    import('animejs')
+      .then(({ animate }) => {
+        if (cancelled) return
+        observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue
+              stats.forEach((s, i) => {
+                const el = valueRefs.current[i]
+                if (!el) return
+                const target = { v: 0 }
+                animate(target, {
+                  v: s.value,
+                  duration: 1800,
+                  ease: 'outExpo',
+                  onUpdate: () => {
+                    el.textContent = formatValue(
+                      Number.isInteger(s.value)
+                        ? Math.round(target.v)
+                        : Math.round(target.v * 10) / 10
+                    )
+                  },
+                })
               })
-            })
-            observer?.disconnect()
-          }
-        },
-        { threshold: 0.35 }
-      )
-      observer.observe(section)
-    })
+              observer?.disconnect()
+            }
+          },
+          { threshold: 0.35 }
+        )
+        observer.observe(section)
+      })
+      .catch(() => {
+        stats.forEach((s, i) => {
+          const el = valueRefs.current[i]
+          if (el) el.textContent = formatValue(s.value)
+        })
+      })
 
     return () => {
       cancelled = true

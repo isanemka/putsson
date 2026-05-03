@@ -71,8 +71,6 @@ h4 {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
   will-change: transform, opacity;
 }
 

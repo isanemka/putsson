@@ -95,24 +95,3 @@ export default function Marquee() {
     </section>
   )
 }
-
-function SqueegeeIcon() {
-  return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 28 28"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M5 21l7-7M16 10l3-3m-1 0l3 3-7 7-3-3 7-7z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="22" cy="6" r="2" fill="currentColor" />
-    </svg>
-  )
-}

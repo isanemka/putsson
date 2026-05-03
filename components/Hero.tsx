@@ -18,107 +18,114 @@ export default function Hero() {
       '(prefers-reduced-motion: reduce)'
     ).matches
 
+    const revealAll = () => {
+      ;[
+        headlineRef.current,
+        subRef.current,
+        ctaRef.current,
+        eyebrowRef.current,
+        visualRef.current,
+        scrollRef.current,
+      ].forEach((el) => {
+        if (el) {
+          el.style.opacity = '1'
+          el.style.transform = 'none'
+        }
+      })
+      headlineRef.current
+        ?.querySelectorAll<HTMLElement>('[data-word]')
+        .forEach((w) => {
+          w.style.opacity = '1'
+          w.style.transform = 'none'
+        })
+    }
+
+    // Handle reduced-motion synchronously — no need to load animejs at all
+    if (reduced) {
+      revealAll()
+      return
+    }
+
     let cancelled = false
-    import('animejs').then(({ animate }) => {
-      if (cancelled) return
+    import('animejs')
+      .then(({ animate }) => {
+        if (cancelled) return
 
-      if (reduced) {
-        ;[
-          headlineRef.current,
-          subRef.current,
-          ctaRef.current,
-          eyebrowRef.current,
-          visualRef.current,
-          scrollRef.current,
-        ].forEach((el) => {
-          if (el) {
-            el.style.opacity = '1'
-            el.style.transform = 'none'
-          }
-        })
-        headlineRef.current
-          ?.querySelectorAll<HTMLElement>('[data-word]')
-          .forEach((w) => {
-            w.style.opacity = '1'
-            w.style.transform = 'none'
+        if (eyebrowRef.current) {
+          animate(eyebrowRef.current, {
+            opacity: [0, 1],
+            translateY: [12, 0],
+            duration: 700,
+            ease: 'outQuart',
           })
-        return
-      }
+        }
 
-      if (eyebrowRef.current) {
-        animate(eyebrowRef.current, {
-          opacity: [0, 1],
-          translateY: [12, 0],
-          duration: 700,
-          ease: 'outQuart',
-        })
-      }
+        if (headlineRef.current) {
+          const words =
+            headlineRef.current.querySelectorAll<HTMLElement>('[data-word]')
+          words.forEach((w) => {
+            w.style.opacity = '0'
+            w.style.transform = 'translateY(120%) rotate(2deg)'
+            w.style.display = 'inline-block'
+          })
+          animate(words, {
+            opacity: [0, 1],
+            translateY: ['120%', '0%'],
+            rotate: [2, 0],
+            duration: 1100,
+            delay: (_: unknown, i: number) => 120 + i * 90,
+            ease: 'outExpo',
+          })
+        }
 
-      if (headlineRef.current) {
-        const words =
-          headlineRef.current.querySelectorAll<HTMLElement>('[data-word]')
-        words.forEach((w) => {
-          w.style.opacity = '0'
-          w.style.transform = 'translateY(120%) rotate(2deg)'
-          w.style.display = 'inline-block'
-        })
-        animate(words, {
-          opacity: [0, 1],
-          translateY: ['120%', '0%'],
-          rotate: [2, 0],
-          duration: 1100,
-          delay: (_: unknown, i: number) => 120 + i * 90,
-          ease: 'outExpo',
-        })
-      }
+        if (subRef.current) {
+          animate(subRef.current, {
+            opacity: [0, 1],
+            translateY: [16, 0],
+            duration: 900,
+            delay: 600,
+            ease: 'outQuart',
+          })
+        }
+        if (ctaRef.current) {
+          animate(ctaRef.current, {
+            opacity: [0, 1],
+            translateY: [16, 0],
+            duration: 900,
+            delay: 800,
+            ease: 'outQuart',
+          })
+        }
+        if (visualRef.current) {
+          animate(visualRef.current, {
+            opacity: [0, 1],
+            scale: [0.9, 1],
+            duration: 1200,
+            delay: 300,
+            ease: 'outExpo',
+          })
+        }
+        if (scrollRef.current) {
+          animate(scrollRef.current, {
+            opacity: [0, 1],
+            translateY: [10, 0],
+            duration: 800,
+            delay: 1300,
+            ease: 'outQuart',
+          })
+        }
 
-      if (subRef.current) {
-        animate(subRef.current, {
-          opacity: [0, 1],
-          translateY: [16, 0],
-          duration: 900,
-          delay: 600,
-          ease: 'outQuart',
-        })
-      }
-      if (ctaRef.current) {
-        animate(ctaRef.current, {
-          opacity: [0, 1],
-          translateY: [16, 0],
-          duration: 900,
-          delay: 800,
-          ease: 'outQuart',
-        })
-      }
-      if (visualRef.current) {
-        animate(visualRef.current, {
-          opacity: [0, 1],
-          scale: [0.9, 1],
-          duration: 1200,
-          delay: 300,
-          ease: 'outExpo',
-        })
-      }
-      if (scrollRef.current) {
-        animate(scrollRef.current, {
-          opacity: [0, 1],
-          translateY: [10, 0],
-          duration: 800,
-          delay: 1300,
-          ease: 'outQuart',
-        })
-      }
-
-      if (orbRef.current) {
-        animate(orbRef.current, {
-          translateY: [0, -14],
-          duration: 4200,
-          alternate: true,
-          loop: true,
-          ease: 'inOutSine',
-        })
-      }
-    })
+        if (orbRef.current) {
+          animate(orbRef.current, {
+            translateY: [0, -14],
+            duration: 4200,
+            alternate: true,
+            loop: true,
+            ease: 'inOutSine',
+          })
+        }
+      })
+      .catch(revealAll)
 
     return () => {
       cancelled = true
