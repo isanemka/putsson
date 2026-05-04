@@ -1,8 +1,9 @@
 export const siteName = 'PUTSSON'
 export const siteTagline = 'Fönsterputs i Göteborg'
 export const siteEmail = 'hej@putsson.se'
-export const sitePhone = '+46 70 123 45 67'
-export const sitePhoneHref = 'tel:+46701234567'
+export const sitePhone = '079-077 27 64'
+export const sitePhoneE164 = '+46790772764'
+export const sitePhoneHref = 'tel:+46790772764'
 export const siteCity = 'Göteborg'
 
 const fallbackSiteUrl = 'https://putsson.se'
