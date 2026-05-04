@@ -31,7 +31,6 @@ export default function About() {
           src="/cleaning/03.jpeg"
           alt=""
           fill
-          priority
           sizes="100vw"
           className="object-cover"
         />
