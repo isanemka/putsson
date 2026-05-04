@@ -4,14 +4,14 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 const FRAMES = [
-  '/cleaning/01.jpg',
-  '/cleaning/02.jpg',
-  '/cleaning/03.jpg',
-  '/cleaning/04.jpg',
-  '/cleaning/05.jpg',
-  '/cleaning/06.jpg',
-  '/cleaning/07.jpg',
-  '/cleaning/08.jpg',
+  '/cleaning/01.jpeg',
+  '/cleaning/02.jpeg',
+  '/cleaning/03.jpeg',
+  '/cleaning/04.jpeg',
+  '/cleaning/05.jpeg',
+  '/cleaning/06.jpeg',
+  '/cleaning/07.jpeg',
+  '/cleaning/08.jpeg',
 ]
 
 export default function WindowSequence() {
