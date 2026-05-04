@@ -214,23 +214,21 @@ export default function Hero() {
         <div ref={visualRef} className="relative" style={{ opacity: 0 }}>
           <div
             ref={orbRef}
-            className="relative mx-auto aspect-square w-full max-w-md"
+            className="relative mx-auto w-full max-w-md overflow-hidden rounded-4xl shadow-[0_32px_64px_-16px_rgba(24,23,76,0.3)]"
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-mint to-blue" />
+            <Image
+              src="/img/IMG_5704.jpeg"
+              alt="PUTSSON-fönsterputsare i arbete med skrapa på tegelfasad"
+              width={560}
+              height={700}
+              priority
+              className="w-full object-cover"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
             <div
               aria-hidden
-              className="absolute inset-0 rounded-full ring-1 ring-inset ring-navy/10"
+              className="absolute inset-0 rounded-4xl ring-1 ring-inset ring-navy/10"
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Image
-                src="/logo_man_blue.png"
-                alt="PUTSSON-figuren med skrapa och hink"
-                width={420}
-                height={420}
-                priority
-                className="h-[92%] w-[92%] object-contain drop-shadow-[0_20px_30px_rgba(24,23,76,0.25)]"
-              />
-            </div>
           </div>
         </div>
       </div>

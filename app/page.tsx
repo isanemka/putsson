@@ -12,6 +12,7 @@ import Hero from '@/components/Hero'
 import Marquee from '@/components/Marquee'
 import Reveal from '@/components/Reveal'
 import Stats from '@/components/Stats'
+import Gallery from '@/components/Gallery'
 import Faq from '@/components/Faq'
 
 export const metadata: Metadata = {
@@ -103,6 +104,8 @@ export default function Home() {
       <Marquee />
 
       <Stats />
+
+      <Gallery />
 
       <section id="tjanster" className="scroll-mt-24 bg-cream py-24 sm:py-32">
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
