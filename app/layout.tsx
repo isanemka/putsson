@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteName}`,
   },
   description:
-    'PUTSSON är fönsterputsaren i Göteborg som lämnar dina rutor blanka, ramarna torra och din vardag enklare. Boka fast eller löpande fönsterputs.',
+    'PUTSSON är fönsterputsaren i Göteborg som lämnar dina rutor blanka, blecken rena och din vardag enklare. Boka fast eller löpande fönsterputs.',
   openGraph: {
     title: `${siteName} | Fönsterputs i Göteborg`,
     description:

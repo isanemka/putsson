@@ -26,8 +26,8 @@ export default function Footer() {
             </span>
           </div>
           <p className="max-w-sm text-sm text-cream/70">
-            Vi putsar fönster i {siteCity} med stadig hand och torra ramar.
-            Pålitligt, prickfritt — och alltid med ett leende.
+            Vi putsar fönster i {siteCity} med stadig hand. Pålitligt,
+            prickfritt — och alltid med ett leende.
           </p>
         </div>
 

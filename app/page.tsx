@@ -13,6 +13,7 @@ import Marquee from '@/components/Marquee'
 import Reveal from '@/components/Reveal'
 import Stats from '@/components/Stats'
 import Faq from '@/components/Faq'
+import About from '@/components/About'
 
 export const metadata: Metadata = {
   title: 'Fönsterputs i Göteborg',
@@ -56,24 +57,6 @@ const colorMap = {
   navy: 'bg-navy text-cream',
 }
 
-const steps = [
-  {
-    n: '01',
-    title: 'Hör av dig',
-    text: 'Berätta om dina fönster — antal, typ och hur ofta du vill ha besök.',
-  },
-  {
-    n: '02',
-    title: 'Få fast pris',
-    text: 'Vi återkommer inom 24 timmar med ett tydligt och fast pris.',
-  },
-  {
-    n: '03',
-    title: 'Vi putsar',
-    text: 'Du behöver inte vara hemma. När vi gått är rutorna blanka och ramarna torra.',
-  },
-]
-
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
@@ -101,6 +84,8 @@ export default function Home() {
       <Hero />
 
       <Marquee />
+
+      <About />
 
       <Stats />
 
@@ -143,63 +128,6 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section
-        id="omoss"
-        className="scroll-mt-24 bg-navy py-24 text-cream sm:py-32"
-      >
-        <div className="mx-auto grid w-full max-w-7xl gap-14 px-6 sm:px-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <Reveal>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-mint">
-                Om PUTSSON
-              </p>
-              <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
-                Vi gillar fönster lika mycket som du gillar utsikten.
-              </h2>
-              <p className="mt-5 text-base text-cream/80">
-                PUTSSON startades i Göteborg av människor som tröttnat på ojämna
-                rutor och blöta fönsterbleck. Vi är ett litet team som kan vårt
-                hantverk: rena verktyg, kontrollerat vatten, ordning och reda.
-                Inga genvägar, inga halvmesyrer.
-              </p>
-              <p className="mt-4 text-base text-cream/80">
-                Vi är försäkrade, har F-skatt och pratar gärna med dig
-                personligen. Du når oss på telefon — oftast direkt.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {['RUT-avdrag', 'F-skatt', 'Försäkrat', 'Miljövänligt'].map(
-                  (t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-cream/20 px-4 py-2 text-xs font-medium uppercase tracking-[0.25em]"
-                    >
-                      {t}
-                    </span>
-                  )
-                )}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <div className="grid gap-4">
-              {steps.map((s) => (
-                <div
-                  key={s.n}
-                  className="flex items-start gap-5 rounded-3xl border border-cream/10 bg-cream/5 p-6 backdrop-blur-sm"
-                >
-                  <span className="text-3xl font-bold text-mint">{s.n}</span>
-                  <div>
-                    <h3 className="text-lg font-bold text-cream">{s.title}</h3>
-                    <p className="mt-1 text-sm text-cream/75">{s.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 
