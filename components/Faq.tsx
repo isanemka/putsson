@@ -21,7 +21,7 @@ const items = [
   },
   {
     q: 'Putsar ni på vintern?',
-    a: 'Ja, vi jobbar året runt. Vi använder rent vatten och teknik som fungerar även i kyla, så länge det inte är riktigt djupminusgrader.',
+    a: 'Ja, vi jobbar året runt. Vi använder rent vatten och teknik som fungerar även i kyla, så länge det inte är riktigt riktigt kallt.',
   },
   {
     q: 'Vilka områden täcker ni?',
@@ -49,7 +49,10 @@ export default function Faq() {
           </p>
         </div>
 
-        <ul className="divide-y divide-navy/10 border-y border-navy/10" role="list">
+        <ul
+          className="divide-y divide-navy/10 border-y border-navy/10"
+          role="list"
+        >
           {items.map((item, i) => {
             const isOpen = open === i
             return (

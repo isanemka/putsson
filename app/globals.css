@@ -121,30 +121,3 @@ h4 {
   background: var(--color-mint);
   border-radius: 999px;
 }
-
-@keyframes cinemagraph-cycle {
-  0%,
-  26% {
-    opacity: 1;
-  }
-  36%,
-  92% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.cinemagraph-frame {
-  opacity: 0;
-  animation: cinemagraph-cycle 3.6s ease-in-out infinite;
-  will-change: opacity;
-}
-@media (prefers-reduced-motion: reduce) {
-  .cinemagraph-frame {
-    animation: none;
-  }
-  .cinemagraph-frame:first-child {
-    opacity: 1;
-  }
-}
