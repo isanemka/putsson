@@ -13,6 +13,7 @@ import Marquee from '@/components/Marquee'
 import Reveal from '@/components/Reveal'
 import Stats from '@/components/Stats'
 import Faq from '@/components/Faq'
+import WindowSequence from '@/components/WindowSequence'
 
 export const metadata: Metadata = {
   title: 'Fönsterputs i Göteborg',
@@ -101,6 +102,8 @@ export default function Home() {
       <Hero />
 
       <Marquee />
+
+      <WindowSequence />
 
       <Stats />
 
