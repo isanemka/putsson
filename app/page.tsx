@@ -13,7 +13,7 @@ import Marquee from '@/components/Marquee'
 import Reveal from '@/components/Reveal'
 import Stats from '@/components/Stats'
 import Faq from '@/components/Faq'
-import BeforeAfter from '@/components/BeforeAfter'
+import Cinemagraph from '@/components/Cinemagraph'
 
 export const metadata: Metadata = {
   title: 'Fönsterputs i Göteborg',
@@ -103,7 +103,7 @@ export default function Home() {
 
       <Marquee />
 
-      <BeforeAfter />
+      <Cinemagraph />
 
       <Stats />
 
