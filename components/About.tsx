@@ -28,7 +28,7 @@ export default function About() {
     >
       <div className="absolute inset-0">
         <Image
-          src="/cleaning/03.jpeg"
+          src="/img/03.jpeg"
           alt=""
           fill
           sizes="100vw"
