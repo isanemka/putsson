@@ -5,6 +5,7 @@ import {
   siteEmail,
   siteName,
   sitePhone,
+  sitePhoneE164,
   sitePhoneHref,
   siteUrl,
 } from '@/lib/site'
@@ -64,7 +65,7 @@ const organizationSchema = {
   name: siteName,
   url: siteUrl,
   email: siteEmail,
-  telephone: sitePhone,
+  telephone: sitePhoneE164,
   description:
     'Fönsterputsare i Göteborg som tar hand om villor, lägenheter, företag och bostadsrättsföreningar.',
   areaServed: {

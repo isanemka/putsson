@@ -101,6 +101,7 @@ export default function ContactForm() {
           autoComplete="name"
           value={form.name}
           onChange={handleChange}
+          required
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? 'cf-name-error' : undefined}
           placeholder="Anna Andersson"
@@ -136,6 +137,7 @@ export default function ContactForm() {
             autoComplete="email"
             value={form.email}
             onChange={handleChange}
+            required
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'cf-email-error' : undefined}
             placeholder="anna@exempel.se"
@@ -209,6 +211,7 @@ export default function ContactForm() {
           rows={4}
           value={form.message}
           onChange={handleChange}
+          required
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'cf-message-error' : undefined}
           placeholder="Berätta om dina fönster — antal, typ och hur ofta du vill ha besök."
