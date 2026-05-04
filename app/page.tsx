@@ -14,6 +14,7 @@ import Reveal from '@/components/Reveal'
 import Stats from '@/components/Stats'
 import Faq from '@/components/Faq'
 import About from '@/components/About'
+import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
   title: 'Fönsterputs i Göteborg',
@@ -145,69 +146,77 @@ export default function Home() {
                 aria-hidden
                 className="pointer-events-none absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-blue/40 blur-3xl"
               />
-              <div className="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.3em] text-navy/70">
-                    Kontakt
-                  </p>
-                  <h2 className="mt-4 text-4xl font-bold text-navy sm:text-6xl">
-                    Få ett fast pris idag.
-                  </h2>
-                  <p className="mt-5 max-w-xl text-base text-navy/80">
-                    Skriv eller ring så återkommer vi snabbt med ett fast pris
-                    och förslag på tid. Inga konstigheter.
-                  </p>
-                </div>
-                <div className="space-y-3">
-                  <a
-                    href={sitePhoneHref}
-                    className="group flex items-center justify-between rounded-2xl bg-navy px-6 py-5 text-cream transition hover:bg-blue"
-                  >
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.25em] text-mint">
-                        Ring oss
-                      </p>
-                      <p className="mt-1 text-lg font-bold">{sitePhone}</p>
-                    </div>
-                    <span
-                      aria-hidden
-                      className="text-xl transition-transform group-hover:translate-x-1"
-                    >
-                      →
-                    </span>
-                  </a>
-                  <a
-                    href={`mailto:${siteEmail}`}
-                    className="group flex items-center justify-between rounded-2xl border border-navy/20 bg-cream px-6 py-5 text-navy transition hover:border-navy/50"
-                  >
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.25em] text-blue">
-                        Mejla oss
-                      </p>
-                      <p className="mt-1 text-lg font-bold">{siteEmail}</p>
-                    </div>
-                    <span
-                      aria-hidden
-                      className="text-xl transition-transform group-hover:translate-x-1"
-                    >
-                      →
-                    </span>
-                  </a>
-                </div>
-              </div>
 
-              <div className="relative mt-12 flex items-center gap-4 border-t border-navy/15 pt-8">
-                <Image
-                  src="/logo_round_white.png"
-                  alt=""
-                  width={56}
-                  height={56}
-                  className="h-14 w-14 rounded-full"
-                />
-                <p className="text-sm text-navy/80">
-                  Vi putsar i hela {siteCity} med omnejd. Berätta var du bor —
-                  vi anpassar oss.
-                </p>
+              <div className="relative grid gap-12 lg:grid-cols-2 lg:items-start">
+                {/* Left: heading + contact links */}
+                <div className="flex flex-col gap-8">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.3em] text-navy/70">
+                      Kontakt
+                    </p>
+                    <h2 className="mt-4 text-4xl font-bold text-navy sm:text-5xl">
+                      Få ett fast pris idag.
+                    </h2>
+                    <p className="mt-5 max-w-xl text-base text-navy/80">
+                      Fyll i formuläret så återkommer vi snabbt med ett fast
+                      pris och förslag på tid. Inga konstigheter.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <a
+                      href={sitePhoneHref}
+                      className="group flex items-center justify-between rounded-2xl bg-navy px-6 py-5 text-cream transition hover:bg-blue"
+                    >
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.25em] text-mint">
+                          Ring oss
+                        </p>
+                        <p className="mt-1 text-lg font-bold">{sitePhone}</p>
+                      </div>
+                      <span
+                        aria-hidden
+                        className="text-xl transition-transform group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </a>
+                    <a
+                      href={`mailto:${siteEmail}`}
+                      className="group flex items-center justify-between rounded-2xl border border-navy/20 bg-cream px-6 py-5 text-navy transition hover:border-navy/50"
+                    >
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.25em] text-blue">
+                          Mejla oss
+                        </p>
+                        <p className="mt-1 text-lg font-bold">{siteEmail}</p>
+                      </div>
+                      <span
+                        aria-hidden
+                        className="text-xl transition-transform group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </a>
+                  </div>
+
+                  <div className="flex items-center gap-4 border-t border-navy/15 pt-6">
+                    <Image
+                      src="/logo_round_white.png"
+                      alt=""
+                      width={56}
+                      height={56}
+                      className="h-14 w-14 rounded-full"
+                    />
+                    <p className="text-sm text-navy/80">
+                      Vi putsar i hela {siteCity} med omnejd. Berätta var du
+                      bor, vi anpassar oss.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right: contact form */}
+                <ContactForm />
               </div>
             </div>
           </Reveal>
