@@ -12,7 +12,6 @@ vi.mock('@/components/Hero', () => ({
     </section>
   ),
 }))
-vi.mock('@/components/Marquee', () => ({ default: () => <div /> }))
 vi.mock('@/components/Stats', () => ({
   default: () => (
     <section aria-label="Putsson i siffror">
@@ -46,17 +45,30 @@ describe('Home page', () => {
   it('renders all four service cards', () => {
     render(<Home />)
     expect(
-      screen.getByRole('heading', { name: 'Hem & villa' })
+      screen.getByRole('heading', { name: 'Villa & radhus' })
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { name: 'Företag & butik' })
+      screen.getByRole('heading', { name: 'Lägenhet' })
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { name: 'Bostadsrättsförening' })
+      screen.getByRole('heading', { name: 'Balkonginglasning' })
     ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: 'Flyttputs' })
-    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Butiker' })).toBeInTheDocument()
+  })
+
+  it('renders the service areas grid with area links', () => {
+    render(<Home />)
+    // Mölndal should have its own link
+    const molndalLinks = screen
+      .getAllByRole('link')
+      .filter((el) => el.getAttribute('href') === '/fonsterputs/molndal')
+    expect(molndalLinks).toHaveLength(1)
+    expect(screen.getByRole('link', { name: /partille/i })).toBeInTheDocument()
+    // Should have 15 area links
+    const areaLinks = screen
+      .getAllByRole('link')
+      .filter((el) => el.getAttribute('href')?.startsWith('/fonsterputs/'))
+    expect(areaLinks).toHaveLength(15)
   })
 
   it('renders the om oss section heading', () => {

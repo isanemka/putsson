@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   siteCity,
   siteEmail,
@@ -109,20 +110,18 @@ export default function Home() {
 
           <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {areas.map((area, i) => (
-              <Reveal key={area.slug} delay={i * 40}>
-                <li className="h-full">
-                  <a
-                    href={`/fonsterputs/${area.slug}`}
-                    className="group flex h-full flex-col gap-1 rounded-2xl border border-cream/10 bg-cream/5 px-5 py-4 transition hover:border-mint/40 hover:bg-cream/10"
-                  >
-                    <span className="text-sm font-bold text-cream group-hover:text-mint">
-                      {area.name}
-                    </span>
-                    <span className="text-xs text-cream/50">
-                      {area.description}
-                    </span>
-                  </a>
-                </li>
+              <Reveal as="li" key={area.slug} delay={i * 40} className="h-full">
+                <Link
+                  href={`/fonsterputs/${area.slug}`}
+                  className="group flex h-full flex-col gap-1 rounded-2xl border border-cream/10 bg-cream/5 px-5 py-4 transition hover:border-mint/40 hover:bg-cream/10"
+                >
+                  <span className="text-sm font-bold text-cream group-hover:text-mint">
+                    {area.name}
+                  </span>
+                  <span className="text-xs text-cream/50">
+                    {area.description}
+                  </span>
+                </Link>
               </Reveal>
             ))}
           </ul>

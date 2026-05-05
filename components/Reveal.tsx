@@ -7,7 +7,7 @@ type Props = {
   children: ReactNode
   delay?: number
   className?: string
-  as?: 'div' | 'section' | 'article' | 'header' | 'footer'
+  as?: 'div' | 'section' | 'article' | 'header' | 'footer' | 'li'
 }
 
 export default function Reveal({
@@ -79,10 +79,8 @@ export default function Reveal({
   }, [delay])
 
   return (
-    <Tag
-      ref={ref as React.Ref<HTMLDivElement>}
-      className={`reveal ${className}`.trim()}
-    >
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    <Tag ref={ref as any} className={`reveal ${className}`.trim()}>
       {children}
     </Tag>
   )

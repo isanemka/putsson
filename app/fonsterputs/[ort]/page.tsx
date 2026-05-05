@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
+  siteCity,
   siteEmail,
   siteName,
   sitePhone,
@@ -78,7 +79,7 @@ export default async function OrtPage({ params }: Props) {
     },
     address: {
       '@type': 'PostalAddress',
-      addressLocality: area.name,
+      addressLocality: siteCity,
       addressRegion: 'Västra Götaland',
       addressCountry: 'SE',
     },
@@ -194,14 +195,17 @@ export default async function OrtPage({ params }: Props) {
 
           <ol className="mt-12 grid gap-6 md:grid-cols-3">
             {steps.map((step, i) => (
-              <Reveal key={step.number} delay={i * 100} className="h-full">
-                <li className="h-full rounded-3xl border border-navy/10 bg-white p-8">
-                  <span className="text-4xl font-bold text-navy/10">
-                    {step.number}
-                  </span>
-                  <h3 className="mt-4 text-xl font-bold">{step.title}</h3>
-                  <p className="mt-2 text-sm text-navy/65">{step.text}</p>
-                </li>
+              <Reveal
+                as="li"
+                key={step.number}
+                delay={i * 100}
+                className="h-full rounded-3xl border border-navy/10 bg-white p-8"
+              >
+                <span className="text-4xl font-bold text-navy/10">
+                  {step.number}
+                </span>
+                <h3 className="mt-4 text-xl font-bold">{step.title}</h3>
+                <p className="mt-2 text-sm text-navy/65">{step.text}</p>
               </Reveal>
             ))}
           </ol>

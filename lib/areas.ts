@@ -1,5 +1,5 @@
 export type Area = {
-  /** URL-safe slug, used in /fonsterputs/[slug] */
+  /** URL-safe slug, used in /fonsterputs/[ort] */
   slug: string
   /** Display name shown to users */
   name: string
@@ -31,7 +31,7 @@ export const areas: Area[] = [
   {
     slug: 'kungsbacka',
     name: 'Kungsbacka',
-    description: 'Kungsbacka och Askim',
+    description: 'Kungsbacka',
     metaDescription:
       'Fönsterputs i Kungsbacka – PUTSSON putsar fönster för villor, lägenheter och bostadsrättsföreningar i Kungsbacka. Snabb återkoppling och fast pris.',
     nearby: ['Onsala', 'Vallda', 'Kullavik', 'Åsa'],
