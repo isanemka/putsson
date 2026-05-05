@@ -181,7 +181,7 @@ export default function Hero() {
             style={{ opacity: 0 }}
           >
             PUTSSON är fönsterputsaren som gör vardagen ljusare. Villor,
-            lägenheter och företag med torra ramar, blanka rutor och ett leende
+            lägenheter och företag med blanka bleck, rena rutor och ett leende
             på köpet.
           </p>
 
