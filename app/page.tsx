@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   siteCity,
   siteEmail,
@@ -10,12 +11,12 @@ import {
   siteUrl,
 } from '@/lib/site'
 import Hero from '@/components/Hero'
-import Marquee from '@/components/Marquee'
 import Reveal from '@/components/Reveal'
 import Stats from '@/components/Stats'
 import Faq from '@/components/Faq'
 import About from '@/components/About'
 import ContactForm from '@/components/ContactForm'
+import { areas } from '@/lib/areas'
 
 export const metadata: Metadata = {
   title: 'Fönsterputs i Göteborg',
@@ -31,24 +32,24 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    title: 'Hem & villa',
+    title: 'Villa & radhus',
     text: 'Återkommande fönsterputs som passar din takt — varannan månad, fyra gånger om året eller bara inför kalaset.',
     color: 'mint' as const,
   },
   {
-    title: 'Företag & butik',
-    text: 'Skyltfönster och kontor som ser inbjudande ut. Vi kommer när det passar er — gärna före öppning.',
-    color: 'coral' as const,
+    title: 'Lägenhet',
+    text: 'Bor du i bostadsrätt eller hyresrätt? Vi putsar dina fönster inifrån och utifrån och lämnar dem skinande rena.',
+    color: 'navy' as const,
   },
   {
-    title: 'Bostadsrättsförening',
-    text: 'Trapphus, entréer och gemensamma fönster. Avtal med fast pris och pålitliga rutiner.',
+    title: 'Balkonginglasning',
+    text: 'Vi tar hand om glas, ramar och kanaler i din balkonginglasning. Professionellt utfört och snabbt klart.',
     color: 'blue' as const,
   },
   {
-    title: 'Flyttputs',
-    text: 'In- eller utflytt? Vi gör fönstren skinande rena så besiktningen blir det minsta du behöver oroa dig för.',
-    color: 'navy' as const,
+    title: 'Butiker',
+    text: 'Skyltfönster som lockar kunder. Vi putsar när det passar er verksamhet — gärna tidigt på morgonen.',
+    color: 'coral' as const,
   },
 ]
 
@@ -85,11 +86,47 @@ export default function Home() {
     <main id="main-content" className="bg-cream text-navy">
       <Hero />
 
-      <Marquee />
-
       <About />
 
       <Stats />
+
+      {/* Service areas */}
+      <section className="bg-navy py-24 sm:py-32">
+        <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-mint/80">
+                Serviceområde
+              </p>
+              <h2 className="mt-4 text-4xl font-bold text-cream sm:text-5xl">
+                Vi putsar i hela Göteborgsregionen.
+              </h2>
+              <p className="mt-5 text-base text-cream/70">
+                Från Kungsbacka i söder till Stenungsund i norr — vi täcker 15
+                kommuner och orter kring Göteborg.
+              </p>
+            </div>
+          </Reveal>
+
+          <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+            {areas.map((area, i) => (
+              <Reveal as="li" key={area.slug} delay={i * 40} className="h-full">
+                <Link
+                  href={`/fonsterputs/${area.slug}`}
+                  className="group flex h-full flex-col gap-1 rounded-2xl border border-cream/10 bg-cream/5 px-5 py-4 transition hover:border-mint/40 hover:bg-cream/10"
+                >
+                  <span className="text-sm font-bold text-cream group-hover:text-mint">
+                    {area.name}
+                  </span>
+                  <span className="text-xs text-cream/50">
+                    {area.description}
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <section id="tjanster" className="scroll-mt-24 bg-cream py-24 sm:py-32">
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
@@ -111,9 +148,9 @@ export default function Home() {
 
           <div className="mt-14 grid gap-5 md:grid-cols-2">
             {services.map((s, i) => (
-              <Reveal key={s.title} delay={i * 90}>
+              <Reveal key={s.title} delay={i * 90} className="h-full">
                 <article
-                  className={`group relative h-full overflow-hidden rounded-[28px] p-8 transition hover:-translate-y-1 ${colorMap[s.color]}`}
+                  className={`group relative h-full overflow-hidden rounded-[28px] p-8 ${colorMap[s.color]}`}
                 >
                   <div
                     aria-hidden
@@ -122,9 +159,6 @@ export default function Home() {
                   <h3 className="relative text-2xl font-bold">{s.title}</h3>
                   <p className="relative mt-3 max-w-md text-sm opacity-90">
                     {s.text}
-                  </p>
-                  <p className="relative mt-8 text-xs font-bold uppercase tracking-[0.25em] opacity-80">
-                    Läs mer →
                   </p>
                 </article>
               </Reveal>
