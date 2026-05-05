@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 const services = [
   {
     title: 'Villa & radhus',
-    text: 'Återkommande fönsterputs som passar din takt — varannan månad, fyra gånger om året eller bara inför kalaset.',
+    text: 'Återkommande fönsterputs som passar dig, varannan månad, fyra gånger om året eller bara inför kalaset.',
     color: 'mint' as const,
   },
   {
@@ -48,7 +48,7 @@ const services = [
   },
   {
     title: 'Butiker',
-    text: 'Skyltfönster som lockar kunder. Vi putsar när det passar er verksamhet — gärna tidigt på morgonen.',
+    text: 'Skyltfönster som lockar kunder. Vi putsar när det passar er verksamhet, gärna tidigt på morgonen.',
     color: 'coral' as const,
   },
 ]
@@ -102,7 +102,7 @@ export default function Home() {
                 Vi putsar i hela Göteborgsregionen.
               </h2>
               <p className="mt-5 text-base text-cream/70">
-                Från Kungsbacka i söder till Stenungsund i norr — vi täcker 15
+                Från Kungsbacka i söder till Stenungsund i norr! Vi täcker 15
                 kommuner och orter kring Göteborg.
               </p>
             </div>

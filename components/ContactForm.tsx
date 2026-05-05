@@ -214,7 +214,7 @@ export default function ContactForm() {
           required
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'cf-message-error' : undefined}
-          placeholder="Berätta om dina fönster — antal, typ och hur ofta du vill ha besök."
+          placeholder="Berätta om dina fönster - antal, typ och hur ofta du vill ha besök."
           className="w-full resize-none rounded-2xl border border-navy/15 bg-white px-5 py-3.5 text-sm text-navy placeholder:text-navy/35 focus:border-mint focus:outline-none focus:ring-2 focus:ring-mint/30 aria-invalid:border-coral"
         />
         {errors.message && (

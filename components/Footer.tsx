@@ -27,7 +27,7 @@ export default function Footer() {
           </div>
           <p className="max-w-sm text-sm text-cream/70">
             Vi putsar fönster i {siteCity} med stadig hand. Pålitligt,
-            prickfritt — och alltid med ett leende.
+            prickfritt och alltid med ett leende.
           </p>
         </div>
 
