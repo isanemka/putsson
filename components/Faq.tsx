@@ -5,7 +5,7 @@ import { useState } from 'react'
 const items = [
   {
     q: 'Vad kostar det att putsa fönstren?',
-    a: 'Vi sätter alltid fast pris baserat på antal fönster, typ och våningsplan. Hör av dig så återkommer vi inom 24 timmar med en tydlig offert — utan bindning.',
+    a: 'Vi sätter alltid fast pris baserat på antal fönster, typ och våningsplan. Hör av dig så återkommer vi inom 24 timmar med en tydlig offert.',
   },
   {
     q: 'Behöver jag vara hemma när ni kommer?',
@@ -17,7 +17,7 @@ const items = [
   },
   {
     q: 'Hur ofta bör fönster putsas?',
-    a: 'För villor rekommenderar vi 2–4 gånger per år. För butiker och kontor brukar månadsvis vara lagom. Vi hjälper dig välja rätt intervall — inga onödiga besök.',
+    a: 'För villor rekommenderar vi 2–4 gånger per år. För butiker och kontor brukar månadsvis vara lagom. Vi hjälper dig välja rätt intervall.',
   },
   {
     q: 'Putsar ni på vintern?',
@@ -25,7 +25,7 @@ const items = [
   },
   {
     q: 'Vilka områden täcker ni?',
-    a: 'Vi putsar i hela Göteborg med omnejd — från Hisingen och Lundby till Mölndal och Partille. Är du osäker på om vi tar oss till dig? Hör av dig.',
+    a: 'Vi putsar i hela Göteborg med omnejd! Från Hisingen och Lundby till Mölndal och Partille. Är du osäker på om vi tar oss till dig? Hör av dig.',
   },
 ]
 
@@ -44,7 +44,7 @@ export default function Faq() {
             men aldrig vågat fråga.
           </h2>
           <p className="mt-6 max-w-md text-base text-navy/75">
-            Hittar du inte svaret? Skicka ett mejl eller ring oss — vi svarar
+            Hittar du inte svaret? Skicka ett mejl eller ring oss, vi svarar
             samma dag.
           </p>
         </div>

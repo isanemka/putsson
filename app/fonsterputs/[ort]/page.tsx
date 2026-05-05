@@ -51,7 +51,7 @@ const steps = [
   {
     number: '02',
     title: 'Välj tid',
-    text: 'Du väljer ett datum som passar. Vi är flexibla med tider — tidigt på morgonen eller efter jobbet.',
+    text: 'Du väljer ett datum som passar. Vi är flexibla med tider.',
   },
   {
     number: '03',

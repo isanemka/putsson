@@ -8,7 +8,6 @@ import { siteName, sitePhone, sitePhoneHref } from '@/lib/site'
 const navLinks = [
   { href: '/#tjanster', label: 'Tjänster' },
   { href: '/#omoss', label: 'Om oss' },
-  { href: '/#galleri', label: 'Galleri' },
   { href: '/#kontakt', label: 'Kontakt' },
 ]
 
@@ -51,10 +50,7 @@ export default function Header() {
           <span className="text-xl font-bold tracking-tight">{siteName}</span>
         </Link>
 
-        <ul
-          className="hidden items-center gap-8 md:flex"
-          role="list"
-        >
+        <ul className="hidden items-center gap-8 md:flex" role="list">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link

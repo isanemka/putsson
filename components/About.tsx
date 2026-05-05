@@ -5,7 +5,7 @@ const steps = [
   {
     n: '01',
     title: 'Hör av dig',
-    text: 'Berätta om dina fönster — antal, typ och hur ofta du vill ha besök.',
+    text: 'Berätta om dina fönster - antal, typ och hur ofta du vill ha besök.',
   },
   {
     n: '02',
@@ -15,7 +15,7 @@ const steps = [
   {
     n: '03',
     title: 'Vi putsar',
-    text: 'Du behöver inte vara hemma. När vi gått är rutorna blanka och blecken rena.',
+    text: 'Du behöver inte vara hemma. När vi gått är rutorna rena och blecken blanka.',
   },
 ]
 
@@ -64,7 +64,7 @@ export default function About() {
             </p>
             <p className="mt-4 text-base text-cream/80">
               Vi är försäkrade, har F-skatt och pratar gärna med dig
-              personligen. Du når oss på telefon — oftast direkt.
+              personligen. Du når oss på telefon, oftast direkt.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {['RUT-avdrag', 'F-skatt', 'Försäkrat', 'Miljövänligt'].map(
