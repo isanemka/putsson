@@ -123,7 +123,7 @@ export default function Footer() {
               href="https://pixelpioneer.se"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition hover:text-mint"
+              className="underline underline-offset-4 transition hover:text-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint"
             >
               PixelPioneer
             </a>
