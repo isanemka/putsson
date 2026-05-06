@@ -114,7 +114,7 @@ export default async function OrtPage({ params }: Props) {
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-mint/80">
               Fönsterputs i {area.name}
             </p>
-            <h1 className="mt-4 text-5xl font-bold text-cream sm:text-7xl">
+            <h1 className="mt-4 text-3xl font-bold text-cream sm:text-5xl lg:text-7xl">
               Skinande rena fönster i{' '}
               <span className="text-mint">{area.name}.</span>
             </h1>

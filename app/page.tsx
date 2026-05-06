@@ -203,7 +203,7 @@ export default function Home() {
                       href={sitePhoneHref}
                       className="group flex items-center justify-between rounded-2xl bg-navy px-6 py-5 text-cream transition hover:bg-blue"
                     >
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-xs font-bold uppercase tracking-[0.25em] text-mint">
                           Ring oss
                         </p>
@@ -220,7 +220,7 @@ export default function Home() {
                       href={`mailto:${siteEmail}`}
                       className="group flex items-center justify-between rounded-2xl border border-navy/20 bg-cream px-6 py-5 text-navy transition hover:border-navy/50"
                     >
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-xs font-bold uppercase tracking-[0.25em] text-blue">
                           Mejla oss
                         </p>

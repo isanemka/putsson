@@ -111,12 +111,23 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-cream/10">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-6 py-6 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between sm:px-10">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-6 py-6 text-xs text-cream/60 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6 sm:px-10">
           <p>
             &copy; {new Date().getFullYear()} {siteName}. Alla rättigheter
             förbehållna.
           </p>
           <p>Putsat med kärlek i {siteCity}.</p>
+          <p>
+            Skapad av en{' '}
+            <a
+              href="https://pixelpioneer.se"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-mint"
+            >
+              PixelPioneer
+            </a>
+          </p>
         </div>
       </div>
     </footer>

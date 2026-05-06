@@ -161,12 +161,12 @@ export default function Hero() {
 
           <h1
             ref={headlineRef}
-            className="mt-7 text-[clamp(3rem,9vw,7.5rem)] font-bold leading-[0.92] tracking-[-0.02em] text-navy"
+            className="mt-5 text-[clamp(2.25rem,9vw,7.5rem)] font-bold leading-[0.95] tracking-[-0.02em] text-navy sm:mt-7 sm:leading-[0.92]"
           >
             {headline.map((word, i) => (
               <span
                 key={`${word}-${i}`}
-                className="mr-3 inline-block overflow-hidden align-bottom"
+                className="mr-3 inline-block overflow-hidden pb-1 align-bottom"
               >
                 <span data-word className="inline-block">
                   {i === 0 ? <span className="text-mint">{word}</span> : word}
@@ -177,7 +177,7 @@ export default function Hero() {
 
           <p
             ref={subRef}
-            className="mt-8 max-w-xl text-lg text-navy/75 sm:text-xl"
+            className="mt-5 max-w-xl text-base text-navy/75 sm:mt-8 sm:text-lg"
             style={{ opacity: 0 }}
           >
             PUTSSON är fönsterputsaren som gör vardagen ljusare. Villor,
@@ -187,12 +187,12 @@ export default function Hero() {
 
           <div
             ref={ctaRef}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-7 flex flex-wrap items-center gap-4 sm:mt-10"
             style={{ opacity: 0 }}
           >
             <a
               href="#kontakt"
-              className="group inline-flex items-center gap-2 rounded-full bg-navy px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] text-cream shadow-[0_18px_40px_-20px_rgba(24,23,76,0.7)] transition hover:-translate-y-0.5 hover:bg-blue"
+              className="group inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-cream shadow-[0_18px_40px_-20px_rgba(24,23,76,0.7)] transition hover:-translate-y-0.5 hover:bg-blue sm:px-8 sm:py-4"
             >
               Få fast pris
               <span
@@ -214,7 +214,7 @@ export default function Hero() {
         <div ref={visualRef} className="relative" style={{ opacity: 0 }}>
           <div
             ref={orbRef}
-            className="relative mx-auto aspect-square w-full max-w-md"
+            className="relative mx-auto aspect-square w-full max-w-[260px] sm:max-w-sm md:max-w-md"
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-mint to-blue" />
             <div
