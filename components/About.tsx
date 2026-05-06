@@ -44,7 +44,7 @@ export default function About() {
         />
       </div>
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-14 px-6 py-24 sm:px-10 sm:py-32 lg:grid-cols-[1fr_1fr] lg:items-center">
+      <div className="relative mx-auto grid w-full max-w-7xl gap-14 px-6 py-24 sm:px-10 sm:py-32 md:grid-cols-[1fr_1fr] md:items-center">
         <Reveal>
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-mint">

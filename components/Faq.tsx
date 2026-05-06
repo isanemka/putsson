@@ -34,7 +34,7 @@ export default function Faq() {
 
   return (
     <section id="faq" className="scroll-mt-24 bg-mist/40 py-24 sm:py-32">
-      <div className="mx-auto grid w-full max-w-7xl gap-12 px-6 sm:px-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto grid w-full max-w-7xl gap-12 px-6 sm:px-10 md:grid-cols-[0.9fr_1.1fr]">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-blue">
             Vanliga frågor
@@ -89,7 +89,7 @@ export default function Faq() {
                   role="region"
                   aria-labelledby={`faq-trigger-${i}`}
                   hidden={!isOpen}
-                  className="pb-7 pr-16 text-base text-navy/75"
+                  className="pb-7 pr-4 sm:pr-16 text-base text-navy/75"
                 >
                   {item.a}
                 </div>
