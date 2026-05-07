@@ -237,7 +237,7 @@ export default function Home() {
 
                   <div className="flex items-center gap-4 border-t border-navy/15 pt-6">
                     <Image
-                      src="/logo_round_white.png"
+                      src="/logo_round_green.png"
                       alt=""
                       width={56}
                       height={56}
