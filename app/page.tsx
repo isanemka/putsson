@@ -102,8 +102,8 @@ export default function Home() {
                 Vi putsar i hela Göteborgsregionen.
               </h2>
               <p className="mt-5 text-base text-cream/70">
-                Från Kungsbacka i söder till Stenungsund i norr! Vi täcker 15
-                kommuner och orter kring Göteborg.
+                Från Kungsbacka i söder till Kungälv i norr! Vi täcker 10
+                kommuner och 5 orter – totalt 15 serviceområden kring Göteborg.
               </p>
             </div>
           </Reveal>

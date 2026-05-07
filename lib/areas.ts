@@ -12,125 +12,127 @@ export type Area = {
 }
 
 export const areas: Area[] = [
+  // 10 municipalities
   {
-    slug: 'molndal',
-    name: 'Mölndal',
-    description: 'Mölndals villaområden och bostadsrätter',
+    slug: 'ale',
+    name: 'Ale',
+    description: 'Bohus, Nödinge, Surte och Älvängen',
     metaDescription:
-      'Fönsterputs i Mölndal – PUTSSON erbjuder professionell fönsterputsning för villor, lägenheter och företag i Mölndal med omnejd. Boka fast pris idag.',
-    nearby: ['Kållered', 'Fässberg', 'Lindome', 'Krokslätt'],
+      'Fönsterputs i Ale – PUTSSON erbjuder professionell fönsterputsning för villor och företag i Bohus, Nödinge, Nol, Surte och Älvängen. Boka fast pris idag.',
+    nearby: ['Bohus', 'Nödinge', 'Nol', 'Surte', 'Älvängen', 'Skepplanda'],
   },
   {
-    slug: 'partille',
-    name: 'Partille',
-    description: 'Partille och Sävedalen',
+    slug: 'alingsas',
+    name: 'Alingsås',
+    description: 'Alingsås, Ingared och Sollebrunn',
     metaDescription:
-      'Fönsterputs i Partille – professionell fönsterputsning för villor och företag i Partille, Sävedalen och Jonsered. Fast pris, inga bindningstider.',
-    nearby: ['Sävedalen', 'Jonsered', 'Furulund', 'Öjersjö'],
+      'Fönsterputs i Alingsås – professionell fönsterputsning för villor och företag i Alingsås, Ingared och Sollebrunn. Fast pris och pålitlig service.',
+    nearby: ['Ingared', 'Sollebrunn', 'Västra Bodarna', 'Norsesund'],
+  },
+  {
+    slug: 'boras',
+    name: 'Borås',
+    description: 'Borås, Fristad och Sandared',
+    metaDescription:
+      'Fönsterputs i Borås – PUTSSON erbjuder fönsterputsning för villor, lägenheter och företag i Borås, Fristad, Sandared och Sjömarken. Boka fast pris idag.',
+    nearby: ['Dalsjöfors', 'Fristad', 'Sandared', 'Sjömarken', 'Viskafors'],
+  },
+  {
+    slug: 'goteborg',
+    name: 'Göteborg',
+    description: 'Hela Göteborgs kommun',
+    metaDescription:
+      'Fönsterputs i Göteborg – PUTSSON putsar fönster för villor, lägenheter och företag i hela Göteborg. Från Askim till Hisingen och Majorna. Boka fast pris idag.',
+    nearby: ['Centrum', 'Hisingen', 'Majorna', 'Frölunda', 'Angered'],
+  },
+  {
+    slug: 'harryda',
+    name: 'Härryda',
+    description: 'Mölnlycke, Landvetter och Hindås',
+    metaDescription:
+      'Fönsterputs i Härryda – PUTSSON erbjuder fönsterputsning i Mölnlycke, Landvetter, Hindås och hela Härryda kommun. Fast pris och pålitliga rutiner.',
+    nearby: ['Mölnlycke', 'Landvetter', 'Rävlanda', 'Hindås', 'Hällingsjö'],
   },
   {
     slug: 'kungsbacka',
     name: 'Kungsbacka',
-    description: 'Kungsbacka',
+    description: 'Kungsbacka, Onsala och Särö',
     metaDescription:
-      'Fönsterputs i Kungsbacka – PUTSSON putsar fönster för villor, lägenheter och bostadsrättsföreningar i Kungsbacka. Snabb återkoppling och fast pris.',
-    nearby: ['Onsala', 'Vallda', 'Kullavik', 'Åsa'],
+      'Fönsterputs i Kungsbacka – PUTSSON putsar fönster för villor, lägenheter och bostadsrättsföreningar i Kungsbacka, Onsala och Särö. Snabb återkoppling och fast pris.',
+    nearby: ['Onsala', 'Fjärås', 'Särö', 'Åsa', 'Vallda'],
+  },
+  {
+    slug: 'kungalv',
+    name: 'Kungälv',
+    description: 'Kungälv, Ytterby och Marstrand',
+    metaDescription:
+      'Fönsterputs i Kungälv – PUTSSON putsar fönster för villor, lägenheter och bostadsrättsföreningar i Kungälv, Ytterby och Marstrand. Boka fast pris idag.',
+    nearby: ['Ytterby', 'Marstrand', 'Diseröd', 'Kode', 'Kärna'],
   },
   {
     slug: 'lerum',
     name: 'Lerum',
     description: 'Lerum, Stenkullen och Gråbo',
     metaDescription:
-      'Fönsterputs i Lerum – professionell och pålitlig fönsterputsning för hem och företag i Lerum, Stenkullen och Gråbo. Boka fast pris online.',
-    nearby: ['Stenkullen', 'Gråbo', 'Floda', 'Tollered'],
+      'Fönsterputs i Lerum – professionell och pålitlig fönsterputsning för hem och företag i Lerum, Gråbo, Floda och Stenkullen. Boka fast pris online.',
+    nearby: ['Stenkullen', 'Gråbo', 'Floda', 'Tollered', 'Sjövik'],
   },
   {
-    slug: 'harryda',
-    name: 'Härryda',
-    description: 'Mölnlycke och Landvetter',
+    slug: 'molndal',
+    name: 'Mölndal',
+    description: 'Mölndal, Lindome och Kållered',
     metaDescription:
-      'Fönsterputs i Härryda – PUTSSON erbjuder fönsterputsning i Mölnlycke, Landvetter och hela Härryda kommun. Fast pris och pålitliga rutiner.',
-    nearby: ['Mölnlycke', 'Landvetter', 'Rävlanda', 'Hindås'],
+      'Fönsterputs i Mölndal – PUTSSON erbjuder professionell fönsterputsning för villor, lägenheter och företag i Mölndal, Lindome och Kållered. Boka fast pris idag.',
+    nearby: ['Kållered', 'Lindome', 'Fässberg', 'Krokslätt'],
   },
   {
-    slug: 'molnlycke',
-    name: 'Mölnlycke',
-    description: 'Mölnlycke centrum och villaområden',
+    slug: 'partille',
+    name: 'Partille',
+    description: 'Partille, Sävedalen och Jonsered',
     metaDescription:
-      'Fönsterputs i Mölnlycke – professionell fönsterputsning för villor, lägenheter och företag i Mölnlycke. Snabb återkoppling och fast pris.',
-    nearby: ['Råda', 'Landvetter', 'Rävlanda', 'Härryda'],
+      'Fönsterputs i Partille – professionell fönsterputsning för villor och företag i Partille, Sävedalen, Jonsered och Öjersjö. Fast pris, inga bindningstider.',
+    nearby: ['Sävedalen', 'Jonsered', 'Öjersjö', 'Furulund'],
+  },
+  // 5 orter
+  {
+    slug: 'olofstorp',
+    name: 'Olofstorp',
+    description: 'Olofstorp med omnejd',
+    metaDescription:
+      'Fönsterputs i Olofstorp – PUTSSON erbjuder fönsterputsning för villor och bostadsrätter i Olofstorp. Fast pris och pålitlig service.',
+    nearby: ['Angered', 'Bergsjön', 'Kortedala', 'Kärralund'],
   },
   {
-    slug: 'kungalv',
-    name: 'Kungälv',
-    description: 'Kungälv och Ytterby',
+    slug: 'grabo',
+    name: 'Gråbo',
+    description: 'Gråbo med omnejd',
     metaDescription:
-      'Fönsterputs i Kungälv – PUTSSON putsar fönster för villor, lägenheter och bostadsrättsföreningar i Kungälv och Ytterby. Boka fast pris idag.',
-    nearby: ['Ytterby', 'Marstrand', 'Diseröd', 'Kode'],
+      'Fönsterputs i Gråbo – professionell fönsterputsning för hem och företag i Gråbo med omnejd. Fast pris och snabb återkoppling.',
+    nearby: ['Lerum', 'Stenkullen', 'Tollered', 'Floda'],
   },
   {
-    slug: 'ale',
-    name: 'Ale',
-    description: 'Nödinge, Älvängen och Skepplanda',
+    slug: 'floda',
+    name: 'Floda',
+    description: 'Floda med omnejd',
     metaDescription:
-      'Fönsterputs i Ale – professionell fönsterputsning för hem och företag i Nödinge, Älvängen och Skepplanda. Fast pris och flexibla tider.',
-    nearby: ['Nödinge', 'Älvängen', 'Skepplanda', 'Surte'],
+      'Fönsterputs i Floda – PUTSSON putsar fönster för villor och bostadsrätter i Floda med omnejd. Fast pris och pålitlig service.',
+    nearby: ['Lerum', 'Gråbo', 'Stenkullen', 'Tollered'],
   },
   {
-    slug: 'stenungsund',
-    name: 'Stenungsund',
-    description: 'Stenungsund och Ljungskile',
+    slug: 'jonsered',
+    name: 'Jonsered',
+    description: 'Jonsered med omnejd',
     metaDescription:
-      'Fönsterputs i Stenungsund – PUTSSON erbjuder fönsterputsning för villor och företag i Stenungsund och Ljungskile. Snabb återkoppling och fast pris.',
-    nearby: ['Ljungskile', 'Ucklum', 'Spekeröd', 'Jörlanda'],
+      'Fönsterputs i Jonsered – professionell fönsterputsning för villor och lägenheter i Jonsered med omnejd. Fast pris och snabb återkoppling.',
+    nearby: ['Partille', 'Sävedalen', 'Öjersjö', 'Furulund'],
   },
   {
-    slug: 'ockero',
-    name: 'Öckerö',
-    description: 'Öckerö, Hönö och Björkö',
+    slug: 'savedalen',
+    name: 'Sävedalen',
+    description: 'Sävedalen med omnejd',
     metaDescription:
-      'Fönsterputs i Öckerö – professionell fönsterputsning på öarna i Öckerö kommun. Hönö, Björkö, Fotö och mer. Fast pris och pålitlig service.',
-    nearby: ['Hönö', 'Björkö', 'Fotö', 'Kalvsund'],
-  },
-  {
-    slug: 'askim',
-    name: 'Askim',
-    description: 'Askim och Frölunda',
-    metaDescription:
-      'Fönsterputs i Askim – PUTSSON putsar fönster för villor, lägenheter och bostadsrätter i Askim och södra Göteborg. Fast pris, inga bindningstider.',
-    nearby: ['Frölunda', 'Hovås', 'Billdal', 'Västra Frölunda'],
-  },
-  {
-    slug: 'torslanda',
-    name: 'Torslanda',
-    description: 'Torslanda och Hisingen väst',
-    metaDescription:
-      'Fönsterputs i Torslanda – professionell fönsterputsning för villor och lägenheter i Torslanda och västra Hisingen. Boka fast pris idag.',
-    nearby: ['Öckerö', 'Björlanda', 'Säve', 'Hisings Kärra'],
-  },
-  {
-    slug: 'hisingen',
-    name: 'Hisingen',
-    description: 'Backa, Lundby och Eriksberg',
-    metaDescription:
-      'Fönsterputs i Hisingen – PUTSSON erbjuder fönsterputsning för villor, lägenheter och företag på Hisingen. Backa, Lundby och Eriksberg.',
-    nearby: ['Backa', 'Lundby', 'Eriksberg', 'Biskopsgården'],
-  },
-  {
-    slug: 'lindome',
-    name: 'Lindome',
-    description: 'Lindome och södra Mölndal',
-    metaDescription:
-      'Fönsterputs i Lindome – professionell fönsterputsning för hem och företag i Lindome och södra Mölndal. Fast pris och snabb återkoppling.',
-    nearby: ['Kållered', 'Mölndal', 'Annedal', 'Hällesåker'],
-  },
-  {
-    slug: 'majorna',
-    name: 'Majorna',
-    description: 'Majorna, Linné och Masthugget',
-    metaDescription:
-      'Fönsterputs i Majorna – PUTSSON putsar fönster för lägenheter, bostadsrätter och företag i Majorna, Linné och Masthugget. Boka fast pris idag.',
-    nearby: ['Linné', 'Masthugget', 'Stigberget', 'Kungsladugård'],
+      'Fönsterputs i Sävedalen – PUTSSON erbjuder fönsterputsning för villor och bostadsrätter i Sävedalen. Fast pris och pålitlig service.',
+    nearby: ['Partille', 'Jonsered', 'Öjersjö', 'Furulund'],
   },
 ]
 

@@ -32,7 +32,7 @@ describe('generateStaticParams', () => {
     const slugs = generateStaticParams().map((p) => p.ort)
     expect(slugs).toContain('molndal')
     expect(slugs).toContain('kungsbacka')
-    expect(slugs).toContain('stenungsund')
+    expect(slugs).toContain('kungalv')
   })
 })
 
