@@ -40,7 +40,7 @@ export default function Header() {
           className="flex items-center gap-3 text-navy transition hover:opacity-80"
         >
           <Image
-            src="/logo_round_green.png"
+            src="/logo_round_white.png"
             alt=""
             width={44}
             height={44}

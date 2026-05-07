@@ -145,23 +145,23 @@ export default function Hero() {
         className="pointer-events-none absolute top-72 -left-48 h-[420px] w-[420px] rounded-full bg-coral/30 blur-3xl"
       />
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-6 sm:px-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
-        <div>
-          <div
-            ref={eyebrowRef}
-            className="inline-flex items-center gap-2 rounded-full bg-navy/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.3em] text-navy/70"
-            style={{ opacity: 0 }}
-          >
-            <span className="relative flex h-2 w-2" aria-hidden>
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-mint" />
-            </span>
-            Bokar nya kunder i {siteCity}
-          </div>
+      <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10">
+        <div
+          ref={eyebrowRef}
+          className="inline-flex items-center gap-2 rounded-full bg-navy/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.3em] text-navy/70"
+          style={{ opacity: 0 }}
+        >
+          <span className="relative flex h-2 w-2" aria-hidden>
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-mint" />
+          </span>
+          Bokar nya kunder i {siteCity}
+        </div>
 
+        <div className="mt-5 flex items-end gap-6 sm:mt-7 sm:gap-10">
           <h1
             ref={headlineRef}
-            className="mt-5 text-[clamp(2.25rem,9vw,7.5rem)] font-bold leading-[0.95] tracking-[-0.02em] text-navy sm:mt-7 sm:leading-[0.92]"
+            className="text-[clamp(2.25rem,9vw,7.5rem)] font-bold leading-[0.95] tracking-[-0.02em] text-navy sm:leading-[0.92]"
           >
             {headline.map((word, i) => (
               <span
@@ -175,63 +175,67 @@ export default function Hero() {
             ))}
           </h1>
 
-          <p
-            ref={subRef}
-            className="mt-5 max-w-xl text-base text-navy/75 sm:mt-8 sm:text-lg"
-            style={{ opacity: 0 }}
-          >
-            PUTSSON är fönsterputsaren som gör vardagen ljusare. Villor,
-            lägenheter och företag med blanka bleck, rena rutor och ett leende
-            på köpet.
-          </p>
-
           <div
-            ref={ctaRef}
-            className="mt-7 flex flex-wrap items-center gap-4 sm:mt-10"
+            ref={visualRef}
+            className="relative mb-1 shrink-0"
             style={{ opacity: 0 }}
           >
-            <a
-              href="#kontakt"
-              className="group inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-cream shadow-[0_18px_40px_-20px_rgba(24,23,76,0.7)] transition hover:-translate-y-0.5 hover:bg-blue sm:px-8 sm:py-4"
+            <div
+              ref={orbRef}
+              className="relative aspect-square w-[28vw] sm:w-[220px] md:w-[300px] lg:w-[380px]"
             >
-              Få fast pris
-              <span
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-mint to-blue" />
+              <div
                 aria-hidden
-                className="text-base transition-transform group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </a>
-            <a
-              href="#tjanster"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-navy underline decoration-mint decoration-[3px] underline-offset-[6px] transition hover:decoration-coral"
-            >
-              Våra tjänster
-            </a>
+                className="absolute inset-0 rounded-full ring-1 ring-inset ring-navy/10"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Image
+                  src="/logo_man_blue.png"
+                  alt="PUTSSON-figuren med skrapa och hink"
+                  width={420}
+                  height={420}
+                  priority
+                  className="h-[92%] w-[92%] object-contain drop-shadow-[0_20px_30px_rgba(24,23,76,0.25)]"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
-        <div ref={visualRef} className="relative" style={{ opacity: 0 }}>
-          <div
-            ref={orbRef}
-            className="relative mx-auto aspect-square w-full max-w-[260px] sm:max-w-sm md:max-w-md"
+        <p
+          ref={subRef}
+          className="mt-5 max-w-xl text-base text-navy/75 sm:mt-8 sm:text-lg"
+          style={{ opacity: 0 }}
+        >
+          PUTSSON är fönsterputsaren som gör vardagen ljusare. Villor,
+          lägenheter och företag med blanka bleck, rena rutor och ett leende på
+          köpet.
+        </p>
+
+        <div
+          ref={ctaRef}
+          className="mt-7 flex flex-wrap items-center gap-4 sm:mt-10"
+          style={{ opacity: 0 }}
+        >
+          <a
+            href="#kontakt"
+            className="group inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-cream shadow-[0_18px_40px_-20px_rgba(24,23,76,0.7)] transition hover:-translate-y-0.5 hover:bg-blue sm:px-8 sm:py-4"
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-mint to-blue" />
-            <div
+            Få fast pris
+            <span
               aria-hidden
-              className="absolute inset-0 rounded-full ring-1 ring-inset ring-navy/10"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Image
-                src="/logo_man_blue.png"
-                alt="PUTSSON-figuren med skrapa och hink"
-                width={420}
-                height={420}
-                priority
-                className="h-[92%] w-[92%] object-contain drop-shadow-[0_20px_30px_rgba(24,23,76,0.25)]"
-              />
-            </div>
-          </div>
+              className="text-base transition-transform group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </a>
+          <a
+            href="#tjanster"
+            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-navy underline decoration-mint decoration-[3px] underline-offset-[6px] transition hover:decoration-coral"
+          >
+            Våra tjänster
+          </a>
         </div>
       </div>
 

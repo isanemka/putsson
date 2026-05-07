@@ -12,26 +12,23 @@ export default function Footer() {
   return (
     <footer className="mt-auto bg-navy text-cream">
       <div className="mx-auto grid w-full max-w-7xl gap-12 px-6 py-16 sm:px-10 md:grid-cols-[1.4fr_1fr_1fr]">
-        <div className="space-y-5">
-          <div className="flex items-center gap-3">
+        <div className="space-y-5 text-center md:text-left">
+          <div className="flex justify-center md:justify-start">
             <Image
-              src="/logo_round_white.png"
-              alt=""
-              width={48}
-              height={48}
-              className="h-12 w-12 rounded-full"
+              src="/White.svg"
+              alt={siteName}
+              width={720}
+              height={216}
+              className="h-44 w-auto"
             />
-            <span className="text-2xl font-bold tracking-tight">
-              {siteName}
-            </span>
           </div>
-          <p className="max-w-sm text-sm text-cream/70">
+          <p className="mx-auto max-w-sm text-sm text-cream/70 md:mx-0">
             Vi putsar fönster i {siteCity} med stadig hand. Pålitligt,
             prickfritt och alltid med ett leende.
           </p>
         </div>
 
-        <div className="space-y-3 text-sm">
+        <div className="space-y-3 text-center text-sm md:text-left">
           <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-mint">
             Kontakt
           </h3>
@@ -86,7 +83,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="space-y-3 text-sm">
+        <div className="space-y-3 text-center text-sm md:text-left">
           <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-mint">
             Mer info
           </h3>
@@ -111,7 +108,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-cream/10">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-6 py-6 text-xs text-cream/60 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6 sm:px-10">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-2 px-6 py-6 text-center text-xs text-cream/60 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6 sm:px-10 sm:text-left">
           <p>
             &copy; {new Date().getFullYear()} {siteName}. Alla rättigheter
             förbehållna.
