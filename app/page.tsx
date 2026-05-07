@@ -103,7 +103,7 @@ export default function Home() {
               </h2>
               <p className="mt-5 text-base text-cream/70">
                 Från Kungsbacka i söder till Kungälv i norr! Vi täcker 10
-                kommuner och orter kring Göteborg.
+                kommuner och 5 orter – totalt 15 serviceområden kring Göteborg.
               </p>
             </div>
           </Reveal>

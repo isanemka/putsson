@@ -93,11 +93,11 @@ export const areas: Area[] = [
       'Fönsterputs i Partille – professionell fönsterputsning för villor och företag i Partille, Sävedalen, Jonsered och Öjersjö. Fast pris, inga bindningstider.',
     nearby: ['Sävedalen', 'Jonsered', 'Öjersjö', 'Furulund'],
   },
-  // 5 individual cities
+  // 5 orter
   {
     slug: 'olofstorp',
     name: 'Olofstorp',
-    description: 'Olofstorp och omnejd',
+    description: 'Olofstorp med omnejd',
     metaDescription:
       'Fönsterputs i Olofstorp – PUTSSON erbjuder fönsterputsning för villor och bostadsrätter i Olofstorp. Fast pris och pålitlig service.',
     nearby: ['Angered', 'Bergsjön', 'Kortedala', 'Kärralund'],
@@ -105,31 +105,31 @@ export const areas: Area[] = [
   {
     slug: 'grabo',
     name: 'Gråbo',
-    description: 'Gråbo och omnejd',
+    description: 'Gråbo med omnejd',
     metaDescription:
-      'Fönsterputs i Gråbo – professionell fönsterputsning för hem och företag i Gråbo och omnejd. Fast pris och snabb återkoppling.',
+      'Fönsterputs i Gråbo – professionell fönsterputsning för hem och företag i Gråbo med omnejd. Fast pris och snabb återkoppling.',
     nearby: ['Lerum', 'Stenkullen', 'Tollered', 'Floda'],
   },
   {
     slug: 'floda',
     name: 'Floda',
-    description: 'Floda och omnejd',
+    description: 'Floda med omnejd',
     metaDescription:
-      'Fönsterputs i Floda – PUTSSON putsar fönster för villor och bostadsrätter i Floda. Fast pris och pålitlig service.',
+      'Fönsterputs i Floda – PUTSSON putsar fönster för villor och bostadsrätter i Floda med omnejd. Fast pris och pålitlig service.',
     nearby: ['Lerum', 'Gråbo', 'Stenkullen', 'Tollered'],
   },
   {
     slug: 'jonsered',
     name: 'Jonsered',
-    description: 'Jonsered och omnejd',
+    description: 'Jonsered med omnejd',
     metaDescription:
-      'Fönsterputs i Jonsered – professionell fönsterputsning för villor och lägenheter i Jonsered och omnejd. Fast pris och snabb återkoppling.',
+      'Fönsterputs i Jonsered – professionell fönsterputsning för villor och lägenheter i Jonsered med omnejd. Fast pris och snabb återkoppling.',
     nearby: ['Partille', 'Sävedalen', 'Öjersjö', 'Furulund'],
   },
   {
     slug: 'savedalen',
     name: 'Sävedalen',
-    description: 'Sävedalen och omnejd',
+    description: 'Sävedalen med omnejd',
     metaDescription:
       'Fönsterputs i Sävedalen – PUTSSON erbjuder fönsterputsning för villor och bostadsrätter i Sävedalen. Fast pris och pålitlig service.',
     nearby: ['Partille', 'Jonsered', 'Öjersjö', 'Furulund'],
