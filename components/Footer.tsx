@@ -19,7 +19,7 @@ export default function Footer() {
               alt={siteName}
               width={720}
               height={216}
-              className="h-auto w-full max-w-[280px] sm:max-w-[400px]"
+              className="h-auto w-[clamp(70px,15vw,90px)]"
             />
           </div>
           <p className="mx-auto max-w-sm text-sm text-cream/70 md:mx-0">

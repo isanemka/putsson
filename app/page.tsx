@@ -172,7 +172,7 @@ export default function Home() {
       <section id="kontakt" className="scroll-mt-24 bg-cream py-24 sm:py-32">
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[36px] bg-mint p-10 sm:p-16">
+            <div className="relative isolate overflow-hidden rounded-[36px] bg-mint p-10 sm:p-16">
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-coral/60 blur-3xl"
