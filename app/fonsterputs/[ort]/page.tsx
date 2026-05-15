@@ -29,16 +29,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!area) return {}
 
   const title = `Fönsterputs i ${area.name}`
+  const url = `${siteUrl}/fonsterputs/${area.slug}`
   return {
     title,
     description: area.metaDescription,
+    keywords: [
+      `fönsterputs ${area.name}`,
+      `fönsterputsare ${area.name}`,
+      `putsa fönster ${area.name}`,
+      ...area.nearby.map((n) => `fönsterputs ${n}`),
+    ],
     openGraph: {
       title: `${siteName} | ${title}`,
       description: area.metaDescription,
-      url: `${siteUrl}/fonsterputs/${area.slug}`,
+      url,
+      type: 'website',
+      locale: 'sv_SE',
+      siteName,
+      images: [
+        {
+          url: '/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: `${siteName} – ${title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${siteName} | ${title}`,
+      description: area.metaDescription,
+      images: ['/og-image.jpg'],
     },
     alternates: {
-      canonical: `${siteUrl}/fonsterputs/${area.slug}`,
+      canonical: url,
     },
   }
 }
@@ -69,21 +93,44 @@ export default async function OrtPage({ params }: Props) {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: siteName,
+    '@id': `${siteUrl}/fonsterputs/${area.slug}#business`,
+    name: `${siteName} – Fönsterputs i ${area.name}`,
     url: `${siteUrl}/fonsterputs/${area.slug}`,
     email: siteEmail,
     telephone: sitePhoneE164,
+    image: `${siteUrl}/logo_round_green.png`,
+    logo: `${siteUrl}/logo_round_green.png`,
+    priceRange: '$$',
     description: area.metaDescription,
-    areaServed: {
-      '@type': 'City',
-      name: area.name,
-    },
+    areaServed: [
+      { '@type': 'City', name: area.name },
+      ...area.nearby.map((n) => ({ '@type': 'Place' as const, name: n })),
+    ],
     address: {
       '@type': 'PostalAddress',
       addressLocality: siteCity,
       addressRegion: 'Västra Götaland',
       addressCountry: 'SE',
     },
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Hem',
+        item: siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: `Fönsterputs i ${area.name}`,
+        item: `${siteUrl}/fonsterputs/${area.slug}`,
+      },
+    ],
   }
 
   return (
@@ -119,7 +166,7 @@ export default async function OrtPage({ params }: Props) {
               Skinande rena fönster i{' '}
               <span className="text-mint">{area.name}.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base sm:text-lg text-cream/75">
+            <p className="mt-6 max-w-xl text-lg sm:text-xl text-cream/90">
               PUTSSON erbjuder professionell fönsterputsning för villor,
               lägenheter och företag i {area.name} och kringliggande områden som{' '}
               {area.nearby.slice(0, 3).join(', ')}.
@@ -172,7 +219,7 @@ export default async function OrtPage({ params }: Props) {
                 </span>
                 <div>
                   <p className="text-sm font-bold">{usp.label}</p>
-                  <p className="text-sm text-navy/60">{usp.detail}</p>
+                  <p className="text-base text-navy/80">{usp.detail}</p>
                 </div>
               </li>
             ))}
@@ -208,7 +255,7 @@ export default async function OrtPage({ params }: Props) {
                   {step.number}
                 </span>
                 <h3 className="mt-4 text-xl font-bold">{step.title}</h3>
-                <p className="mt-2 text-sm text-navy/65">{step.text}</p>
+                <p className="mt-2 text-base text-navy/85">{step.text}</p>
               </Reveal>
             ))}
           </ol>
@@ -245,7 +292,7 @@ export default async function OrtPage({ params }: Props) {
                     >
                       Få ett fast pris i {area.name}.
                     </h2>
-                    <p className="mt-5 max-w-xl text-base text-navy/80">
+                    <p className="mt-5 max-w-xl text-lg text-navy/90">
                       Fyll i formuläret så återkommer vi snabbt med ett fast
                       pris och förslag på tid i {area.name}.
                     </p>
@@ -323,6 +370,12 @@ export default async function OrtPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(localBusinessSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
         }}
       />
     </main>

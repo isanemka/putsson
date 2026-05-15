@@ -36,7 +36,7 @@ export default function Offer() {
             >
               Fönsterputs för <span className="text-navy">299&nbsp;kr</span>
             </h2>
-            <p className="mt-6 max-w-lg text-base text-navy">
+            <p className="mt-6 max-w-lg text-lg text-navy">
               Rena fönster utan krångel. Noggrant, prisvärt, snabbt och alltid
               med ett skinande resultat för både hem och företag.
             </p>
@@ -60,7 +60,7 @@ export default function Offer() {
                 Fönster på bottenvåningen putsade utvändigt för 299&nbsp;kr
                 efter RUT-avdrag. Fönsterbleck ingår.
               </p>
-              <p className="mt-2 text-sm text-navy">
+              <p className="mt-2 text-base text-navy">
                 Gäller vid första putsningen när du startar ett abonnemang.
               </p>
 
@@ -85,12 +85,12 @@ export default function Offer() {
                         />
                       </svg>
                     </span>
-                    <span className="text-sm">{item}</span>
+                    <span className="text-base">{item}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-8 space-y-3 border-t border-navy/15 pt-6 text-sm text-navy">
+              <div className="mt-8 space-y-3 border-t border-navy/15 pt-6 text-base text-navy">
                 <p>
                   Vill du lägga till t.ex. uterum eller ovanvåning?{' '}
                   <Link

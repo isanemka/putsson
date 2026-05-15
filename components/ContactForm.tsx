@@ -78,7 +78,7 @@ export default function ContactForm() {
         <h3 className="text-xl font-bold text-navy">
           Tack för ditt meddelande!
         </h3>
-        <p className="text-sm text-navy/70">
+        <p className="text-sm text-navy/90">
           Vi återkommer inom 24 timmar med ett fast pris.
         </p>
       </div>
@@ -268,7 +268,7 @@ export default function ContactForm() {
           />
           <label
             htmlFor="cf-privacy"
-            className="cursor-pointer text-sm text-navy/70"
+            className="cursor-pointer text-sm text-navy/90"
           >
             Jag har läst och godkänner{' '}
             <a

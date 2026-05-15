@@ -22,7 +22,7 @@ export default function Footer() {
               className="h-auto w-[clamp(70px,15vw,90px)]"
             />
           </div>
-          <p className="mx-auto max-w-sm text-sm text-cream/70 md:mx-0">
+          <p className="mx-auto max-w-sm text-base text-cream/85 md:mx-0">
             Vi putsar fönster i {siteCity} med stadig hand. Pålitligt,
             prickfritt och alltid med ett leende.
           </p>

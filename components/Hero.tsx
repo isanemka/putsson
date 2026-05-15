@@ -205,7 +205,7 @@ export default function Hero() {
 
         <p
           ref={subRef}
-          className="mt-5 max-w-xl text-base text-navy/75 sm:mt-8 sm:text-lg"
+          className="mt-5 max-w-xl text-lg text-navy/90 sm:mt-8 sm:text-xl"
           style={{ opacity: 0 }}
         >
           PUTSSON är fönsterputsaren som gör vardagen ljusare. Villor,
