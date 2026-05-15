@@ -234,11 +234,11 @@ export default function Home() {
             <div className="relative isolate overflow-hidden rounded-[36px] bg-mint p-6 sm:p-10 lg:p-16">
               <div
                 aria-hidden
-                className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-coral/60 blur-3xl"
+                className="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-coral/60 blur-3xl"
               />
               <div
                 aria-hidden
-                className="pointer-events-none absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-blue/40 blur-3xl"
+                className="pointer-events-none absolute bottom-0 left-0 h-72 w-72 rounded-full bg-blue/40 blur-3xl"
               />
 
               <div className="relative grid gap-12 lg:grid-cols-2 lg:items-start">
