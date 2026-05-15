@@ -32,6 +32,7 @@ export default function About() {
           alt=""
           fill
           sizes="100vw"
+          priority
           className="object-cover"
         />
         <div
