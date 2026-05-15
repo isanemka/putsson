@@ -93,14 +93,53 @@ describe('ContactForm', () => {
     await user.type(screen.getByLabelText(/meddelande/i), 'Jag har 12 fönster.')
 
     // Don't await click — we want to inspect the in-flight state
-    user.click(screen.getByRole('button', { name: /skicka förfrågan/i }))
+    const clickPromise = user.click(
+      screen.getByRole('button', { name: /skicka förfrågan/i })
+    )
 
     await waitFor(() =>
       expect(screen.getByRole('button', { name: /skickar/i })).toBeDisabled()
     )
 
-    // Resolve so React can finish and cleanup
+    // Resolve and await the click promise so React settles before test ends
     resolveSubmit({ success: true })
+    await clickPromise
+  })
+
+  it('shows an error banner when submission fails', async () => {
+    const { sendContactEmail } = await import('@/app/actions/contact')
+    vi.mocked(sendContactEmail).mockResolvedValueOnce({
+      success: false,
+      error: 'Kunde inte skicka meddelandet.',
+    })
+
+    const user = userEvent.setup()
+    render(<ContactForm />)
+
+    await user.type(screen.getByLabelText(/namn/i), 'Anna Andersson')
+    await user.type(screen.getByLabelText(/e-post/i), 'anna@exempel.se')
+    await user.type(screen.getByLabelText(/meddelande/i), 'Jag har 12 fönster.')
+    await user.click(screen.getByRole('button', { name: /skicka förfrågan/i }))
+
+    await waitFor(() => expect(screen.getByRole('alert')).toBeInTheDocument())
+    expect(screen.getByRole('alert')).toHaveTextContent(/något gick fel/i)
+  })
+
+  it('shows an error banner when the action throws', async () => {
+    const { sendContactEmail } = await import('@/app/actions/contact')
+    vi.mocked(sendContactEmail).mockRejectedValueOnce(
+      new Error('Network error')
+    )
+
+    const user = userEvent.setup()
+    render(<ContactForm />)
+
+    await user.type(screen.getByLabelText(/namn/i), 'Anna Andersson')
+    await user.type(screen.getByLabelText(/e-post/i), 'anna@exempel.se')
+    await user.type(screen.getByLabelText(/meddelande/i), 'Jag har 12 fönster.')
+    await user.click(screen.getByRole('button', { name: /skicka förfrågan/i }))
+
+    await waitFor(() => expect(screen.getByRole('alert')).toBeInTheDocument())
   })
 
   it('required fields have the required attribute', () => {

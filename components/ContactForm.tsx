@@ -54,10 +54,14 @@ export default function ContactForm() {
       return
     }
     setState({ status: 'submitting' })
-    const result = await sendContactEmail(form)
-    if (result.success) {
-      setState({ status: 'success' })
-    } else {
+    try {
+      const result = await sendContactEmail(form)
+      if (result.success) {
+        setState({ status: 'success' })
+      } else {
+        setState({ status: 'error' })
+      }
+    } catch {
       setState({ status: 'error' })
     }
   }
