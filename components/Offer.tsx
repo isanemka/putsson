@@ -27,7 +27,7 @@ export default function Offer() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
           {/* Left: intro */}
           <Reveal>
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-navy/70">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-navy">
               Erbjudande
             </p>
             <h2
@@ -36,7 +36,7 @@ export default function Offer() {
             >
               Fönsterputs för <span className="text-navy">299&nbsp;kr</span>
             </h2>
-            <p className="mt-6 max-w-lg text-base text-navy/70">
+            <p className="mt-6 max-w-lg text-base text-navy">
               Rena fönster utan krångel. Noggrant, prisvärt, snabbt och alltid
               med ett skinande resultat för både hem och företag.
             </p>
@@ -53,14 +53,14 @@ export default function Offer() {
           {/* Right: offer card */}
           <Reveal delay={120}>
             <div className="rounded-[28px] border border-navy/15 bg-white/30 p-8 sm:p-10">
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-navy/70">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-navy">
                 Vad ingår
               </p>
               <p className="mt-3 text-lg font-bold text-navy">
                 Fönster på bottenvåningen putsade utvändigt för 299&nbsp;kr
                 efter RUT-avdrag. Fönsterbleck ingår.
               </p>
-              <p className="mt-2 text-sm text-navy/60">
+              <p className="mt-2 text-sm text-navy">
                 Gäller vid första putsningen när du startar ett abonnemang.
               </p>
 
@@ -90,7 +90,7 @@ export default function Offer() {
                 ))}
               </ul>
 
-              <div className="mt-8 space-y-3 border-t border-navy/15 pt-6 text-sm text-navy/60">
+              <div className="mt-8 space-y-3 border-t border-navy/15 pt-6 text-sm text-navy">
                 <p>
                   Vill du lägga till t.ex. uterum eller ovanvåning?{' '}
                   <Link

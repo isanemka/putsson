@@ -24,6 +24,14 @@ vi.mock('@/components/Stats', () => ({
 vi.mock('@/components/Faq', () => ({
   default: () => <section aria-label="Vanliga frågor" />,
 }))
+vi.mock('@/components/Offer', () => ({
+  default: () => (
+    <section aria-labelledby="offer-heading">
+      <h2 id="offer-heading">Fönsterputs för 299 kr</h2>
+      <a href="#kontakt">Boka nu</a>
+    </section>
+  ),
+}))
 vi.mock('@/components/Reveal', () => ({
   default: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }))
@@ -101,5 +109,13 @@ describe('Home page', () => {
     expect(
       screen.getByRole('link', { name: /våra tjänster/i })
     ).toBeInTheDocument()
+  })
+
+  it('renders the offer section with 299 kr and CTA', () => {
+    render(<Home />)
+    expect(
+      screen.getByRole('heading', { name: /fönsterputs för/i })
+    ).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /boka nu/i })).toBeInTheDocument()
   })
 })

@@ -21,7 +21,7 @@ const items = [
   },
   {
     q: 'Putsar ni på vintern?',
-    a: 'Ja, vi jobbar året runt. Vi använder rent vatten och teknik som fungerar även -26°C',
+    a: 'Ja, vi jobbar året runt. Vi använder rent vatten och teknik som fungerar även vid -26°C.',
   },
   {
     q: 'Vilka områden täcker ni?',

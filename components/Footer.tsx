@@ -55,7 +55,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Putsson på Instagram"
-              className="text-cream/85 transition hover:text-mint"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-cream/85 transition hover:text-mint"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Putsson på Facebook"
-              className="text-cream/85 transition hover:text-mint"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-cream/85 transition hover:text-mint"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
