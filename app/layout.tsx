@@ -94,7 +94,7 @@ export default function RootLayout({
   return (
     <html lang="sv">
       <body
-        className={`${montserrat.variable} flex min-h-screen flex-col bg-cream text-navy antialiased`}
+        className={`${montserrat.variable} flex min-h-dvh flex-col bg-cream text-navy antialiased`}
       >
         <a className="skip-link" href="#main-content">
           Hoppa till huvudinnehåll
