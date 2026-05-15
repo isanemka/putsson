@@ -37,7 +37,6 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-lg font-semibold text-navy">
             Personuppgiftsansvarig
           </h2>
-          {/* TODO: Replace company name and contact email. */}
           <p>
             PUTSSON ansvarar för behandlingen av personuppgifter. Kontakta oss
             på info@putsson.se om du har frågor.
