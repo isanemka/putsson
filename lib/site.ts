@@ -14,7 +14,7 @@ const resolveSiteUrl = (value?: string) => {
   }
 
   try {
-    return new URL(value).toString()
+    return new URL(value).toString().replace(/\/$/, '')
   } catch {
     return fallbackSiteUrl
   }
