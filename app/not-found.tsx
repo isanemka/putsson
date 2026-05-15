@@ -1,4 +1,14 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Sidan hittades inte',
+  description: 'Den här sidan kunde tyvärr inte hittas.',
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export default function NotFound() {
   return (
@@ -10,7 +20,7 @@ export default function NotFound() {
         404
       </p>
       <h1 className="mt-3 text-5xl font-bold text-navy">Sidan hittades inte</h1>
-      <p className="mt-4 max-w-md text-base text-navy/75">
+      <p className="mt-4 max-w-md text-lg text-navy/90">
         Den här sidan har vi tyvärr inte putsat fram. Den kan ha flyttats eller
         aldrig funnits.
       </p>

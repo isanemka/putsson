@@ -1,9 +1,17 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Cookiepolicy',
   description:
     'Information om vilka cookies vi använder och hur du kan hantera dem.',
+  alternates: {
+    canonical: `${siteUrl}/cookies`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function CookiePolicyPage() {
@@ -18,18 +26,16 @@ export default function CookiePolicyPage() {
           Cookies
         </p>
         <h1 className="text-3xl font-semibold text-navy">Cookiepolicy</h1>
-        <p className="text-base text-navy/75">
+        <p className="text-lg text-navy/90">
           Vi använder cookies för att förbättra webbplatsens funktion och
           användarupplevelse.
         </p>
       </header>
 
-      <section className="mt-10 space-y-6 text-sm text-navy/75">
+      <section className="mt-10 space-y-6 text-base text-navy/90">
         {/* TODO: Update cookie details to match the customer's analytics setup. */}
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-navy">
-            Vad är cookies?
-          </h2>
+          <h2 className="text-lg font-semibold text-navy">Vad är cookies?</h2>
           <p>
             Cookies är små textfiler som sparas i din webbläsare. De hjälper
             webbplatsen att komma ihåg dina inställningar och förbättra

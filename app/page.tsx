@@ -18,6 +18,7 @@ import About from '@/components/About'
 import ContactForm from '@/components/ContactForm'
 import Offer from '@/components/Offer'
 import { areas } from '@/lib/areas'
+import { faqItems } from '@/lib/faq'
 
 export const metadata: Metadata = {
   title: 'Fönsterputs i Göteborg',
@@ -28,6 +29,9 @@ export const metadata: Metadata = {
     description:
       'Pålitlig fönsterputs i Göteborg. Boka enstaka tillfälle eller löpande avtal.',
     url: siteUrl,
+  },
+  alternates: {
+    canonical: siteUrl,
   },
 }
 
@@ -64,22 +68,76 @@ const colorMap = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
+  '@id': `${siteUrl}/#business`,
   name: siteName,
   url: siteUrl,
   email: siteEmail,
   telephone: sitePhoneE164,
+  image: `${siteUrl}/logo_round_green.png`,
+  logo: `${siteUrl}/logo_round_green.png`,
+  priceRange: '$$',
   description:
     'Fönsterputsare i Göteborg som tar hand om villor, lägenheter, företag och bostadsrättsföreningar.',
-  areaServed: {
+  areaServed: areas.map((area) => ({
     '@type': 'City',
-    name: siteCity,
-  },
+    name: area.name,
+  })),
   address: {
     '@type': 'PostalAddress',
     addressLocality: siteCity,
     addressRegion: 'Västra Götaland',
     addressCountry: 'SE',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 57.7089,
+    longitude: 11.9746,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '17:00',
+    },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Fönsterputstjänster',
+    itemListElement: services.map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: service.title,
+        description: service.text,
+        areaServed: { '@type': 'City', name: siteCity },
+        provider: { '@id': `${siteUrl}/#business` },
+      },
+    })),
+  },
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  url: siteUrl,
+  name: siteName,
+  inLanguage: 'sv-SE',
+  publisher: { '@id': `${siteUrl}/#business` },
+}
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
 }
 
 export default function Home() {
@@ -104,7 +162,7 @@ export default function Home() {
               <h2 className="mt-4 text-4xl font-bold text-cream sm:text-5xl">
                 Vi putsar i hela Göteborgsregionen
               </h2>
-              <p className="mt-5 text-base text-cream/70">
+              <p className="mt-5 text-lg text-cream/85">
                 Från Kungsbacka i söder till Kungälv i norr! Vi täcker 10
                 kommuner och 5 orter – totalt 15 serviceområden kring Göteborg.
               </p>
@@ -141,7 +199,7 @@ export default function Home() {
               <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
                 Allt som har <span className="squeegee">glas</span>, putsar vi.
               </h2>
-              <p className="mt-5 text-lg text-navy/75">
+              <p className="mt-5 text-lg text-navy/90">
                 Vi anpassar oss efter dig. Engångsuppdrag eller löpande avtal,
                 det viktiga är att fönstren blir rätt putsade och att du kan
                 tänka på något annat.
@@ -160,7 +218,7 @@ export default function Home() {
                     className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/15 transition-transform duration-500 group-hover:scale-125"
                   />
                   <h3 className="relative text-2xl font-bold">{s.title}</h3>
-                  <p className="relative mt-3 max-w-md text-sm opacity-90">
+                  <p className="relative mt-3 max-w-md text-base opacity-90">
                     {s.text}
                   </p>
                 </article>
@@ -193,7 +251,7 @@ export default function Home() {
                     <h2 className="mt-4 text-4xl font-bold text-navy sm:text-5xl">
                       Få ett fast pris idag.
                     </h2>
-                    <p className="mt-5 max-w-xl text-base text-navy/80">
+                    <p className="mt-5 max-w-xl text-lg text-navy/90">
                       Fyll i formuläret så återkommer vi snabbt med ett fast
                       pris och förslag på tid. Inga konstigheter.
                     </p>
@@ -244,7 +302,7 @@ export default function Home() {
                       height={56}
                       className="h-14 w-14 rounded-full"
                     />
-                    <p className="text-sm text-navy/80">
+                    <p className="text-base text-navy/90">
                       Vi putsar i hela {siteCity} med omnejd. Berätta var du
                       bor, vi anpassar oss.
                     </p>
@@ -263,6 +321,18 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(organizationSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
         }}
       />
 

@@ -1,9 +1,17 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Integritetspolicy',
   description:
     'Information om hur vi hanterar personuppgifter och skyddar din integritet.',
+  alternates: {
+    canonical: `${siteUrl}/integritetspolicy`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function PrivacyPolicyPage() {
@@ -17,24 +25,21 @@ export default function PrivacyPolicyPage() {
         <p className="text-sm uppercase tracking-[0.3em] text-blue font-bold">
           Integritet
         </p>
-        <h1 className="text-3xl font-semibold text-navy">
-          Integritetspolicy
-        </h1>
-        <p className="text-base text-navy/75">
+        <h1 className="text-3xl font-semibold text-navy">Integritetspolicy</h1>
+        <p className="text-lg text-navy/90">
           Här beskriver vi hur vi samlar in, använder och skyddar dina
           personuppgifter.
         </p>
       </header>
 
-      <section className="mt-10 space-y-6 text-sm text-navy/75">
+      <section className="mt-10 space-y-6 text-base text-navy/90">
         <div className="space-y-2">
           <h2 className="text-lg font-semibold text-navy">
             Personuppgiftsansvarig
           </h2>
-          {/* TODO: Replace company name and contact email. */}
           <p>
-            PUTSSON ansvarar för behandlingen av personuppgifter. Kontakta
-            oss på hej@putsson.se om du har frågor.
+            PUTSSON ansvarar för behandlingen av personuppgifter. Kontakta oss
+            på info@putsson.se om du har frågor.
           </p>
         </div>
 
@@ -63,9 +68,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-navy">
-            Rättslig grund
-          </h2>
+          <h2 className="text-lg font-semibold text-navy">Rättslig grund</h2>
           {/* TODO: Confirm legal basis per customer (e.g. consent vs legitimate interest). */}
           <p>
             Behandlingen sker med stöd av berättigat intresse när du kontaktar
@@ -85,9 +88,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-navy">
-            Dina rättigheter
-          </h2>
+          <h2 className="text-lg font-semibold text-navy">Dina rättigheter</h2>
           {/* TODO: Verify rights text against the customer's data handling process. */}
           <p>
             Du har rätt att begära tillgång till dina uppgifter, rättelse,
@@ -99,7 +100,7 @@ export default function PrivacyPolicyPage() {
         <div className="space-y-2">
           <h2 className="text-lg font-semibold text-navy">Kontakt</h2>
           {/* TODO: Replace with your official contact address. */}
-          <p>Vid frågor om personuppgifter, skriv till hej@putsson.se.</p>
+          <p>Vid frågor om personuppgifter, skriv till info@putsson.se.</p>
         </div>
       </section>
     </main>

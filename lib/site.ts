@@ -1,6 +1,6 @@
 export const siteName = 'PUTSSON'
 export const siteTagline = 'Fönsterputs i Göteborg'
-export const siteEmail = 'hej@putsson.se'
+export const siteEmail = 'info@putsson.se'
 export const sitePhone = '0700 600 780'
 export const sitePhoneE164 = '+46700600780'
 export const sitePhoneHref = 'tel:+46700600780'
@@ -14,7 +14,7 @@ const resolveSiteUrl = (value?: string) => {
   }
 
   try {
-    return new URL(value).toString()
+    return new URL(value).toString().replace(/\/$/, '')
   } catch {
     return fallbackSiteUrl
   }

@@ -56,13 +56,13 @@ export default function About() {
             >
               Vi gillar fönster lika mycket som du gillar utsikten.
             </h2>
-            <p className="mt-5 text-base text-cream/80">
+            <p className="mt-5 text-lg text-cream/90">
               PUTSSON startades i Göteborg av människor som brinner för rena
               fönster och blanka fönsterbleck. Vi är ett litet team som kan vårt
               hantverk: rena verktyg, kontrollerat vatten, ordning och reda.
               Inga genvägar, inget halvdant.
             </p>
-            <p className="mt-4 text-base text-cream/80">
+            <p className="mt-4 text-lg text-cream/90">
               Vi är försäkrade, har F-skatt och pratar gärna med dig
               personligen. Du når oss på telefon, oftast direkt.
             </p>
@@ -91,7 +91,7 @@ export default function About() {
                 <span className="text-3xl font-bold text-mint">{s.n}</span>
                 <div>
                   <h3 className="text-lg font-bold text-cream">{s.title}</h3>
-                  <p className="mt-1 text-sm text-cream/75">{s.text}</p>
+                  <p className="mt-1 text-base text-cream/90">{s.text}</p>
                 </div>
               </div>
             ))}
