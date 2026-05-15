@@ -16,6 +16,7 @@ import Stats from '@/components/Stats'
 import Faq from '@/components/Faq'
 import About from '@/components/About'
 import ContactForm from '@/components/ContactForm'
+import Offer from '@/components/Offer'
 import { areas } from '@/lib/areas'
 
 export const metadata: Metadata = {
@@ -90,6 +91,8 @@ export default function Home() {
 
       <Stats />
 
+      <Offer />
+
       {/* Service areas */}
       <section className="bg-navy py-24 sm:py-32">
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
@@ -99,7 +102,7 @@ export default function Home() {
                 Serviceområde
               </p>
               <h2 className="mt-4 text-4xl font-bold text-cream sm:text-5xl">
-                Vi putsar i hela Göteborgsregionen.
+                Vi putsar i hela Göteborgsregionen
               </h2>
               <p className="mt-5 text-base text-cream/70">
                 Från Kungsbacka i söder till Kungälv i norr! Vi täcker 10
@@ -167,12 +170,10 @@ export default function Home() {
         </div>
       </section>
 
-      <Faq />
-
       <section id="kontakt" className="scroll-mt-24 bg-cream py-24 sm:py-32">
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
           <Reveal>
-            <div className="relative isolate overflow-hidden rounded-[36px] bg-mint p-10 sm:p-16">
+            <div className="relative isolate overflow-hidden rounded-[36px] bg-mint p-6 sm:p-10 lg:p-16">
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-coral/60 blur-3xl"
@@ -264,6 +265,8 @@ export default function Home() {
           __html: JSON.stringify(organizationSchema),
         }}
       />
+
+      <Faq />
     </main>
   )
 }
