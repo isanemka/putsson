@@ -13,6 +13,7 @@ import {
 import { areas, getAreaBySlug } from '@/lib/areas'
 import Reveal from '@/components/Reveal'
 import ContactForm from '@/components/ContactForm'
+import Offer from '@/components/Offer'
 
 type Props = {
   params: Promise<{ ort: string }>
@@ -118,7 +119,7 @@ export default async function OrtPage({ params }: Props) {
               Skinande rena fönster i{' '}
               <span className="text-mint">{area.name}.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-cream/75">
+            <p className="mt-6 max-w-xl text-base sm:text-lg text-cream/75">
               PUTSSON erbjuder professionell fönsterputsning för villor,
               lägenheter och företag i {area.name} och kringliggande områden som{' '}
               {area.nearby.slice(0, 3).join(', ')}.
@@ -179,6 +180,8 @@ export default async function OrtPage({ params }: Props) {
         </div>
       </section>
 
+      <Offer />
+
       {/* How it works */}
       <section className="bg-cream py-24 sm:py-32">
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
@@ -220,7 +223,7 @@ export default async function OrtPage({ params }: Props) {
       >
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
           <Reveal>
-            <div className="relative isolate overflow-hidden rounded-[36px] bg-mint p-10 sm:p-16">
+            <div className="relative isolate overflow-hidden rounded-[36px] bg-mint p-6 sm:p-10 lg:p-16">
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-coral/60 blur-3xl"

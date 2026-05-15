@@ -132,17 +132,17 @@ export default function Hero() {
     }
   }, [])
 
-  const headline = ['Glasklart', 'putsat', 'i', siteCity + '.']
+  const headline = ['Rena fönster', 'utan krångel']
 
   return (
     <section className="relative isolate overflow-hidden bg-cream pt-12 pb-20 sm:pt-20 sm:pb-28">
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-40 -right-32 h-[560px] w-[560px] rounded-full bg-mint/45 blur-3xl"
+        className="pointer-events-none absolute -top-40 -right-32 h-140 w-140 rounded-full bg-mint/45 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute top-72 -left-48 h-[420px] w-[420px] rounded-full bg-coral/30 blur-3xl"
+        className="pointer-events-none absolute top-72 -left-48 h-105 w-105 rounded-full bg-coral/30 blur-3xl"
       />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10">
@@ -158,7 +158,7 @@ export default function Hero() {
           Bokar nya kunder i {siteCity}
         </div>
 
-        <div className="mt-5 flex items-end gap-6 sm:mt-7 sm:gap-10">
+        <div className="mt-5 flex items-end gap-3 sm:mt-7 sm:gap-10">
           <h1
             ref={headlineRef}
             className="text-[clamp(2.25rem,9vw,7.5rem)] font-bold leading-[0.95] tracking-[-0.02em] text-navy sm:leading-[0.92]"
@@ -169,7 +169,7 @@ export default function Hero() {
                 className="mr-3 inline-block overflow-hidden pb-1 align-bottom"
               >
                 <span data-word className="inline-block">
-                  {i === 0 ? <span className="text-mint">{word}</span> : word}
+                  {i === 1 ? <span className="text-mint">{word}</span> : word}
                 </span>
               </span>
             ))}
@@ -182,9 +182,9 @@ export default function Hero() {
           >
             <div
               ref={orbRef}
-              className="relative aspect-square w-[28vw] sm:w-[220px] md:w-[300px] lg:w-[380px]"
+              className="relative aspect-square w-[18vw] sm:w-55 md:w-75 lg:w-95"
             >
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-mint to-blue" />
+              <div className="absolute inset-0 rounded-full bg-linear-to-br from-mint to-blue" />
               <div
                 aria-hidden
                 className="absolute inset-0 rounded-full ring-1 ring-inset ring-navy/10"

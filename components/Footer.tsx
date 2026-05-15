@@ -49,17 +49,18 @@ export default function Footer() {
             </a>
           </p>
           <p className="text-cream/60">{siteCity}, Sverige</p>
-          <p>
+          <div className="flex justify-center gap-4 md:justify-start">
             <a
               href="https://www.instagram.com/putsson.se"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-cream/85 transition hover:text-mint"
+              aria-label="Putsson på Instagram"
+              className="text-cream/85 transition hover:text-mint"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -78,9 +79,30 @@ export default function Footer() {
                   stroke="none"
                 />
               </svg>
-              @putsson.se
             </a>
-          </p>
+            <a
+              href="https://www.facebook.com/Putsson.se"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Putsson på Facebook"
+              className="text-cream/85 transition hover:text-mint"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+          </div>
         </div>
 
         <div className="space-y-3 text-center text-sm md:text-left">

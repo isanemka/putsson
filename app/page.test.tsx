@@ -6,7 +6,7 @@ import Home from './page'
 vi.mock('@/components/Hero', () => ({
   default: () => (
     <section>
-      <h1>Glasklart putsat i Göteborg.</h1>
+      <h1>Rena fönster utan krångel</h1>
       <a href="#kontakt">Få fast pris</a>
       <a href="#tjanster">Våra tjänster</a>
     </section>

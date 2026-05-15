@@ -21,7 +21,7 @@ const items = [
   },
   {
     q: 'Putsar ni på vintern?',
-    a: 'Ja, vi jobbar året runt. Vi använder rent vatten och teknik som fungerar även i kyla, så länge det inte är riktigt riktigt kallt.',
+    a: 'Ja, vi jobbar året runt. Vi använder rent vatten och teknik som fungerar även -26°C',
   },
   {
     q: 'Vilka områden täcker ni?',
@@ -63,7 +63,7 @@ export default function Faq() {
                   aria-controls={`faq-panel-${i}`}
                   id={`faq-trigger-${i}`}
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-6 py-6 text-left"
+                  className="flex w-full items-center justify-between gap-4 py-6 text-left sm:gap-6"
                 >
                   <span className="text-lg font-bold text-navy sm:text-xl">
                     {item.q}
