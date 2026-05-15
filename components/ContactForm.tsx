@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { sendContactEmail } from '@/app/actions/contact'
 
 type Field = 'name' | 'email' | 'phone' | 'address' | 'message'
 
@@ -53,9 +54,12 @@ export default function ContactForm() {
       return
     }
     setState({ status: 'submitting' })
-    // TODO: replace with Server Action / AWS SES call
-    await new Promise((r) => setTimeout(r, 800))
-    setState({ status: 'success' })
+    const result = await sendContactEmail(form)
+    if (result.success) {
+      setState({ status: 'success' })
+    } else {
+      setState({ status: 'error' })
+    }
   }
 
   if (state.status === 'success') {
@@ -75,6 +79,7 @@ export default function ContactForm() {
   }
 
   const isSubmitting = state.status === 'submitting'
+  const hasError = state.status === 'error'
 
   return (
     <form
@@ -83,6 +88,14 @@ export default function ContactForm() {
       aria-label="Kontaktformulär"
       className="grid gap-4"
     >
+      {hasError && (
+        <p
+          role="alert"
+          className="rounded-2xl bg-coral/15 px-5 py-3 text-sm font-medium text-coral"
+        >
+          Något gick fel. Försök igen eller ring oss direkt.
+        </p>
+      )}
       {/* Name */}
       <div>
         <label

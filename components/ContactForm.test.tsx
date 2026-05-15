@@ -1,7 +1,11 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import ContactForm from './ContactForm'
+
+vi.mock('@/app/actions/contact', () => ({
+  sendContactEmail: vi.fn().mockResolvedValue({ success: true }),
+}))
 
 afterEach(cleanup)
 
@@ -71,6 +75,16 @@ describe('ContactForm', () => {
   })
 
   it('disables the submit button while submitting', async () => {
+    const { sendContactEmail } = await import('@/app/actions/contact')
+    // Use a deferred promise so the component stays in "submitting" state
+    let resolveSubmit!: (v: { success: true }) => void
+    vi.mocked(sendContactEmail).mockImplementationOnce(
+      () =>
+        new Promise((res) => {
+          resolveSubmit = res
+        })
+    )
+
     const user = userEvent.setup()
     render(<ContactForm />)
 
@@ -78,10 +92,15 @@ describe('ContactForm', () => {
     await user.type(screen.getByLabelText(/e-post/i), 'anna@exempel.se')
     await user.type(screen.getByLabelText(/meddelande/i), 'Jag har 12 fönster.')
 
-    const button = screen.getByRole('button', { name: /skicka förfrågan/i })
-    await user.click(button)
+    // Don't await click — we want to inspect the in-flight state
+    user.click(screen.getByRole('button', { name: /skicka förfrågan/i }))
 
-    expect(screen.getByRole('button', { name: /skickar/i })).toBeDisabled()
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: /skickar/i })).toBeDisabled()
+    )
+
+    // Resolve so React can finish and cleanup
+    resolveSubmit({ success: true })
   })
 
   it('required fields have the required attribute', () => {
