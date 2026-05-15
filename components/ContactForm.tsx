@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { sendContactEmail } from '@/app/actions/contact'
 
-type Field = 'name' | 'email' | 'phone' | 'address' | 'message'
+type Field = 'name' | 'email' | 'phone' | 'address' | 'message' | 'privacy'
 
 type FormState =
   | { status: 'idle' }
@@ -18,6 +19,7 @@ export default function ContactForm() {
     address: '',
     message: '',
   })
+  const [privacy, setPrivacy] = useState(false)
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({})
   const [state, setState] = useState<FormState>({ status: 'idle' })
 
@@ -30,6 +32,8 @@ export default function ContactForm() {
       e.email = 'Ange en giltig e-postadress.'
     }
     if (!form.message.trim()) e.message = 'Berätta lite om dina fönster.'
+    if (!privacy)
+      e.privacy = 'Du måste godkänna integritetspolicyn för att skicka.'
     return e
   }
 
@@ -53,9 +57,16 @@ export default function ContactForm() {
       return
     }
     setState({ status: 'submitting' })
-    // TODO: replace with Server Action / AWS SES call
-    await new Promise((r) => setTimeout(r, 800))
-    setState({ status: 'success' })
+    try {
+      const result = await sendContactEmail(form)
+      if (result.success) {
+        setState({ status: 'success' })
+      } else {
+        setState({ status: 'error' })
+      }
+    } catch {
+      setState({ status: 'error' })
+    }
   }
 
   if (state.status === 'success') {
@@ -75,6 +86,7 @@ export default function ContactForm() {
   }
 
   const isSubmitting = state.status === 'submitting'
+  const hasError = state.status === 'error'
 
   return (
     <form
@@ -83,6 +95,14 @@ export default function ContactForm() {
       aria-label="Kontaktformulär"
       className="grid gap-4"
     >
+      {hasError && (
+        <p
+          role="alert"
+          className="rounded-2xl bg-coral/15 px-5 py-3 text-sm font-medium text-coral"
+        >
+          Något gick fel. Försök igen eller ring oss direkt.
+        </p>
+      )}
       {/* Name */}
       <div>
         <label
@@ -224,6 +244,54 @@ export default function ContactForm() {
             className="mt-1.5 text-xs text-coral"
           >
             {errors.message}
+          </p>
+        )}
+      </div>
+
+      {/* Privacy policy */}
+      <div>
+        <div className="flex items-start gap-3">
+          <input
+            id="cf-privacy"
+            name="privacy"
+            type="checkbox"
+            checked={privacy}
+            onChange={(e) => {
+              setPrivacy(e.target.checked)
+              if (errors.privacy)
+                setErrors((prev) => ({ ...prev, privacy: undefined }))
+            }}
+            required
+            aria-invalid={!!errors.privacy}
+            aria-describedby={errors.privacy ? 'cf-privacy-error' : undefined}
+            className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-navy"
+          />
+          <label
+            htmlFor="cf-privacy"
+            className="cursor-pointer text-sm text-navy/70"
+          >
+            Jag har läst och godkänner{' '}
+            <a
+              href="/integritetspolicy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 transition hover:text-navy"
+            >
+              integritetspolicyn
+            </a>
+            .{' '}
+            <span aria-hidden className="text-coral">
+              *
+            </span>
+          </label>
+        </div>
+        {errors.privacy && (
+          <p
+            id="cf-privacy-error"
+            role="alert"
+            className="mt-1.5 text-xs text-coral"
+          >
+            {errors.privacy}
           </p>
         )}
       </div>
