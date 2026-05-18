@@ -171,16 +171,7 @@ export default function Home() {
 
           <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {areas
-              .filter(
-                (area) =>
-                  ![
-                    'olofstorp',
-                    'grabo',
-                    'floda',
-                    'jonsered',
-                    'savedalen',
-                  ].includes(area.slug)
-              )
+              .filter((area) => area.type === 'municipality')
               .map((area, i) => (
                 <Reveal
                   as="li"
