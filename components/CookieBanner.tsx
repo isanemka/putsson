@@ -2,22 +2,23 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-
-const STORAGE_KEY = 'cookie_consent'
+import { CONSENT_CHANGE_EVENT, CONSENT_STORAGE_KEY } from '@/lib/consent'
 
 export default function CookieBanner() {
   // ssr: false guarantees this only runs on the client, so localStorage is always available
   const [visible, setVisible] = useState(
-    () => !localStorage.getItem(STORAGE_KEY)
+    () => !localStorage.getItem(CONSENT_STORAGE_KEY)
   )
 
   function accept() {
-    localStorage.setItem(STORAGE_KEY, 'accepted')
+    localStorage.setItem(CONSENT_STORAGE_KEY, 'accepted')
+    window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT))
     setVisible(false)
   }
 
   function dismiss() {
-    localStorage.setItem(STORAGE_KEY, 'dismissed')
+    localStorage.setItem(CONSENT_STORAGE_KEY, 'dismissed')
+    window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT))
     setVisible(false)
   }
 
