@@ -21,7 +21,6 @@ export default function CookiePolicyPage() {
       className="mx-auto w-full max-w-3xl px-6 pb-20 pt-16 sm:px-10"
     >
       <header className="space-y-3">
-        {/* TODO: Update headings and intro text to match the customer's cookie usage. */}
         <p className="text-sm uppercase tracking-[0.3em] text-blue font-bold">
           Cookies
         </p>
@@ -33,7 +32,6 @@ export default function CookiePolicyPage() {
       </header>
 
       <section className="mt-10 space-y-6 text-base text-navy/90">
-        {/* TODO: Update cookie details to match the customer's analytics setup. */}
         <div className="space-y-2">
           <h2 className="text-lg font-semibold text-navy">Vad är cookies?</h2>
           <p>
@@ -47,7 +45,6 @@ export default function CookiePolicyPage() {
           <h2 className="text-lg font-semibold text-navy">
             Vilka cookies använder vi?
           </h2>
-          {/* TODO: List the exact cookies (names, purpose, duration) when known. */}
           <p>
             I dagsläget använder vi endast nödvändiga cookies som krävs för att
             webbplatsen ska fungera. Om vi aktiverar analysverktyg kommer du

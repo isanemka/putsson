@@ -21,7 +21,6 @@ export default function PrivacyPolicyPage() {
       className="mx-auto w-full max-w-3xl px-6 pb-20 pt-16 sm:px-10"
     >
       <header className="space-y-3">
-        {/* TODO: Update headings and intro text to match the customer's policy. */}
         <p className="text-sm uppercase tracking-[0.3em] text-blue font-bold">
           Integritet
         </p>
@@ -47,7 +46,6 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-lg font-semibold text-navy">
             Vilka uppgifter samlar vi in?
           </h2>
-          {/* TODO: Confirm which data fields you actually collect. */}
           <ul className="list-disc space-y-1 pl-6">
             <li>
               Kontaktformulär: namn, e-post, telefon (valfritt), meddelande.
@@ -69,7 +67,6 @@ export default function PrivacyPolicyPage() {
 
         <div className="space-y-2">
           <h2 className="text-lg font-semibold text-navy">Rättslig grund</h2>
-          {/* TODO: Confirm legal basis per customer (e.g. consent vs legitimate interest). */}
           <p>
             Behandlingen sker med stöd av berättigat intresse när du kontaktar
             oss. Om vi använder analysverktyg krävs samtycke via cookie-banner.
@@ -80,7 +77,6 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-lg font-semibold text-navy">
             Hur länge sparas uppgifterna?
           </h2>
-          {/* TODO: Update retention periods to match your policy. */}
           <p>
             Kontaktuppgifter sparas tills ärendet är avslutat och därefter i
             högst 12 månader. Loggar sparas enligt webbhotellens rutiner.
@@ -89,7 +85,6 @@ export default function PrivacyPolicyPage() {
 
         <div className="space-y-2">
           <h2 className="text-lg font-semibold text-navy">Dina rättigheter</h2>
-          {/* TODO: Verify rights text against the customer's data handling process. */}
           <p>
             Du har rätt att begära tillgång till dina uppgifter, rättelse,
             radering, begränsning och dataportabilitet. Du kan också lämna
@@ -99,7 +94,6 @@ export default function PrivacyPolicyPage() {
 
         <div className="space-y-2">
           <h2 className="text-lg font-semibold text-navy">Kontakt</h2>
-          {/* TODO: Replace with your official contact address. */}
           <p>Vid frågor om personuppgifter, skriv till info@putsson.se.</p>
         </div>
       </section>
