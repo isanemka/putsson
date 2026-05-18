@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import { Montserrat } from 'next/font/google'
 import { siteName, siteUrl, siteUrlObj } from '@/lib/site'
 import Header from '@/components/Header'
@@ -104,6 +105,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <CookieBannerLoader />
+        <Analytics />
       </body>
     </html>
   )
