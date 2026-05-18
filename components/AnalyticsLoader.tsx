@@ -2,23 +2,23 @@
 
 import { useEffect, useState } from 'react'
 import { Analytics } from '@vercel/analytics/next'
-
-const STORAGE_KEY = 'cookie_consent'
+import { CONSENT_CHANGE_EVENT, getConsentValue } from '@/lib/consent'
 
 // Renders Vercel Analytics only after the user has explicitly accepted cookies.
-// Listens for the custom 'consent-change' event dispatched by CookieBanner.
+// Listens for the custom CONSENT_CHANGE_EVENT dispatched by CookieBanner.
 export default function AnalyticsLoader() {
   const [consent, setConsent] = useState<string | null>(() =>
-    typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null
+    typeof window !== 'undefined' ? getConsentValue() : null
   )
 
   useEffect(() => {
     function onConsentChange() {
-      setConsent(localStorage.getItem(STORAGE_KEY))
+      setConsent(getConsentValue())
     }
 
-    window.addEventListener('consent-change', onConsentChange)
-    return () => window.removeEventListener('consent-change', onConsentChange)
+    window.addEventListener(CONSENT_CHANGE_EVENT, onConsentChange)
+    return () =>
+      window.removeEventListener(CONSENT_CHANGE_EVENT, onConsentChange)
   }, [])
 
   if (consent !== 'accepted') return null
