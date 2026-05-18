@@ -33,7 +33,8 @@ export default function CookieBanner() {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-navy/80">
           Vi använder nödvändiga cookies för att webbplatsen ska fungera
-          korrekt. Inga spårningscookies används.{' '}
+          korrekt. Vi använder även Vercel Analytics – ett cookielöst verktyg
+          utan personspårning – för att förstå hur webbplatsen används.{' '}
           <Link
             href="/cookies"
             className="font-medium text-navy underline underline-offset-2 hover:text-mint"

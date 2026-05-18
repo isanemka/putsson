@@ -46,9 +46,11 @@ export default function CookiePolicyPage() {
             Vilka cookies använder vi?
           </h2>
           <p>
-            I dagsläget använder vi endast nödvändiga cookies som krävs för att
-            webbplatsen ska fungera. Om vi aktiverar analysverktyg kommer du
-            alltid att få lämna samtycke i en cookie-banner.
+            Vi använder endast nödvändiga cookies som krävs för att webbplatsen
+            ska fungera. För att förstå hur webbplatsen används har vi aktiverat
+            Vercel Analytics – ett cookielöst analysverktyg som{' '}
+            <strong>inte lagrar cookies</strong> och inte spårar dig mellan
+            besök. Data anonymiseras och ingen personlig information sparas.
           </p>
         </div>
 
