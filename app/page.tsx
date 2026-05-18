@@ -160,31 +160,38 @@ export default function Home() {
                 Serviceområde
               </p>
               <h2 className="mt-4 text-4xl font-bold text-cream sm:text-5xl">
-                Vi putsar i hela Göteborgsregionen
+                Vi putsar i hela Göteborgs{'\u00AD'}regionen
               </h2>
               <p className="mt-5 text-lg text-cream/85">
                 Från Kungsbacka i söder till Kungälv i norr! Vi täcker 10
-                kommuner och 5 orter – totalt 15 serviceområden kring Göteborg.
+                kommuner kring Göteborg.
               </p>
             </div>
           </Reveal>
 
           <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            {areas.map((area, i) => (
-              <Reveal as="li" key={area.slug} delay={i * 40} className="h-full">
-                <Link
-                  href={`/fonsterputs/${area.slug}`}
-                  className="group flex h-full flex-col gap-1 rounded-2xl border border-cream/10 bg-cream/5 px-5 py-4 transition hover:border-mint/40 hover:bg-cream/10"
+            {areas
+              .filter((area) => area.type === 'municipality')
+              .map((area, i) => (
+                <Reveal
+                  as="li"
+                  key={area.slug}
+                  delay={i * 40}
+                  className="h-full"
                 >
-                  <span className="text-sm font-bold text-cream group-hover:text-mint">
-                    {area.name}
-                  </span>
-                  <span className="text-xs text-cream/50">
-                    {area.description}
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
+                  <Link
+                    href={`/fonsterputs/${area.slug}`}
+                    className="group flex h-full flex-col gap-1 rounded-2xl border border-cream/10 bg-cream/5 px-5 py-4 transition hover:border-mint/40 hover:bg-cream/10"
+                  >
+                    <span className="text-sm font-bold text-cream group-hover:text-mint">
+                      {area.name}
+                    </span>
+                    <span className="text-xs text-cream/50">
+                      {area.description}
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
           </ul>
         </div>
       </section>

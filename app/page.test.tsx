@@ -72,11 +72,11 @@ describe('Home page', () => {
       .filter((el) => el.getAttribute('href') === '/fonsterputs/molndal')
     expect(molndalLinks).toHaveLength(1)
     expect(screen.getByRole('link', { name: /partille/i })).toBeInTheDocument()
-    // Should have 15 area links
+    // Should have 10 area links (municipalities only, orter excluded)
     const areaLinks = screen
       .getAllByRole('link')
       .filter((el) => el.getAttribute('href')?.startsWith('/fonsterputs/'))
-    expect(areaLinks).toHaveLength(15)
+    expect(areaLinks).toHaveLength(10)
   })
 
   it('renders the om oss section heading', () => {

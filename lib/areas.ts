@@ -1,8 +1,12 @@
+export type AreaType = 'municipality' | 'ort'
+
 export type Area = {
   /** URL-safe slug, used in /fonsterputs/[ort] */
   slug: string
   /** Display name shown to users */
   name: string
+  /** Whether this is a municipality or a smaller ort */
+  type: AreaType
   /** Short description of the area for the service areas grid */
   description: string
   /** SEO-friendly description used in page metadata */
@@ -16,6 +20,7 @@ export const areas: Area[] = [
   {
     slug: 'ale',
     name: 'Ale',
+    type: 'municipality',
     description: 'Bohus, Nödinge, Surte och Älvängen',
     metaDescription:
       'Fönsterputs i Ale – PUTSSON erbjuder professionell fönsterputsning för villor och företag i Bohus, Nödinge, Nol, Surte och Älvängen. Boka fast pris idag.',
@@ -24,6 +29,7 @@ export const areas: Area[] = [
   {
     slug: 'alingsas',
     name: 'Alingsås',
+    type: 'municipality',
     description: 'Alingsås, Ingared och Sollebrunn',
     metaDescription:
       'Fönsterputs i Alingsås – professionell fönsterputsning för villor och företag i Alingsås, Ingared och Sollebrunn. Fast pris och pålitlig service.',
@@ -32,6 +38,7 @@ export const areas: Area[] = [
   {
     slug: 'boras',
     name: 'Borås',
+    type: 'municipality',
     description: 'Borås, Fristad och Sandared',
     metaDescription:
       'Fönsterputs i Borås – PUTSSON erbjuder fönsterputsning för villor, lägenheter och företag i Borås, Fristad, Sandared och Sjömarken. Boka fast pris idag.',
@@ -40,6 +47,7 @@ export const areas: Area[] = [
   {
     slug: 'goteborg',
     name: 'Göteborg',
+    type: 'municipality',
     description: 'Hela Göteborgs kommun',
     metaDescription:
       'Fönsterputs i Göteborg – PUTSSON putsar fönster för villor, lägenheter och företag i hela Göteborg. Från Askim till Hisingen och Majorna. Boka fast pris idag.',
@@ -48,6 +56,7 @@ export const areas: Area[] = [
   {
     slug: 'harryda',
     name: 'Härryda',
+    type: 'municipality',
     description: 'Mölnlycke, Landvetter och Hindås',
     metaDescription:
       'Fönsterputs i Härryda – PUTSSON erbjuder fönsterputsning i Mölnlycke, Landvetter, Hindås och hela Härryda kommun. Fast pris och pålitliga rutiner.',
@@ -56,6 +65,7 @@ export const areas: Area[] = [
   {
     slug: 'kungsbacka',
     name: 'Kungsbacka',
+    type: 'municipality',
     description: 'Kungsbacka, Onsala och Särö',
     metaDescription:
       'Fönsterputs i Kungsbacka – PUTSSON putsar fönster för villor, lägenheter och bostadsrättsföreningar i Kungsbacka, Onsala och Särö. Snabb återkoppling och fast pris.',
@@ -64,6 +74,7 @@ export const areas: Area[] = [
   {
     slug: 'kungalv',
     name: 'Kungälv',
+    type: 'municipality',
     description: 'Kungälv, Ytterby och Marstrand',
     metaDescription:
       'Fönsterputs i Kungälv – PUTSSON putsar fönster för villor, lägenheter och bostadsrättsföreningar i Kungälv, Ytterby och Marstrand. Boka fast pris idag.',
@@ -72,6 +83,7 @@ export const areas: Area[] = [
   {
     slug: 'lerum',
     name: 'Lerum',
+    type: 'municipality',
     description: 'Lerum, Stenkullen och Gråbo',
     metaDescription:
       'Fönsterputs i Lerum – professionell och pålitlig fönsterputsning för hem och företag i Lerum, Gråbo, Floda och Stenkullen. Boka fast pris online.',
@@ -80,6 +92,7 @@ export const areas: Area[] = [
   {
     slug: 'molndal',
     name: 'Mölndal',
+    type: 'municipality',
     description: 'Mölndal, Lindome och Kållered',
     metaDescription:
       'Fönsterputs i Mölndal – PUTSSON erbjuder professionell fönsterputsning för villor, lägenheter och företag i Mölndal, Lindome och Kållered. Boka fast pris idag.',
@@ -88,6 +101,7 @@ export const areas: Area[] = [
   {
     slug: 'partille',
     name: 'Partille',
+    type: 'municipality',
     description: 'Partille, Sävedalen och Jonsered',
     metaDescription:
       'Fönsterputs i Partille – professionell fönsterputsning för villor och företag i Partille, Sävedalen, Jonsered och Öjersjö. Fast pris, inga bindningstider.',
@@ -97,6 +111,7 @@ export const areas: Area[] = [
   {
     slug: 'olofstorp',
     name: 'Olofstorp',
+    type: 'ort',
     description: 'Olofstorp med omnejd',
     metaDescription:
       'Fönsterputs i Olofstorp – PUTSSON erbjuder fönsterputsning för villor och bostadsrätter i Olofstorp. Fast pris och pålitlig service.',
@@ -105,6 +120,7 @@ export const areas: Area[] = [
   {
     slug: 'grabo',
     name: 'Gråbo',
+    type: 'ort',
     description: 'Gråbo med omnejd',
     metaDescription:
       'Fönsterputs i Gråbo – professionell fönsterputsning för hem och företag i Gråbo med omnejd. Fast pris och snabb återkoppling.',
@@ -113,6 +129,7 @@ export const areas: Area[] = [
   {
     slug: 'floda',
     name: 'Floda',
+    type: 'ort',
     description: 'Floda med omnejd',
     metaDescription:
       'Fönsterputs i Floda – PUTSSON putsar fönster för villor och bostadsrätter i Floda med omnejd. Fast pris och pålitlig service.',
@@ -121,6 +138,7 @@ export const areas: Area[] = [
   {
     slug: 'jonsered',
     name: 'Jonsered',
+    type: 'ort',
     description: 'Jonsered med omnejd',
     metaDescription:
       'Fönsterputs i Jonsered – professionell fönsterputsning för villor och lägenheter i Jonsered med omnejd. Fast pris och snabb återkoppling.',
@@ -129,6 +147,7 @@ export const areas: Area[] = [
   {
     slug: 'savedalen',
     name: 'Sävedalen',
+    type: 'ort',
     description: 'Sävedalen med omnejd',
     metaDescription:
       'Fönsterputs i Sävedalen – PUTSSON erbjuder fönsterputsning för villor och bostadsrätter i Sävedalen. Fast pris och pålitlig service.',
