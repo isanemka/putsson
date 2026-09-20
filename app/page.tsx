@@ -17,6 +17,7 @@ import Faq from '@/components/Faq'
 import About from '@/components/About'
 import ContactForm from '@/components/ContactForm'
 import Offer from '@/components/Offer'
+import Reco from '@/components/Reco'
 import { areas } from '@/lib/areas'
 import { faqItems } from '@/lib/faq'
 
@@ -144,6 +145,8 @@ export default function Home() {
   return (
     <main id="main-content" className="bg-cream text-navy">
       <Hero />
+
+      <Reco />
 
       <About />
 
