@@ -1,23 +1,15 @@
 'use client'
 
-import { useState, useSyncExternalStore } from 'react'
-import { CONSENT_CHANGE_EVENT, getConsentValue } from '@/lib/consent'
+import { useState } from 'react'
 
 const RECO_WIDGET_SRC =
   'https://widget.reco.se/v2/venues/6089819/horizontal/xlarge?inverted=false&border=true&lang=sv'
 
-function subscribe(onChange: () => void) {
-  window.addEventListener(CONSENT_CHANGE_EVENT, onChange)
-  return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onChange)
-}
-
-// The widget is a third-party embed, so it stays unloaded until the visitor
-// accepts cookies site-wide or opts in to this one embed.
+// Reco is a third party that may set its own cookies. The site-wide consent
+// banner only covers necessary cookies and cookieless analytics, so accepting
+// it is not informed consent for this embed — it loads on explicit opt-in only.
 export default function Reco() {
-  const consent = useSyncExternalStore(subscribe, getConsentValue, () => null)
-  const [optedIn, setOptedIn] = useState(false)
-
-  const showWidget = consent === 'accepted' || optedIn
+  const [showWidget, setShowWidget] = useState(false)
 
   return (
     <section
@@ -49,7 +41,7 @@ export default function Reco() {
             </div>
             <button
               type="button"
-              onClick={() => setOptedIn(true)}
+              onClick={() => setShowWidget(true)}
               className="rounded-full bg-navy px-6 py-3 text-sm font-bold text-cream transition hover:bg-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
             >
               Visa omdömen

@@ -1,17 +1,10 @@
-import { render, screen, act, cleanup, fireEvent } from '@testing-library/react'
+import { render, screen, cleanup, fireEvent } from '@testing-library/react'
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import Reco from './Reco'
-import { CONSENT_CHANGE_EVENT, CONSENT_STORAGE_KEY } from '@/lib/consent'
-
-function setConsent(value: string | null) {
-  if (value === null) {
-    localStorage.removeItem(CONSENT_STORAGE_KEY)
-  } else {
-    localStorage.setItem(CONSENT_STORAGE_KEY, value)
-  }
-}
+import { CONSENT_STORAGE_KEY } from '@/lib/consent'
 
 const widget = () => screen.queryByTitle(/omdömen på reco/i)
+const showButton = () => screen.getByRole('button', { name: /visa omdömen/i })
 
 describe('Reco', () => {
   beforeEach(() => {
@@ -22,23 +15,31 @@ describe('Reco', () => {
     cleanup()
   })
 
-  it('does not request the iframe when no consent is stored', () => {
+  it('does not request the iframe on first render', () => {
     render(<Reco />)
     expect(widget()).not.toBeInTheDocument()
-    expect(
-      screen.getByRole('button', { name: /visa omdömen/i })
-    ).toBeInTheDocument()
+    expect(showButton()).toBeInTheDocument()
   })
 
-  it('does not request the iframe when consent is dismissed', () => {
-    setConsent('dismissed')
+  // The consent banner only covers the site's own necessary cookies and
+  // cookieless analytics, so it cannot authorize this third-party embed.
+  it('stays unloaded even when site-wide cookies are accepted', () => {
+    localStorage.setItem(CONSENT_STORAGE_KEY, 'accepted')
+    render(<Reco />)
+    expect(widget()).not.toBeInTheDocument()
+    expect(showButton()).toBeInTheDocument()
+  })
+
+  it('stays unloaded when consent is dismissed', () => {
+    localStorage.setItem(CONSENT_STORAGE_KEY, 'dismissed')
     render(<Reco />)
     expect(widget()).not.toBeInTheDocument()
   })
 
-  it('renders the iframe when consent is accepted', () => {
-    setConsent('accepted')
+  it('renders the iframe once the visitor opts in', () => {
     render(<Reco />)
+    fireEvent.click(showButton())
+
     const frame = widget()
     expect(frame).toHaveAttribute(
       'src',
@@ -47,24 +48,10 @@ describe('Reco', () => {
     expect(frame).toHaveAttribute('loading', 'lazy')
   })
 
-  it('renders the iframe after consent-change event when user accepts', () => {
+  it('does not write site-wide consent when opting in to the embed', () => {
     render(<Reco />)
-    expect(widget()).not.toBeInTheDocument()
+    fireEvent.click(showButton())
 
-    setConsent('accepted')
-    act(() => {
-      window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT))
-    })
-
-    expect(widget()).toBeInTheDocument()
-  })
-
-  it('renders the iframe when the visitor opts in to just this embed', () => {
-    render(<Reco />)
-    fireEvent.click(screen.getByRole('button', { name: /visa omdömen/i }))
-
-    expect(widget()).toBeInTheDocument()
-    // Opting in to the embed must not grant site-wide consent
     expect(localStorage.getItem(CONSENT_STORAGE_KEY)).toBeNull()
   })
 })

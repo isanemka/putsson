@@ -119,7 +119,7 @@ describe('Home page', () => {
     expect(screen.getByRole('link', { name: /boka nu/i })).toBeInTheDocument()
   })
 
-  it('keeps the Reco widget behind consent until the visitor opts in', () => {
+  it('does not load the Reco widget until the visitor opts in', () => {
     render(<Home />)
     expect(screen.queryByTitle(/omdömen på reco/i)).not.toBeInTheDocument()
     expect(
