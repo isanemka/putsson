@@ -55,6 +55,17 @@ export default function CookiePolicyPage() {
         </div>
 
         <div className="space-y-2">
+          <h2 className="text-lg font-semibold text-navy">Omdömen från Reco</h2>
+          <p>
+            På startsidan visar vi kundomdömen som hämtas från reco.se. Den
+            tjänsten är en tredjepart som kan lagra egna cookies i din
+            webbläsare. Därför laddas omdömena inte automatiskt – de visas först
+            när du accepterat cookies eller själv valt att visa dem. Tills dess
+            skickas ingen förfrågan till Reco.
+          </p>
+        </div>
+
+        <div className="space-y-2">
           <h2 className="text-lg font-semibold text-navy">
             Hantera dina inställningar
           </h2>

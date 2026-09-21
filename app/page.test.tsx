@@ -119,13 +119,11 @@ describe('Home page', () => {
     expect(screen.getByRole('link', { name: /boka nu/i })).toBeInTheDocument()
   })
 
-  it('renders the Reco review widget lazily', () => {
+  it('keeps the Reco widget behind consent until the visitor opts in', () => {
     render(<Home />)
-    const widget = screen.getByTitle(/omdömen på reco/i)
-    expect(widget).toHaveAttribute(
-      'src',
-      expect.stringContaining('widget.reco.se/v2/venues/6089819/')
-    )
-    expect(widget).toHaveAttribute('loading', 'lazy')
+    expect(screen.queryByTitle(/omdömen på reco/i)).not.toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: /visa omdömen/i })
+    ).toBeInTheDocument()
   })
 })
