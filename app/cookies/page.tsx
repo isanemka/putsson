@@ -46,11 +46,31 @@ export default function CookiePolicyPage() {
             Vilka cookies använder vi?
           </h2>
           <p>
-            Vi använder endast nödvändiga cookies som krävs för att webbplatsen
-            ska fungera. För att förstå hur webbplatsen används har vi aktiverat
-            Vercel Analytics – ett cookielöst analysverktyg som{' '}
+            Webbplatsen själv sätter bara de nödvändiga cookies som krävs för
+            att den ska fungera. För att förstå hur webbplatsen används har vi
+            aktiverat Vercel Analytics – ett cookielöst analysverktyg som{' '}
             <strong>inte lagrar cookies</strong> och inte spårar dig mellan
             besök. Data anonymiseras och ingen personlig information sparas.
+          </p>
+          <p>
+            Utöver detta finns innehåll från en tredjepart, Reco, som kan sätta
+            egna cookies. Det laddas aldrig av sig självt – se nästa avsnitt.
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <h2 className="text-lg font-semibold text-navy">Omdömen från Reco</h2>
+          <p>
+            På startsidan visar vi kundomdömen som hämtas från reco.se. Den
+            tjänsten är en tredjepart som kan lagra egna cookies i din
+            webbläsare, och dem kontrollerar inte vi.
+          </p>
+          <p>
+            Därför laddas omdömena aldrig automatiskt. De hämtas först när du
+            själv klickar på &rdquo;Visa omdömen&rdquo;. Att godkänna cookies i
+            vår banner räcker inte – den gäller bara webbplatsens egna
+            nödvändiga cookies och den cookielösa statistiken. Tills du klickar
+            skickas ingen förfrågan alls till Reco.
           </p>
         </div>
 
