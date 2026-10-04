@@ -1,6 +1,11 @@
 'use server'
 
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses'
+import {
+  contactEmailPattern,
+  contactFieldMaxLength,
+  type ContactField,
+} from '@/lib/contact'
 
 type ContactPayload = {
   name: string
@@ -33,16 +38,31 @@ function escapeHtml(value: string) {
     .replace(/'/g, '&#x27;')
 }
 
+function isValidPayload(payload: unknown): payload is ContactPayload {
+  if (typeof payload !== 'object' || payload === null) return false
+  const record = payload as Record<string, unknown>
+  return (Object.keys(contactFieldMaxLength) as ContactField[]).every(
+    (field) =>
+      typeof record[field] === 'string' &&
+      (record[field] as string).length <= contactFieldMaxLength[field]
+  )
+}
+
 export async function sendContactEmail(
   payload: ContactPayload
 ): Promise<ContactResult> {
+  // Server actions are public endpoints: the payload can be anything, so check
+  // types and sizes before touching it (the client validates too).
+  if (!isValidPayload(payload)) {
+    return { success: false, error: 'Ogiltig förfrågan.' }
+  }
+
   const { name, email, phone, address, message } = payload
 
-  // Server-side validation (defence-in-depth; client also validates)
   if (!name.trim() || !email.trim() || !message.trim()) {
     return { success: false, error: 'Obligatoriska fält saknas.' }
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!contactEmailPattern.test(email.trim())) {
     return { success: false, error: 'Ogiltig e-postadress.' }
   }
 
@@ -91,7 +111,9 @@ export async function sendContactEmail(
   const command = new SendEmailCommand({
     Source: fromEmail,
     Destination: { ToAddresses: [toEmail] },
-    ReplyToAddresses: [`${safeName} <${safeEmail}>`],
+    // Bare address only: a display name built from user input could inject
+    // extra recipients, and SES rejects non-ASCII names (å, ä, ö) unencoded.
+    ReplyToAddresses: [safeEmail],
     Message: {
       Subject: {
         Data: `Ny förfrågan från ${safeName}`,
