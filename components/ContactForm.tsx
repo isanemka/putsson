@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { sendContactEmail } from '@/app/actions/contact'
+import { contactEmailPattern, contactFieldMaxLength } from '@/lib/contact'
 
 type Field = 'name' | 'email' | 'phone' | 'address' | 'message' | 'privacy'
 
@@ -28,7 +29,7 @@ export default function ContactForm() {
     if (!form.name.trim()) e.name = 'Ange ditt namn.'
     if (!form.email.trim()) {
       e.email = 'Ange din e-postadress.'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    } else if (!contactEmailPattern.test(form.email.trim())) {
       e.email = 'Ange en giltig e-postadress.'
     }
     if (!form.message.trim()) e.message = 'Berätta lite om dina fönster.'
@@ -117,6 +118,7 @@ export default function ContactForm() {
         <input
           id="cf-name"
           name="name"
+          maxLength={contactFieldMaxLength.name}
           type="text"
           autoComplete="name"
           value={form.name}
@@ -153,6 +155,7 @@ export default function ContactForm() {
           <input
             id="cf-email"
             name="email"
+            maxLength={contactFieldMaxLength.email}
             type="email"
             autoComplete="email"
             value={form.email}
@@ -184,6 +187,7 @@ export default function ContactForm() {
           <input
             id="cf-phone"
             name="phone"
+            maxLength={contactFieldMaxLength.phone}
             type="tel"
             autoComplete="tel"
             value={form.phone}
@@ -205,6 +209,7 @@ export default function ContactForm() {
         <input
           id="cf-address"
           name="address"
+          maxLength={contactFieldMaxLength.address}
           type="text"
           autoComplete="street-address"
           value={form.address}
@@ -228,6 +233,7 @@ export default function ContactForm() {
         <textarea
           id="cf-message"
           name="message"
+          maxLength={contactFieldMaxLength.message}
           rows={4}
           value={form.message}
           onChange={handleChange}

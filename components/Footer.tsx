@@ -105,7 +105,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-3 text-center text-sm md:text-left">
+        <nav
+          aria-label="Sidfot"
+          className="space-y-3 text-center text-sm md:text-left"
+        >
           <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-mint">
             Mer info
           </h3>
@@ -127,7 +130,7 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
       <div className="border-t border-cream/10">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-2 px-6 py-6 text-center text-xs text-cream/60 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6 sm:px-10 sm:text-left">

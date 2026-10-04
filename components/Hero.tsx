@@ -73,7 +73,7 @@ export default function Hero() {
             translateY: ['120%', '0%'],
             rotate: [2, 0],
             duration: 1100,
-            delay: (_: unknown, i: number) => 120 + i * 90,
+            delay: (_: unknown, i = 0) => 120 + i * 90,
             ease: 'outExpo',
           })
         }
