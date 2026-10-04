@@ -25,5 +25,7 @@ if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
       return []
     }
   }
-  ;(window as unknown as { IntersectionObserver: unknown }).IntersectionObserver = IO
+  ;(
+    window as unknown as { IntersectionObserver: unknown }
+  ).IntersectionObserver = IO
 }
