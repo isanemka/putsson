@@ -11,6 +11,7 @@ This directory contains comprehensive project documentation for the company webs
 - [GDPR & Privacy](./gdpr-privacy.md) - Privacy compliance and legal requirements
 - [Testing](./testing.md) - Testing strategy and guidelines
 - [Deployment](./deployment.md) - How to deploy the website
+- [Överlämning](./overlamning.md) - Handover guide for a new agency (Swedish)
 
 ## Quick Links
 
@@ -39,7 +40,7 @@ Use this mini-checklist when starting a new customer project:
    - `npm install`
    - `npx playwright install` (needed for E2E tests)
 2. Set environment variables.
-   - `NEXT_PUBLIC_SITE_URL`
+   - See the table in [Deployment](./deployment.md#2-environment-variables)
 3. Replace all TODO copy and placeholders (homepage + policies + JSON-LD).
 4. Update metadata (global + page-level).
 5. Verify contact details and policy text.
