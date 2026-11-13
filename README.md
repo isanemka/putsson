@@ -108,4 +108,6 @@ A pre-commit hook (Husky + lint-staged) formats and lints staged files automatic
 
 ## License
 
-MIT
+Copyright © Putsson AB. All rights reserved.
+
+This code is proprietary and owned by Putsson AB. It may not be copied, modified or distributed without written permission from the owner.
