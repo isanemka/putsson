@@ -6,14 +6,14 @@ Fält markerade med **[fyll i]** fylls i av den som lämnar över.
 
 ## Översikt
 
-| Del                    | Var den finns                                       | Ägare idag  |
-| ---------------------- | --------------------------------------------------- | ----------- |
-| Källkod                | Zip-fil (finns idag på GitHub: `isanemka/putsson`)  | [fyll i]    |
-| Hosting                | Vercel-projektet `putsson`                          | [fyll i]    |
-| Domän `putsson.se`     | Registrerad hos [fyll i], DNS hos [fyll i]          | [fyll i]    |
-| E-post från formuläret | AWS SES, region `eu-north-1` om inget annat är satt | [fyll i]    |
-| Statistik              | Vercel Analytics (ingår i Vercel-projektet)         | Som hosting |
-| Kundomdömen            | Reco, venue-id `6089819` (`components/Reco.tsx`)    | [fyll i]    |
+| Del                    | Var den finns                                                  | Ägare idag   |
+| ---------------------- | -------------------------------------------------------------- | ------------ |
+| Källkod                | Zip-fil                                                        | [fyll i]     |
+| Hosting                | Vercel-projektet `putsson`                                     | PixelPioneer |
+| Domän `putsson.se`     | Registrerad hos egensajt.se. Flyttas till den nya byrån        | PixelPioneer |
+| E-post från formuläret | AWS SES (`eu-north-1`). Ersätts av den nya byråns egen lösning | PixelPioneer |
+| Statistik              | Vercel Analytics (ingår i Vercel-projektet)                    | PixelPioneer |
+| Kundomdömen            | Reco, venue-id `6089819` (`components/Reco.tsx`)               | Kunden       |
 
 ## Teknik
 
@@ -42,32 +42,38 @@ Zip-filen innehåller all kod och dokumentation, men inga lösenord, nycklar ell
 3. Driftsätt och kontrollera sajten på projektets `.vercel.app`-adress innan domänen flyttas.
 4. Om ni vill behålla besöksstatistiken: aktivera Vercel Analytics i projektet. Historiken från det gamla projektet följer inte med.
 
-### 3. E-post från kontaktformuläret (AWS SES)
+### 3. E-post från kontaktformuläret
 
-Om AWS-kontot används bara för putsson.se kan det i stället flyttas till kunden eller den nya byrån, se [AWS guide för att överföra ett konto](https://repost.aws/knowledge-center/transfer-aws-account). Då behövs bara steg 3–5 nedan, med nya nycklar.
+Kontaktformuläret skickar idag e-post via AWS SES på PixelPioneers AWS-konto. Kontot används för andra kunder och följer inte med, så den nya byrån behöver en egen lösning.
 
-Annars sätter den nya byrån upp SES på sitt eget AWS-konto:
+Enklast är att sätta upp SES på ett eget AWS-konto, eftersom koden redan är byggd för det:
 
-1. Verifiera domänen `putsson.se` i SES och lägg in de DKIM-poster som SES visar hos den som hanterar DNS. Domänen kan vara verifierad i båda AWS-kontona samtidigt, så formuläret fungerar under hela bytet.
+1. Verifiera domänen `putsson.se` i SES och lägg in de DKIM-poster som SES visar i DNS. Domänen kan vara verifierad i båda AWS-kontona samtidigt, så formuläret fungerar under hela bytet.
 2. Om kontot är i sandlåde-läge: verifiera även mottagaradressen, eller ansök om produktionsåtkomst.
 3. Skapa en åtkomstnyckel som bara får skicka e-post (`ses:SendEmail` och `ses:SendRawEmail`).
 4. Lägg in nyckeln som `AWS_ACCESS_KEY_ID` och `AWS_SECRET_ACCESS_KEY` i Vercel, och `AWS_SES_REGION` om ni använder en annan region än `eu-north-1`.
 5. Driftsätt igen och skicka ett testmeddelande via formuläret på `.vercel.app`-adressen.
 
+Vill ni använda en annan e-posttjänst behöver utskicket i `app/actions/contact.ts` skrivas om för den tjänsten, och miljövariablerna ändras därefter.
+
 ### 4. Domänen
 
+Domänen `putsson.se` är registrerad hos egensajt.se på PixelPioneers konto och flyttas till den nya byrån. PixelPioneer begär en flyttkod (auth-kod) hos egensajt.se och skickar den till den nya byrån.
+
+Steg 3 och 4 kräver att poster läggs in i DNS. Fram till att domänen är flyttad lägger PixelPioneer in de poster som den nya byrån behöver.
+
 1. Lägg till `www.putsson.se` och `putsson.se` i ert Vercel-projekt under **Settings → Domains**, och ställ in att `putsson.se` skickas vidare till `www.putsson.se`.
-2. Eftersom domänen redan används i den gamla byråns Vercel-konto ber Vercel om en TXT-post i DNS för att bevisa att ni får använda den. När posten är inlagd flyttas domänen över till ert projekt.
+2. Eftersom domänen redan används i PixelPioneers Vercel-konto ber Vercel om en TXT-post i DNS för att bevisa att ni får använda den. När posten är inlagd flyttas domänen över till ert projekt.
 3. Kontrollera att `https://www.putsson.se` visar den nya driftsättningen och att `https://putsson.se` skickas vidare dit.
 
-Om domänen är registrerad på den gamla byråns konto hos en registrar flyttas den till kunden eller till den nya byrån med en flyttkod (auth-kod) från registraren.
+Om ni flyttar DNS till en ny leverantör i samband med domänflytten: lägg in samma poster där (Vercel, DKIM för SES och eventuella MX-poster för kundens e-post) innan namnservrarna byts.
 
 ### 5. Övriga konton
 
-- **Reco:** lämna över inloggningen till Reco-kontot om det inte redan ägs av kunden.
+- **Reco:** kontot ägs av kunden. Inget behöver flyttas.
 - **Google Search Console:** lägg till den nya byrån som användare, om sajten är registrerad där, och skicka in `https://www.putsson.se/sitemap.xml`.
 
-### 6. Städa upp hos den gamla byrån
+### 6. Städa upp hos PixelPioneer
 
 När den nya sajten och kontaktformuläret fungerar:
 
@@ -77,7 +83,7 @@ När den nya sajten och kontaktformuläret fungerar:
 
 ## Miljövariabler
 
-AWS-nycklarna skapar den nya byrån själv, och de ska aldrig skickas via e-post eller ligga i koden. Övriga värden skickas med av den gamla byrån.
+AWS-nycklarna skapar den nya byrån själv, och de ska aldrig skickas via e-post eller ligga i koden. Övriga värden skickas med av PixelPioneer.
 
 | Variabel                | Krävs | Används till                                                                        |
 | ----------------------- | ----- | ----------------------------------------------------------------------------------- |
@@ -120,6 +126,6 @@ npm run build
 - [ ] SES är uppsatt och nycklarna ligger i Vercel
 - [ ] Ett testmeddelande från kontaktformuläret har kommit fram
 - [ ] Domänerna är flyttade till det nya Vercel-projektet och `putsson.se` skickas vidare till `www`
-- [ ] Domänregistreringen ligger hos kunden eller den nya byrån
-- [ ] Reco och Google Search Console är överlämnade
+- [ ] Domänen är flyttad från egensajt.se-kontot till den nya byrån
+- [ ] Google Search Console är överlämnat
 - [ ] Det gamla Vercel-projektet är borttaget, gamla AWS-nycklar avstängda och gamla DKIM-poster borttagna
