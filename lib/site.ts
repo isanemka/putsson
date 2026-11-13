@@ -6,7 +6,7 @@ export const sitePhoneE164 = '+46700600780'
 export const sitePhoneHref = 'tel:+46700600780'
 export const siteCity = 'Göteborg'
 
-const fallbackSiteUrl = 'https://putsson.se'
+const fallbackSiteUrl = 'https://www.putsson.se'
 
 const resolveSiteUrl = (value?: string) => {
   if (!value) {

@@ -27,14 +27,14 @@ The site is hosted on Vercel. Every push to `main` deploys to production, and ev
 
 These are the names the code reads. Set them in Vercel under **Settings → Environment Variables** for both Production and Preview.
 
-| Variable                | Required | Used for                                                                              |
-| ----------------------- | -------- | ------------------------------------------------------------------------------------- |
-| `AWS_ACCESS_KEY_ID`     | Yes      | AWS credentials for sending email via SES                                             |
-| `AWS_SECRET_ACCESS_KEY` | Yes      | AWS credentials for sending email via SES                                             |
-| `AWS_SES_REGION`        | No       | SES region. Defaults to `eu-north-1`                                                  |
-| `FROM_EMAIL`            | Yes      | Sender address for contact form email. Must be verified in SES                        |
-| `CONTACT_EMAIL`         | Yes      | Where contact form submissions are delivered                                          |
-| `NEXT_PUBLIC_SITE_URL`  | No       | Canonical site URL for metadata, sitemap and robots. Defaults to `https://putsson.se` |
+| Variable                | Required | Used for                                                                                  |
+| ----------------------- | -------- | ----------------------------------------------------------------------------------------- |
+| `AWS_ACCESS_KEY_ID`     | Yes      | AWS credentials for sending email via SES                                                 |
+| `AWS_SECRET_ACCESS_KEY` | Yes      | AWS credentials for sending email via SES                                                 |
+| `AWS_SES_REGION`        | No       | SES region. Defaults to `eu-north-1`                                                      |
+| `FROM_EMAIL`            | Yes      | Sender address for contact form email. Must be verified in SES                            |
+| `CONTACT_EMAIL`         | Yes      | Where contact form submissions are delivered                                              |
+| `NEXT_PUBLIC_SITE_URL`  | No       | Canonical site URL for metadata, sitemap and robots. Defaults to `https://www.putsson.se` |
 
 If `FROM_EMAIL` or `CONTACT_EMAIL` is missing, the contact form returns an error and logs `Missing FROM_EMAIL or CONTACT_EMAIL environment variables`.
 
@@ -54,7 +54,7 @@ For local development, put the same variables in a `.env.local` file. It is igno
 
 The Vercel project has these domains:
 
-- `www.putsson.se`: the main domain
+- `www.putsson.se`: the main domain. Metadata, sitemap and robots use this address
 - `putsson.se`: redirects to `www.putsson.se`
 - `putsson.vercel.app`: Vercel's default domain
 

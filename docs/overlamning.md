@@ -72,14 +72,14 @@ När testmeddelandet har kommit fram stänger den gamla byrån av sina nycklar o
 
 Värdena finns i Vercel och ska aldrig skickas med i koden eller via e-post. Namnen är:
 
-| Variabel                | Krävs | Används till                                                                    |
-| ----------------------- | ----- | ------------------------------------------------------------------------------- |
-| `AWS_ACCESS_KEY_ID`     | Ja    | AWS-nyckel för att skicka e-post via SES                                        |
-| `AWS_SECRET_ACCESS_KEY` | Ja    | AWS-nyckel för att skicka e-post via SES                                        |
-| `AWS_SES_REGION`        | Nej   | SES-region. Standard är `eu-north-1`                                            |
-| `FROM_EMAIL`            | Ja    | Avsändare för e-post från formuläret. Måste vara verifierad i SES               |
-| `CONTACT_EMAIL`         | Ja    | Mottagare av meddelanden från formuläret                                        |
-| `NEXT_PUBLIC_SITE_URL`  | Nej   | Sajtens adress i metadata, sitemap och robots. Standard är `https://putsson.se` |
+| Variabel                | Krävs | Används till                                                                        |
+| ----------------------- | ----- | ----------------------------------------------------------------------------------- |
+| `AWS_ACCESS_KEY_ID`     | Ja    | AWS-nyckel för att skicka e-post via SES                                            |
+| `AWS_SECRET_ACCESS_KEY` | Ja    | AWS-nyckel för att skicka e-post via SES                                            |
+| `AWS_SES_REGION`        | Nej   | SES-region. Standard är `eu-north-1`                                                |
+| `FROM_EMAIL`            | Ja    | Avsändare för e-post från formuläret. Måste vara verifierad i SES                   |
+| `CONTACT_EMAIL`         | Ja    | Mottagare av meddelanden från formuläret                                            |
+| `NEXT_PUBLIC_SITE_URL`  | Nej   | Sajtens adress i metadata, sitemap och robots. Standard är `https://www.putsson.se` |
 
 ## Komma igång lokalt
 
@@ -103,7 +103,7 @@ npm run build
 ## Bra att veta
 
 - **Cookies och samtycke:** Vercel Analytics laddas först när besökaren godkänner cookiebannern. Reco-omdömena laddas först när besökaren klickar för att visa dem, eftersom Reco kan sätta egna cookies. Ändra inte detta utan att även se över integritets- och cookiesidorna.
-- **www eller inte:** Vercel skickar `putsson.se` vidare till `www.putsson.se`, men `NEXT_PUBLIC_SITE_URL` är inte satt, så metadata och sitemap använder `https://putsson.se`. Det fungerar, men det är bättre för sökmotorerna om båda pekar på samma adress.
+- **Huvudadress:** sajten använder `https://www.putsson.se`. Vercel skickar `putsson.se` vidare dit, och metadata, sitemap och robots använder samma adress. Sätt inte `NEXT_PUBLIC_SITE_URL` till adressen utan `www`, då pekar sidorna på en adress som skickas vidare.
 - **Felövervakning:** det finns ingen felövervakning (till exempel Sentry). Fel syns i Vercels runtime-loggar.
 
 ## Checklista
