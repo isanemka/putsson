@@ -2,15 +2,14 @@
 
 ## Platform: Vercel
 
-Vercel is the recommended and chosen platform for this project, created by the Next.js team.
+The site is hosted on Vercel. Every push to `main` deploys to production, and every pull request gets a preview deployment.
 
 ## Prerequisites
 
-- GitHub repository
-- Vercel account (free tier available)
-- Domain name (optional, Vercel provides free .vercel.app subdomain)
-- AWS SES credentials
-- Sentry account (optional but recommended)
+- Access to the GitHub repository
+- Access to the Vercel project (`putsson`)
+- An AWS account with SES set up for `putsson.se` (used by the contact form)
+- Access to DNS for `putsson.se`
 
 ## Initial Setup
 
@@ -19,100 +18,79 @@ Vercel is the recommended and chosen platform for this project, created by the N
 1. Go to [vercel.com](https://vercel.com)
 2. Sign in with GitHub
 3. Click "Add New Project"
-4. Import your repository
-5. Vercel auto-detects Next.js settings ✅
-6. Configure environment variables (see below)
+4. Import the repository
+5. Vercel auto-detects the Next.js settings
+6. Add the environment variables below
 7. Click "Deploy"
 
 ### 2. Environment Variables
 
-### Required for Production
+These are the names the code reads. Set them in Vercel under **Settings → Environment Variables** for both Production and Preview.
 
-```bash
-# AWS SES Configuration
-AWS_REGION=eu-north-1  # or your preferred region
-AWS_ACCESS_KEY_ID=your_access_key_id
-AWS_SECRET_ACCESS_KEY=your_secret_access_key
-AWS_SES_FROM_EMAIL=info@yourcompany.com  # verified sender email
-CONTACT_FORM_TO_EMAIL=recipient@example.com  # where to receive form submissions
-```
+| Variable                | Required | Used for                                                                                  |
+| ----------------------- | -------- | ----------------------------------------------------------------------------------------- |
+| `AWS_ACCESS_KEY_ID`     | Yes      | AWS credentials for sending email via SES                                                 |
+| `AWS_SECRET_ACCESS_KEY` | Yes      | AWS credentials for sending email via SES                                                 |
+| `AWS_SES_REGION`        | No       | SES region. Defaults to `eu-north-1`                                                      |
+| `FROM_EMAIL`            | Yes      | Sender address for contact form email. Must be verified in SES                            |
+| `CONTACT_EMAIL`         | Yes      | Where contact form submissions are delivered                                              |
+| `NEXT_PUBLIC_SITE_URL`  | No       | Canonical site URL for metadata, sitemap and robots. Defaults to `https://www.putsson.se` |
 
-### Setup Instructions
+If `FROM_EMAIL` or `CONTACT_EMAIL` is missing, the contact form returns an error and logs `Missing FROM_EMAIL or CONTACT_EMAIL environment variables`.
 
-**AWS SES:**
+The AWS SDK picks up `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` automatically. There is no separate config file.
 
-1. Verify your sender email address in AWS SES
-2. If in SES sandbox mode, also verify recipient email
-3. Add environment variables to your deployment platform
-4. For local development, create `.env.local` file (not committed to git)
+For local development, put the same variables in a `.env.local` file. It is ignored by git and must never be committed.
 
-**Sentry (Recommended):**
+### 3. AWS SES Setup
 
-1. Create free account at sentry.io
-2. Create new Next.js project in Sentry
-3. Copy DSN and add to environment variables
-4. Sentry will automatically track errors in production
+1. Verify the domain `putsson.se` in SES, in the region you set in `AWS_SES_REGION`. SES shows DKIM records (CNAME) that you must add at the DNS provider for `putsson.se` yourself. The domain stays unverified until they are published. Verifying only the `FROM_EMAIL` address works too: SES sends a confirmation email to it and no DNS changes are needed, but domain verification gives better deliverability.
+2. If the SES account is still in sandbox mode, also verify the `CONTACT_EMAIL` address, or request production access.
+3. Create an IAM user (or access key) that is only allowed `ses:SendEmail` and `ses:SendRawEmail`.
+4. Add the key to Vercel as `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+5. Redeploy and send a test message through the contact form.
 
-## Vercel Features
+## Domains
 
-### Automatic Deployments
+The Vercel project has these domains:
 
-- Every push to `main` → Production deployment
-- Every pull request → Preview deployment with unique URL
-- Rollback to previous deployment in one click
+- `www.putsson.se`: the main domain. Metadata, sitemap and robots use this address
+- `putsson.se`: redirects to `www.putsson.se`
+- `putsson.vercel.app`: Vercel's default domain
 
-### Performance
+DNS for `putsson.se` must point to Vercel. Vercel shows the exact records under **Settings → Domains**. SSL certificates are issued automatically.
 
-- Automatic edge caching
-- Image optimization
-- Global CDN
-- Zero configuration
+## Third-Party Services
 
-### Built-in Features
+- **Vercel Analytics:** cookieless analytics. It only loads after the visitor accepts the cookie banner (`components/AnalyticsLoader.tsx`).
+- **Reco:** customer reviews embedded from reco.se (`components/Reco.tsx`). The iframe only loads when the visitor clicks to show it, because Reco may set its own cookies.
 
-- SSL/HTTPS automatic
-- Analytics available (paid)
-- Web Vitals monitoring
-- Deployment logs and monitoring
-
-## Custom Domain
-
-1. Add domain in deployment platform settings
-2. Configure DNS records:
-   - A record or CNAME pointing to deployment platform
-3. Enable SSL (automatic on most platforms)
+No error tracking service (such as Sentry) is set up.
 
 ## Post-Deployment
 
-- [ ] Test all pages and functionality on production URL
+- [ ] Test all pages and functionality on the production URL
 - [ ] Verify mobile responsiveness (test on real devices)
 - [ ] Test on Chrome, Edge, and Safari (desktop + mobile)
 - [ ] Verify layout works at 320px width (narrow mobile)
 - [ ] Check SEO metadata with view-source
-- [ ] Test contact form end-to-end (send real email)
-- [ ] Verify Sentry error tracking is working
-- [ ] Set up error notifications in Sentry
-- [ ] Submit sitemap to Google Search Console
-- [ ] Configure custom domain (if applicable)
-- [ ] Test SSL certificate
-- [ ] Run Lighthouse audit (aim for 90+ scores)
+- [ ] Test the contact form end to end (send a real email)
+- [ ] Submit the sitemap to Google Search Console
+- [ ] Test the SSL certificate
+- [ ] Run a Lighthouse audit (aim for 90+ scores)
 - [ ] Test landscape and portrait orientations on mobile
 
 ## Continuous Deployment Workflow
 
-1. Create feature branch: `git checkout -b feature/new-feature`
+1. Create a feature branch: `git checkout -b feature/new-feature`
 2. Make changes and commit
-3. Push branch: `git push origin feature/new-feature`
-4. Create pull request on GitHub
-5. Vercel creates preview deployment automatically
-6. Review preview URL
-7. Merge PR → Automatic production deployment
+3. Push the branch: `git push origin feature/new-feature`
+4. Create a pull request on GitHub
+5. Vercel creates a preview deployment automatically
+6. Review the preview URL
+7. Merge the PR → automatic production deployment
 
 ## Monitoring
 
-- **Vercel Dashboard:** Deployment status, logs, analytics
-- **Sentry:** Error tracking and monitoring
+- **Vercel Dashboard:** deployment status, runtime logs (including contact form errors) and analytics
 - **Google Search Console:** SEO performance
-- **Google Analytics:** User behavior (if implemented)
-
-_This guide will be updated as deployment requirements are finalized._

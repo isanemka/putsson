@@ -41,11 +41,9 @@
 - **Benefits:** Nearly free for low volumes, high deliverability, integrates with Next.js Server Actions
 - **Use case:** Sending contact form submissions via email
 
-### Sentry
+### Error Tracking
 
-- **Why:** Production error tracking and monitoring
-- **Benefits:** Real-time error notifications, stack traces, user context, free tier available
-- **Use case:** Monitor runtime errors, track contact form failures, ensure production stability
+No error tracking service is set up. Runtime errors, including contact form failures, show up in the Vercel runtime logs. Sentry is a good option if one is needed later.
 
 ## Project Structure
 
