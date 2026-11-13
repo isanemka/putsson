@@ -44,7 +44,7 @@ For local development, put the same variables in a `.env.local` file. It is igno
 
 ### 3. AWS SES Setup
 
-1. Verify the domain `putsson.se` (or the `FROM_EMAIL` address) in SES, in the region you set in `AWS_SES_REGION`. This adds DKIM records to DNS.
+1. Verify the domain `putsson.se` in SES, in the region you set in `AWS_SES_REGION`. SES shows DKIM records (CNAME) that you must add at the DNS provider for `putsson.se` yourself. The domain stays unverified until they are published. Verifying only the `FROM_EMAIL` address works too: SES sends a confirmation email to it and no DNS changes are needed, but domain verification gives better deliverability.
 2. If the SES account is still in sandbox mode, also verify the `CONTACT_EMAIL` address, or request production access.
 3. Create an IAM user (or access key) that is only allowed `ses:SendEmail` and `ses:SendRawEmail`.
 4. Add the key to Vercel as `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.

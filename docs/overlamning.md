@@ -30,18 +30,18 @@ Ordningen nedan gör att sajten är uppe hela tiden.
 
 ### 1. Källkoden (GitHub)
 
-1. Den nya byrån skapar en organisation på GitHub, eller anger vilken de vill använda.
+1. Den nya byrån bjuder in den som gör flytten till sin organisation på GitHub, med rätt att skapa repon. Inbjudan måste accepteras innan nästa steg, annars går det inte att välja deras organisation.
 2. Gå till repot → **Settings** → **Danger Zone** → **Transfer ownership** och ange deras organisation.
-3. Den nya byrån godkänner överföringen.
+3. När flytten är klar tar den nya byrån bort den inbjudna personen från sin organisation.
 
 Hela historiken, alla brancher och pull requests följer med. Gamla länkar till repot vidarebefordras automatiskt.
 
 ### 2. Hostingen (Vercel)
 
-1. Den nya byrån skapar ett team på Vercel.
+1. Den nya byrån skapar ett team på Vercel och bjuder in den som gör flytten. Personen måste vara ägare (Owner) i det nuvarande teamet och ha accepterat inbjudan, annars går det inte att välja deras team.
 2. Gå till Vercel-projektet → **Settings** → **General** → **Transfer Project** och välj deras team.
-3. Den nya byrån godkänner överföringen.
-4. Efter flytten kopplar de om projektet till repot under **Settings → Git**, eftersom GitHub-kopplingen hör till kontot som gjorde den.
+3. När flytten är klar tar den nya byrån bort den inbjudna personen från sitt team.
+4. Den nya byrån kopplar om projektet till repot under **Settings → Git**, eftersom GitHub-kopplingen hör till kontot som gjorde den.
 
 Domänerna, miljövariablerna och tidigare driftsättningar följer med projektet.
 
@@ -108,8 +108,8 @@ npm run build
 
 ## Checklista
 
-- [ ] GitHub-repot är överfört och godkänt
-- [ ] Vercel-projektet är överfört och godkänt
+- [ ] GitHub-repot är överfört
+- [ ] Vercel-projektet är överfört
 - [ ] Vercel är kopplat till repot på nya kontot (en push till `main` ger en ny driftsättning)
 - [ ] SES är uppsatt på nya AWS-kontot och nycklarna är bytta i Vercel
 - [ ] Ett testmeddelande från kontaktformuläret har kommit fram
