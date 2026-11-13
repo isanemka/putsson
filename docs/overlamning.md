@@ -2,18 +2,16 @@
 
 Det här dokumentet beskriver hur putsson.se är uppbyggd och hur en ny byrå sätter upp sajten på sina egna konton.
 
-Fält markerade med **[fyll i]** fylls i av den som lämnar över.
-
 ## Översikt
 
-| Del                    | Var den finns                                                  | Ägare idag   |
-| ---------------------- | -------------------------------------------------------------- | ------------ |
-| Källkod                | Zip-fil                                                        | [fyll i]     |
-| Hosting                | Vercel-projektet `putsson`                                     | PixelPioneer |
-| Domän `putsson.se`     | Registrerad hos egensajt.se. Flyttas till den nya byrån        | PixelPioneer |
-| E-post från formuläret | AWS SES (`eu-north-1`). Ersätts av den nya byråns egen lösning | PixelPioneer |
-| Statistik              | Vercel Analytics (ingår i Vercel-projektet)                    | PixelPioneer |
-| Kundomdömen            | Reco, venue-id `6089819` (`components/Reco.tsx`)               | Kunden       |
+| Del                    | Var den finns                                                  | Ägare idag                             |
+| ---------------------- | -------------------------------------------------------------- | -------------------------------------- |
+| Källkod                | Zip-fil                                                        | Kunden. Förvaltas idag av PixelPioneer |
+| Hosting                | Vercel-projektet `putsson`                                     | PixelPioneer                           |
+| Domän `putsson.se`     | Registrerad hos egensajt.se. Flyttas till den nya byrån        | PixelPioneer                           |
+| E-post från formuläret | AWS SES (`eu-north-1`). Ersätts av den nya byråns egen lösning | PixelPioneer                           |
+| Statistik              | Vercel Analytics (ingår i Vercel-projektet)                    | PixelPioneer                           |
+| Kundomdömen            | Reco, venue-id `6089819` (`components/Reco.tsx`)               | Kunden                                 |
 
 ## Teknik
 
@@ -48,10 +46,10 @@ Kontaktformuläret skickar idag e-post via AWS SES på PixelPioneers AWS-konto. 
 
 Enklast är att sätta upp SES på ett eget AWS-konto, eftersom koden redan är byggd för det:
 
-1. Verifiera domänen `putsson.se` i SES och lägg in de DKIM-poster som SES visar i DNS. Domänen kan vara verifierad i båda AWS-kontona samtidigt, så formuläret fungerar under hela bytet.
+1. Verifiera domänen `putsson.se` i SES och lägg in de DKIM-poster som SES visar i DNS. Den gamla sajtens formulär fortsätter fungera under tiden, eftersom det skickar från PixelPioneers adress.
 2. Om kontot är i sandlåde-läge: verifiera även mottagaradressen, eller ansök om produktionsåtkomst.
 3. Skapa en åtkomstnyckel som bara får skicka e-post (`ses:SendEmail` och `ses:SendRawEmail`).
-4. Lägg in nyckeln som `AWS_ACCESS_KEY_ID` och `AWS_SECRET_ACCESS_KEY` i Vercel, och `AWS_SES_REGION` om ni använder en annan region än `eu-north-1`.
+4. Lägg in nyckeln som `AWS_ACCESS_KEY_ID` och `AWS_SECRET_ACCESS_KEY` i Vercel, och `AWS_SES_REGION` om ni använder en annan region än `eu-north-1`. Sätt `FROM_EMAIL` till en adress på `putsson.se`, till exempel `no-reply@putsson.se`. Dagens avsändare `putsson@pixelpioneer.se` hör till PixelPioneers domän och kan inte verifieras på ert konto.
 5. Driftsätt igen och skicka ett testmeddelande via formuläret på `.vercel.app`-adressen.
 
 Vill ni använda en annan e-posttjänst behöver utskicket i `app/actions/contact.ts` skrivas om för den tjänsten, och miljövariablerna ändras därefter.
@@ -78,21 +76,21 @@ Om ni flyttar DNS till en ny leverantör i samband med domänflytten: lägg in s
 När den nya sajten och kontaktformuläret fungerar:
 
 1. Ta bort det gamla Vercel-projektet.
-2. Stäng av de gamla AWS-nycklarna och ta bort domänen ur SES i det gamla AWS-kontot. Ta sedan bort de gamla DKIM-posterna ur DNS. Varje AWS-konto har egna poster, så ta inte bort den nya byråns.
+2. Stäng av AWS-nycklarna som används för putsson.se. Om `putsson.se` är verifierad i SES på PixelPioneers konto: ta bort den där och ta bort de gamla DKIM-posterna ur DNS. Varje AWS-konto har egna poster, så ta inte bort den nya byråns.
 3. Arkivera det gamla GitHub-repot.
 
 ## Miljövariabler
 
-AWS-nycklarna skapar den nya byrån själv, och de ska aldrig skickas via e-post eller ligga i koden. Övriga värden skickas med av PixelPioneer.
+AWS-nycklarna skapar den nya byrån själv, och de ska aldrig skickas via e-post eller ligga i koden.
 
-| Variabel                | Krävs | Används till                                                                        |
-| ----------------------- | ----- | ----------------------------------------------------------------------------------- |
-| `AWS_ACCESS_KEY_ID`     | Ja    | AWS-nyckel för att skicka e-post via SES                                            |
-| `AWS_SECRET_ACCESS_KEY` | Ja    | AWS-nyckel för att skicka e-post via SES                                            |
-| `AWS_SES_REGION`        | Nej   | SES-region. Standard är `eu-north-1`                                                |
-| `FROM_EMAIL`            | Ja    | Avsändare för e-post från formuläret. Måste vara verifierad i SES. Idag: [fyll i]   |
-| `CONTACT_EMAIL`         | Ja    | Mottagare av meddelanden från formuläret. Idag: [fyll i]                            |
-| `NEXT_PUBLIC_SITE_URL`  | Nej   | Sajtens adress i metadata, sitemap och robots. Standard är `https://www.putsson.se` |
+| Variabel                | Krävs | Används till                                                                                                                                                               |
+| ----------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AWS_ACCESS_KEY_ID`     | Ja    | AWS-nyckel för att skicka e-post via SES                                                                                                                                   |
+| `AWS_SECRET_ACCESS_KEY` | Ja    | AWS-nyckel för att skicka e-post via SES                                                                                                                                   |
+| `AWS_SES_REGION`        | Nej   | SES-region. Standard är `eu-north-1`                                                                                                                                       |
+| `FROM_EMAIL`            | Ja    | Avsändare för e-post från formuläret. Måste vara verifierad i SES. Idag `putsson@pixelpioneer.se`, som inte kan användas efter flytten. Byt till en adress på `putsson.se` |
+| `CONTACT_EMAIL`         | Ja    | Mottagare av meddelanden från formuläret. Idag `info@putsson.se`                                                                                                           |
+| `NEXT_PUBLIC_SITE_URL`  | Nej   | Sajtens adress i metadata, sitemap och robots. Standard är `https://www.putsson.se`                                                                                        |
 
 ## Komma igång lokalt
 
